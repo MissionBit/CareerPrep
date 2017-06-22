@@ -1,0 +1,100 @@
+<section>
+
+<h3>Manipulating the DOM</h3>
+<p><code>console.log</code> is great for debugging, but more frequently, we'll want our JavaScript to change the visible page. First, let's ask the document to return us the first element that it finds that matches a valid CSS selector.</p>
+
+<p>Open <a href=students/examples/selecting.html target=_blank>this page</a> and try the following in the JavaScript console:</p>
+<ul class=code>
+  <li><code>&gt; document.body</code></li>
+  <li><code>&gt; document.querySelector('p')</code></li>
+  <li><code>&gt; document.querySelector('#primary')</code></li>
+  <li><code>&gt; document.querySelector('.important')</code></li>
+  <li><code>&gt; document.querySelector('p.important').textContent</code></li>
+  <li><code>&gt; document.querySelector('#nav ol li').textContent</code></li>
+  <li><code>&gt; document.querySelector('h1, p').textContent = "I'm on the page!"</code></li>
+</ul>
+<p><b>Exercise:</b></p>
+<ol>
+  <li>Open up one of your previous HTML projects</li>
+  <li>Use the console to retrieve the first element that matches a particular CSS selector.</li>
+  <li>View that element's current textContent from the console.</li>
+  <li>Set that element's textContent to a new string.</li>
+  <li>Do this exercise once for each selector type shown above.</li>
+</ol>
+<hr>
+<ul class="code">
+  <li><code>&gt; document.querySelector('h1').textContent = "Behold! For I am a mighty web document!"</code></li>
+  <li><code>&gt; var big_shot = document.querySelector('#primary')</code></li>
+  <li><code>&gt; big_shot.textContent = "Flippin' heck, I'm by far the most important element around!"</code></li>
+  <li><code>&gt; document.querySelector('.important').textContent = "Do all .important elements change or only one?"</code></li>
+</ul>
+
+<p><b>Exercise:</b> Design an HTML page with HTML elements to match the selectors used above. With that page loaded into the browser, type the above expressions into the console. <b>Do your changes persist if you reload the page? Why is this?</b> </p>
+
+<p>Now move the JavaScript code into a script tag just before the &lt;/body&gt;. <b>What's changed?</b></p>
+
+<hr>
+
+<h3>Greeter!</h3>
+<ol>
+  <li>Create a fresh HTML document with correctly set up html, head, and body tags</li>
+  <li>Create a &lt;div&gt; with an id of <code>greeting</code> on your web page.</li>
+  <li>Prompt the user to enter their name. Set their response equal to a variable <code>visitor_name</code>.</li>
+  <li>Create a variable <code>welcome_message</code> and construct a welcoming message using their name.</li>
+  <li>Make your welcome message visible on the page using querySelector and textContent.</li>
+  <li>Prompt the user for their hometown and save their answer as a variable <code>town</code></li>
+  <li>Put an empty &lt;span&gt; with the id of <code>hometown</code> on the page in the middle of an existing sentence already on the page letting them know how nice it is to have a visitor from <i>blank</i>.</li>
+  <li>Use the <code>town</code> variable and the <code>#hometown</code> span to make the compliment complete! </li>
+</ol>
+
+<h3>Shuffle!</h3>
+<ol>
+  <li>Create a &lt;div&gt; with an id of <code>source</code>, and one with the id of <code>destination</code>, each with some text inside.</li>
+  <li>Fetch the textContent of <code>source</code> and save it as a variable.</li>
+  <li>Use the variable to place that text in the <code>destination</code> div</li>
+  <li>Create &lt;div&gt;s with a ids of <code>swap_1</code> and <code>swap_2</code>.</li>
+  <li>How can we swap the textContent of the two divs?</li>
+</ol>
+
+<h3>Mad Libs!</h3>
+<ol>
+  <li>Create a "Mad Libs" web page. It should tell a story, leaving empty &lt;spans&gt;'s with id attributes of 'noun1', 'adjective2', 'verb3', etc. Practice using the console along with `querySelector` and `textContent` to fill in the missing information one at a time.</li>
+  <li>After doing this manually, put these operations into a script tag, and use variables to store each word to be filled in before placing it into the web page, so that the template will be filled out automatically each time the page loads, but the information will be easy to change later.</li>
+  <li>Finally, prompt the visitor repeatedly to provide their own mad libs words. Save their responses as variables and then place those variables into the page to make a crazy story for them.</li>
+</ol>
+<hr>
+<h3>[Optional Content]</h3>
+<h4>Advanced Mathematical Operators</h4>
+<p>Play with the following in your console until you understand how they work:</p>
+<pre><code class="javascript">num = 1
+num = num + 5
+
+// assignment
+num += 5
+num -= 1
+num *= 3
+num /= 0.5
+
+// increment and decrement
+num++
+num--
+
+// operators before the variable
+// what's the difference?
+++num
+--num</code></pre>
+<hr>
+
+<h4>Escaping Strings</h4>
+<p><code>&gt; "Well now...\nThis is " + "rather clever, \n\tdon't you think?"</code></p>
+
+<p>An escape character indicates an alternative interpretation of the subsequent character in a character sequence. In JavaScript the slash character denotes that the character after it might be a tab (\t) or new line (\n).</p>
+
+<p><code>&gt; '"Single quotes work too" ,she said.' + " " + 'Though I\'d not thought it possible'</code></p>
+<p>Escape characters may be needed to indicate that we're looking to print a literal single (\') or double quote (\") and not signal the end of a string of text.</p>
+<p><b>Fix the following so it will run successfully in your console:</b></p>
+<p><code>'"What's wrong with the pudding?", she'd say with a smile.'</code></p>
+<p><b>Now this one:</b></p>
+<p><code>'I'd often think' * "to myself, "Well, what's the worst wrong that could go wrong?". I guess" * "now we know..."</code></p>
+
+</section>

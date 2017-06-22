@@ -1,0 +1,355 @@
+<h1>Arrays</h1>
+<section>
+  <p>Strings are secretly collections of letters stored at sequential memory addresses.</p>
+  <img src="assets/images/string.jpg" alt="a string">
+
+  <p>We can access each letter using square brackets and a zero-indexed number. <b>Try typing out each of the following for yourself, using your own values and variable names:</b></p>
+  <pre><code class="javascript">var word = "Hello"
+
+word[0]
+word[1]
+word[4]
+word[5]
+
+var index = 3
+word[index]
+
+// strings have a length property
+var len = word.length
+word[len]
+word[len - 1]</code></pre>
+<hr>
+  <p>Works for larger strings too.</p>
+
+  <pre><code class="javascript">var greeting = "Hello and welcome to my webpage!"
+
+greeting[0]
+greeting[1]
+greeting[28]
+greeting[29]
+
+var index = 2
+greeting[index]
+
+var len = greeting.length
+greeting[len]
+greeting[len - 1]</code></pre>
+<hr>
+<p>Sometimes we want collections of items more complex than single letters. Here's a collection of numbers contained in a <a href="javascript:void(0)" class="tooltip" data-tip="a way of organizing data so that it can be used efficiently.">data structure</a> of type array- a data type defined at the language-level by JavaScript.</p>
+<p><code>var numbers = [99, -5, 82, 65, 39 120, 431, 98, 17, 42]</code></p>
+<img src="assets/images/array.jpg" alt="an array" >
+
+<pre><code class="javascript">var nums = [5, 10, 20, 50, 100, 250]
+
+nums[0]
+nums[1]
+nums[5]
+nums[6]
+
+var index = 4
+nums[index]
+
+var len = nums.length
+nums[len]
+nums[len - 1]</code></pre>
+<hr>
+<p>An array of strings:</p>
+<pre><code class="javascript">var words = ["Hello", "and", "welcome", "to", "my", "webpage!"]
+
+words[0]
+words[1]
+words[5]
+words[6]
+
+var the_number_three = 3
+words[the_number_three]
+
+var len = words.length
+words[len]
+words[len - 1]</code></pre>
+<hr>
+<p>Arrays can hold all kinds of stuff:</p>
+<pre><code class="javascript">var all_kinds_of_stuff = ["Hello", 3, undefined, true, ["woah", "dude"], null]
+
+all_kinds_of_stuff[0]
+all_kinds_of_stuff[1]
+all_kinds_of_stuff[5]
+all_kinds_of_stuff[6]
+
+var another_array = all_kinds_of_stuff[4]
+
+// ?
+another_array[0]
+
+// ?
+all_kinds_of_stuff[4][1]</code></pre>
+<hr>
+<p>Okay, now we've seen some arrays, let's create a few of our own.</p>
+<pre><code class="javascript">// creating a new <em>instance</em> of an array is called <b>instantiation</b>
+var arr = []
+
+// we can use bracket access in conjunction w/ the assignment operator
+// to store a new value at that index
+arr[0] = "0 is the new 1"
+arr[1] = 45
+arr[2] = null
+arr[3] = true
+
+arr[1] = "overwrite 45, just forget about that one, okay?"</code></pre>
+
+<p><b>Exercise:</b> Favorite Recipe</p>
+<ol>
+  <li>Instantiate a new array and save it to a variable <code>recipe</code></li>
+  <li>Use bracket notation to add the steps to create your favorite meal.</li>
+  <li>Access the first step of your recipe using bracket notation.</li>
+  <li>Create variable called <code>last_step</code> and assign to it a number which represents the index of the last item of your array</li>
+  <li>Access the last step of your recipe using the <code>last_step</code> variable</li>
+</ol>
+<hr>
+
+<p>Arrays have associated with them some <a href="javascript:void(0)" class="tooltip" data-tip="pieces of information associated with an object">properties</a>, like <code>.length</code>, and <a href="javascript:void(0)" class="tooltip" data-tip="properties of type function, which are meant to be run with the invocation operator ()">methods</a>, like <code>.push()</code>, to help us use our collections more effectively.</p>
+
+<pre><code class="javascript">var arr = ['stuff', 'more stuff', 'even more stuff']
+
+arr.length
+
+arr.push("More on the end!!!")
+var lastItem = words.pop()
+
+arr.unshift("More at the beginning!!")
+var firstItem = words.shift()</code></pre>
+
+<p><b>Exercise:</b> Bucket List</p>
+<ol>
+  <li>Instantiate a new array and save it to a variable <code>bucket_list</code></li>
+  <li>Use bracket notation with the assignment operator to add two life goals to your array.</li>
+  <li><code>.push()</code> two goals onto the end of your list.</li>
+  <li><code>.unshift()</code> two goals onto the beginning.</li>
+  <li>What is the array's length at this point?</li>
+  <li><code>.pop()</code> off one goal and save it to a variable <code>dying_wish</code></li>
+  <li><code>.shift()</code> off one goal and save it to a variable <code>do_it_now</code></li>
+  <li>What is the array's length at this point?</li>
+</ol>
+<hr>
+
+<p>Often we want to consider every element in the array in turn.</p>
+
+<pre><code class="javascript">var i = 0
+
+while (i < words.length) {
+  console.log(words[i])
+  i++
+}</code></pre>
+
+<p><b>Exercise: </b></p>
+<ol>
+  <li>Use a while loop and jQuery to append each item in your recipe and your bucket list onto a web page.</li>
+  <li>Refactor your code such that the while loop lives inside a function called <code>append_strings</code> that takes an array as an input (argument)</li>
+  <li>Invoke <code>append_strings</code> twice, passing in <code>recipe</code> the first time and <code>bucket_list</code> the second time</li>
+  <li>Refactor <code>append_strings</code> such that it takes two arguments: an array of strings, and a string representing the CSS selector of the element into which the strings should be appended. (i.e. <code>bucket_list</code> may be appended into a <code>#bucket_output</code> div)</li>
+</ol>
+<hr>
+<pre><code class="javascript">var str = "one two three"
+var arr = str.split(' ')
+var new_str = arr.join(' and a ')
+
+// now our turn...
+var scrambled_poem = "roses red are bacon crispy i bacon love and is blue violets are"</code></pre>
+
+<p><b>Exercise: </b></p>
+<ol>
+  <li>use <code>.split(' ')</code> on <code>scrambled_poem</code> and save the result as an array <code>scrambled_array</code></li>
+  <li>Create a new array <code>unscrambled_array</code></li>
+  <li>While the length of <code>scrambled_array</code> is greater than 0, remove the FIRST and LAST value and store add them to <code>unscrambled_array</code>.</li>
+  <li>Turn the values in <code>unscrambled_poem</code> into a string by using the array's native <code>.join(' ')</code> method.</li>
+</ol>
+
+<hr>
+<p>We do this type of iteration so often, that JavaScript provides us a special kind of loop- the <code>for</code> loop.</p>
+<pre><code class="javascript">for (var i = 0; i < words.length; i++) {
+  console.log(words[i])
+}</code></pre>
+
+<p><b>Exercise:</b></p>
+<ol>
+  <li>Write a function <code>reverser</code> which will take an array of values as an input and return a new array of the same values in reverse order.</li>
+  <li>Inside <code>reverser</code> instantiate a new array <code>reversed_array</code>, use a <code>for</code> loop to populate it, then return it from the function.</li>
+</ol>
+<hr>
+
+<p>Often it's cleaner to use Array's native <code>.forEach()</code> method to run a given function once for each item in the array, passing that item in as an argument</p>
+<pre><code class="javascript">var log_me = function(word){
+  console.log(word)
+}
+
+words.forEach(log_me)</code></pre>
+<p><b>Exercise: </b> Refactor your <code>append_strings</code> function to use <code>.forEach()</code> instead of a <code>while</code> loop.</p>
+
+<p><b>Exercise: </b>Write a function <code>biggest_smallest</code> that takes an array of numbers as an input, uses <code>.forEach()</code>, and returns an array containing the smallest number in the zeroth position and the largest number in the first position.</p>
+
+<hr>
+
+<p>Arrays are pass by reference, this means when you do the following, you get two arrays pointing at the same object in memory. This can lead to the unexpected results</p>
+
+<pre><code class="javascript">var arr2 = arr
+arr2.pop() // both arr and arr2 are changed!!
+
+var arr3 = arr.slice() // clones the array
+arr3.pop() // only arr3 is changed</code></pre>
+
+<p><b>Exericise:</b> Create a function array_duplicator, that takes an array as an input, and returns a copy as the output.</p>
+
+<pre><code class="javascript">var array_duplicator = function(inputArray) {
+    var outputArray = []
+
+    // code here
+
+    return outputArray
+};
+
+var original = [1, 2, 3, 4]
+var duplicated = array_duplicator(original)
+
+duplicated.pop()
+duplicated.pop()
+duplicated.pop()
+
+console.log(original, duplicated) // should not be the same!</code></pre>
+<hr>
+<p><code>.concat()</code> is short for concatinate. It smooshes two arrays together.</p>
+
+<pre><code class="javascript">var friends = ['ada', 'will', 'bianca', 'abe']
+var enemies = ['john', 'alice']
+
+var frenemies = friends.concat(enemies)
+
+console.log(frenemies)
+console.log(friends, enemies) // does not change original arrays!</code></pre>
+
+<p><b>Exericise:</b> Write a function <code>array_combiner</code> that takes two arrays as inputs and returns the two of them smooshed together as an output</p>
+
+<pre><code class="javascript">var array_combiner = function(array1, array2) {}
+
+var combined_array = array_combiner([1, 2, 3], [4, 5, 6])
+console.log(combined_array)</code></pre>
+<hr>
+
+<p><code>.splice()</code> is another confusing one. It destructively removes a number of elements from an array starting at a particular index.</p>
+
+<pre><code class="javascript">var frenemies = ['ada', 'will', 'bianca', 'abe', 'john', 'alice']
+var starting_at_index = 3
+var number_to_remove = 2
+
+var removed_elements = frenemies.splice(starting_at_index, number_to_remove);
+
+console.log("We took out ", removed_elements)
+console.log("The remaining array ", frenemies)</code></pre>
+
+<p><b>Exercise:</b> Write a function <code>array_plucker</code> that takes an array and an index as inputs and destructively removes the single value at that index. Return that value.</p>
+
+<pre><code class="javascript">var array_plucker = function(array1, index_to_remove) {
+    var removed_value
+    // code here
+    return removed_value
+}
+
+var days_of_school = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+
+var day_off = array_plucker(days_of_school, 4)
+
+console.log("I'll go to school on: ", days_of_school)
+console.log("but I'm taking vaction on ", day_off)</code></pre>
+
+<hr>
+
+<pre><code class="javascript">var rand = Math.floor( Math.random() * words.length )
+words[rand]</code></pre>
+
+<h4>Exercise: Magic 8-ball</h4>
+  <ol>
+    <li>Create a Magic 8-ball that allows a user to type a question into an input field.</li>
+    <li>When the user clicks the "ask question" button, register a click handler function that randomly selects a reply from an array of appropriately vague stock phrases.</li>
+    <li>Display the answer inside a glowing circle or something crazy like that.</li>
+    <li>Allow the user to click an "ask again" button which clears their previous question and output.</li>
+    <li>Refactor your code so that the user doesn't receive the same reply twice until all the replies have been used at least once.</li>
+  </ol>
+
+<p><b>Exercise: Shuffler</b> Create a function <code>shuffler</code> that takes an array as input and returns a new array of the same elements in a random order. Is your shuffle perfectly mathematically random or only pseudo-random? How computationally efficient is it- i.e. how many lines of code need to be run?</p>
+<hr>
+
+<h4>More Exercises:</h4>
+<ol>
+  <li>Write a function that takes an array of values and returns an boolean representing if the word "hello" exists in the array.</li>
+  <li>Write a function that takes an array of values and a target value and returns how many times that target value exists in the array.</li>
+  <li>Write a function that takes an array and returns a new array containing only the values at odd indexes in that array. </li>
+  <li>Write a function called <code>sum_array</code> that takes an array of numbers and returns the sum of all of those numbers added together.</li>
+  <li>Write a function called <code>array_math</code> that takes an array of numbers and a string with a mathmatical operator and applies that operator to all the numbers together. <code>array_math([4,2,3], "*")</code> should return <code>24</code></li>
+  <li>Write a <code>zipper</code> function that combines two arrays in alternating order, <code>zipper([1,2,3],['a','b','c'])</code> should return <code>[1, 'a', 2, 'b', 3, 'c']</code>. Make sure to handle cases where one array is longer than the other.</li>
+  <li>Write a function that merges two sorted lists into a new list. <code>merge_sorted([1, 2, 5, 9], [3, 7, 19])</code> should return <code>[1, 2, 3, 5, 7, 9, 19]</code></li>
+  <li>Write a function that creates an array of the first 100 Fibonacci numbers.</li>
+</ol>
+
+<hr>
+<h4>Exercise: Magnetic Poetry</h4>
+<ol>
+  <li>Have a grid of words in span.word tags for the user to select from.</li>
+  <li>Allow users to click on the spans to add that word to a sentence array.</li>
+  <li>When the user clicks on a "make sentence" button use <code>words.join(' ')</code> to create a string and show it.</li>
+  <li>Create a "show magic word" button. If the user has used a particular magic word in their sentence highlight it for them. Otherwise, tell them that they have not used the magic word.</li>
+  <li>Have an array of magic words, color the magic words differently.</li>
+  <li>Allow users to create multiple sentences. Store all of the sentences in an array.</li>
+  <li>Have "magic word" work on all sentences at once.</li>
+</ol>
+<hr>
+
+<h3>[Optional Content] Advanced Concepts in Arrays</h3>
+
+<pre><code class="javascript">var arr = [52, 27,31]
+
+// pass by reference
+arr2 = arr
+arr2.push(44)
+arr[0] = "new value"
+
+// why?
+console.log(arr, arr2)
+
+// what does slice do?
+arr2 = arr.slice()
+arr2.push(44)
+arr[0] = "new value"
+
+// why?
+console.log(arr, arr2)
+
+var arr = [ ['hello', 'and', 'hi'], [2,3,4] ]
+arr2 = arr.slice()
+arr2[1].push(44)
+arr[0] = "new value"
+
+// ?
+console.log(arr, arr2)</code></pre>
+<hr>
+<pre><code class="javascript">var array_of_functions = [ function(){ console.log('hi') }, function(){ console.log('bye') } ]
+
+array_of_functions.push(function(val1){ console.log(val1 * 2) })
+
+var adder = function(val1, val2){ console.log(val1 + val2) }
+array_of_functions[3] = adder
+
+array_of_functions.forEach(function(func){
+  func(3,4)
+})</code></pre>
+<hr>
+<pre><code class="javascript">// Reimplementing JavaScript Array's native <code>.forEach()</code> method is rather trivial
+var my_each = function (array, iterator) {
+  for (var i = 0; i < array.length; i++){
+    iterator( array[i], i )
+  }
+}
+
+my_each(some_array, some_function)</code></pre>
+
+</section>
+
+<iframe src="https://docs.google.com/a/hackreactor.com/forms/d/e/1FAIpQLSf4QRoSNpaOTuSfO3fd-Hw5I8NyPzrBfn-Cv0s3oTjUQGE2Pw/viewform?embedded=true" width="760" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>

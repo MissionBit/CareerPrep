@@ -1,0 +1,216 @@
+<h1>Object Oriented Javascript</h1>
+<section>
+<p>Organizing code structures around objects rather than functions is called <a href="//en.wikipedia.org/wiki/Object-oriented_programming" class="popup">Object Oriented</a> programming.</p>
+
+<p>Objects properties have keys which are strings, and values which can any data type: strings, numbers, arrays, objects... even functions!</p>
+<pre><code class="javascript">var person = {
+  name: 'Bob',
+  location: 'Los Angeles',
+  age: 56,
+  hobbies: ['working', 'partying'],
+  cat: {
+    name: "mr fuzzles",
+    hobbies: [ "being inert", "nudging things off tables" ]
+  },
+  party: function(){
+    console.log('dance, dance, dance!')
+  }
+}
+person.name
+person.age
+
+person.hobbies[0]
+person.cat.name
+
+person.party // what does this do?
+person.party() // how about this?</code></pre>
+
+<h4>Exercise:</h4>
+<ol>
+  <li>Create a person object to represent yourself.</li>
+  <li>Give yourself properties of name and location.</li>
+  <li>Give yourself an array of hobbies</li>
+  <li>Give yourself a pet object</li>
+  <li>Give yourself a <code>party</code> method and then invoke it.</li>
+</ol>
+
+<hr>
+
+<p>Review the following in your console:</p>
+<pre><code class="javascript">var freestanding_fn = function(){
+  console.log(arguments, this)
+}
+
+freestanding_fn("These are the arguments...", "What is the calling context? -->")</code></pre>
+
+<p>Now what happens when we call a function <i>in the context of</i> an object?</p>
+
+<pre><code class="javascript">var obj = {
+  key1: 'value 1',
+  key2: 'value 2',
+  method: function(){
+    console.log("I'm being invoked in the context of...", this)
+  }
+}
+
+obj.method()</code></pre>
+
+<p>So how is this useful?</p>
+<pre><code class="javascript">person.work = function(){
+  console.log("Welcome to McDonald's, I'm " + this.name + ". May I take your order?")
+  console.log("Enjoy this beautiful day in " + this.location)
+  console.log("Would you like to hear a story about " + this.cat.name + " and his " + this.cat.hobbies[1])
+}
+person.work()</code></pre>
+<h4>Exercise:</h4>
+<ol>
+  <li>Give yourself a <code>work</code> method that references one or more other properties of your object using the <code>this</code> keyword</li>
+  <li>Add another method <code>workout</code> to your object after it has been created- as we did with <code>person.work()</code> not <code>person.party()</code></li>
+  <li>Have the <code>workout</code> method reference one or more other properties of your object.</li>
+  <li>Create a <code>float_through_life_on_autopilot</code> method that calls the <code>work</code>, <code>party</code> and <code>workout</code> methods using the <code>this</code> keyword.</li>
+</ol>
+
+<hr>
+
+<p>We can also change our object properties by referencing them with <code>this</code>:</p>
+<pre><code class="javascript">var car = {
+  type: "Honda Civic",
+  position: 1,
+  move: function(){
+    var prev = this.position
+    this.position = this.position + 1
+    console.log(this.type + " is moving from " + prev + " to " + this.position)
+  }
+}</code></pre>
+
+<h4>Exercise:</h4>
+<ol>
+  <li>Invoke car's <code>move</code> method and see what happens.</li>
+  <li>Invoke it a few more times. Then check its <code>position</code> property.</li>
+  <li>Add a <code>speed</code> property (an integer) to car.</li>
+  <li>When a car moves, adjust its position by adding its speed</li>
+</ol>
+
+<h4>Exercise:</h4>
+<ol>
+  <li>Create a new object <code>dog</code>. Give it a name and location.</li>
+  <li>Give the dog a <code>party</code> method.</li>
+  <li>Reference the dog's name inside the <code>party</code> method <small>(i.e. when you invoke dog.party it should say "rufus dances wildly")</small></li>
+  <li>Give the dog a <code>favorite_food</code> property (a string, 'kibble') and an <code>eat</code> method.</li>
+  <li>Reference the <code>favorite_food</code> inside the eat method.</li>
+  <li>Give the dog a <code>hungry</code> property, a boolean set to <code>true</code></li>
+  <li>When your dog eats, set its <code>hungry</code> property to <code>false</code>, referencing it via <code>this</code></li>
+  <li>Add a <code>go_to_park</code> method which references the dog's <code>location</code> and when invoked changes the <code>hungry</code> property back to <code>true</code>.</li>
+</ol>
+
+<hr>
+<p>Instead of defining the method inline, it can be useful to have it defined first and referenced as a variable in the object instantiation. <small>(this will allow us to share the function between multiple objects later)</small></p>
+<pre><code class="javascript">var move_fn = function(){
+  var prev = this.position
+  this.position = this.position + 1
+  console.log(this.type + " is moving from " + prev + " to " + this.position)
+}
+
+var car = {
+  type: "Honda Civic",
+  position: 1,
+  move: move_fn
+}</code></pre>
+<p>How will this change things? Test it out.</p>
+<p><b>Exercise:</b> Refactor your dog object so that its methods reference free-standing functions <code>eat_fn</code>, <code>party_fn</code>, and <code>go_to_park_fn</code>.</p>
+
+
+<hr>
+
+<p>So we've moved from this world:</p>
+<pre><code class="javascript">var car = {
+  type: "Honda Civic",
+  position: 1,
+  move: function(){
+    this.position++
+  }
+}</code></pre>
+
+<p>To this one, which allows us to define a function once, and use it multiple places:</p>
+
+<pre><code class="javascript">var move_fn = function(){
+  this.position++
+}
+
+var car1 = {
+  type: "Honda Civic",
+  speed: 5,
+  position: 1,
+  move: move_fn
+}
+
+var car2 = {
+  type: "Toyota Corolla",
+  speed: 3,
+  position: 6,
+  move: move_fn
+}</code></pre>
+
+<p>When we invoke <code>car1.move()</code> change both cars' positions? How about when we invoke <code>car2.move()</code>? How does the <code>move_fn</code> know which position to increment?</p>
+<p><b>Memorize this sentence:</b> <code>this</code> refers to the object to the left of the dot when you invoke the function.</p>
+<h4>Exercise</h4>
+<ol>
+  <li>Create a second dog and have it reference the same free-standing functions as the first dog.</li>
+  <li>Experiment with calling the functions on each dog in turn.</li>
+  <li>Rewrite the move_fn to change a car's position based on its speed property.</li>
+  <li>Appreciate that we only have to change one function instead of two.</li>
+  <li>Create two cat objects that have their own names, but share an free-standing function with their <code>meow</code> method.</li>
+  <li>When <code>meow</code> is invoked it should log 'charlie meowed' or 'mr. snuggles meowed' per their correct names.</li>
+</ol>
+
+<hr>
+<h3>Decorator Pattern</h3>
+<p>When we pass an object as an input to a function which adds functionality to it, we call this code structure the <a href="//en.wikipedia.org/wiki/Decorator_pattern" class="popup">Decorator pattern</a></p>
+<pre><code class="javascript">var reverse_adder = function(car){
+    car.reverse = function() {
+      this.position = this.position - this.speed
+    }
+}
+
+reverse_adder(car1)
+reverse_adder(car2)</code></pre>
+<h4>Exercise</h4>
+<ol>
+  <li>Create a <code>fetch_adder</code> function that adds fetching functionality to any dog that is passed in as an argument.</li>
+  <li>Create a <code>nap_adder</code> function that adds napping functionality to any cat that is passed in as an argument.</li>
+</ol>
+
+<hr>
+
+<h3>Factory Pattern</h3>
+<p>When we use a function to instantiate new objects of a certain type, we call this code structure the <a href="//en.wikipedia.org/wiki/Factory_pattern" class="popup">Factory pattern</a></p><pre><code class="javascript">var car_factory = function (type, speed) {
+  var car = {}
+
+  car.position = 0
+  car.type = type
+  car.speed = speed
+
+  car.move = function () {
+    this.position += this.speed
+  }
+
+  return car
+}
+
+var new_toyota = car_factory('Toyota Hilux', 3)
+var new_honda = car_factory('Honda Accord', 5)</code></pre>
+
+<h4>Exercise:</h4>
+<ol>
+  <li>Create a warrior factory that take arguments of a name and a weapon</li>
+  <li>It should return a warrior with those properties as well as...</li>
+  <li>Each warrior should have an attack method that references the name and weapon</li>
+  <li>and also an adventure method that calls the attack method multiple times among other things</li>
+</ol>
+
+<p><b>Exercise:</b> Refactor the <code>car_factory</code> function into a single expression (i.e. create a new object, add all its properties and return it in one fell swoop).</code></pre></p>
+
+<p>Take a moment to appreciate all the hard work you've put in to become a programmer. You're doing a great job! Here <a href="http://goo.gl/ot0L1o">this is for you</a>...</p>
+</section>
+
+<iframe src="https://docs.google.com/a/hackreactor.com/forms/d/e/1FAIpQLSf4QRoSNpaOTuSfO3fd-Hw5I8NyPzrBfn-Cv0s3oTjUQGE2Pw/viewform?embedded=true" width="760" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>

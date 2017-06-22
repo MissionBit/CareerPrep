@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Front End Web Development Basics</title>
+    <link rel="stylesheet" href="assets/css/lib.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+  </style>
+
+</head>
+<body onload="load()">
+<div id="container">
+  <header>Front End Web Development Basics <form id=name_form><input type="text" id='name' placeholder='Enter Your Name'><input type="submit" value=submit></form></header>
+  <nav>
+    <section>
+    <p>Week 1:</p>
+    <ol>
+
+<li><a class="load done" href="#01.html">1: Markup Languages</a></li>
+<li><a class="load done" href="#02.html">2: Styling Web Pages</a></li>
+<li><a class="load done" href="#03.html">3: Larger Web Documents</a></li>
+<li><a class="load done" href="#04.html">4: Forms & Positioning</a></li>
+<li><a class="load done" href="#05.html">5: Command Line & CSS Frameworks</a></li>
+</ol>
+
+</section>
+<section>
+  <p>Week 2:</p>
+  <ol>
+    <li><a class="load done" href="#06.html">1: Intro to JavaScript</a></li>
+    <li><a class="load done" href="#07.html">2: If / Else</a></li>
+    <li><a class="load done" href="#08.html">3: While Loops</a></li>
+    <li><a class="load done" href="#09.html">4: jQuery</a></li>
+    <li><a class="load done" href="#10.html">5: Halfway Hackathon</a></li>
+  </ol>
+
+  </section>
+
+  <section>
+    <p>Week 3:</p>
+    <ol>
+    <li><a class="load done" href="#11.html">1: Functions</a></li>
+    <li><a class="load done" href="#12.html">2: Events</a></li>
+    <li><a class="load done" href="#13.html">3: Arrays</a></li>
+    <li><a class="load done" href="#14.html">4: Objects</a></li>
+    <li><a class="load done" href="#15.html">5: Web Store Hackathon</a></li>
+  </ol>
+</section>
+
+  <section>
+  <p>Week 4:</p>
+  <ol>
+    <li><a class="load done" href="#16.html">1: AJAX & JSON</a></li>
+    <li><a class="load done" href="#17.html">2: Advanced Functions</a></li>
+    <li><a class="load done" href="#18.html">3: Underscore</a></li>
+    <li><a class="load done" href="#19.html">4: Re-Implementing Underscore</a></li>
+    <li><a class="load done" href="#20.html">5: Final Hackathon</a></li>
+  </ol>
+</section>
+
+<section>
+<p>Extras:</p>
+<ol>
+  <li><a class="load done" href="21.html">Portfolio & Hiring</a></li>
+  <li><a class="load done" href="22.html">Simple MVCs</a></li>
+  <li><a class="load done" href="23.html">Simple Object Oriented JS</a></li>
+</section>
+
+  </nav>
+  <div id="content"></div>
+</div>
+
+<script src="assets/js/lib.js"></script>
+<script>
+var completed
+
+function load (e) {
+  completed = JSON.parse(localStorage.getItem('completed')) || []
+  $('#content').load(location.hash.substring(1) || localStorage.getItem('last_visited') || '01.html', function () {
+    $('.popup').each(function (i, el) {
+      $(el).magnificPopup({type:$(el).attr('href').substring(0,2) === '//' ? 'iframe': 'ajax'})
+    })
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block)
+    })
+
+    $('code-submission-form').each(function(){
+      var content = completed.indexOf($(this).attr('id')) > -1 ? '<p>Code submitted... Thank you!</p>' : "<form class='student_code'><h4>Submit Your Code</h4><textarea name=code id=code_sample rows=10></textarea><br><input type=submit value=Send></form>"
+
+      $(this).html(content)
+    })
+    localStorage.setItem('last_visited', location.hash.substring(1))
+    localStorage.getItem('name') && $('#name_form').text(localStorage.getItem('name'))
+  })
+
+}
+
+function add_name (e) {
+  e.preventDefault()
+  var name = $(this).find('#name').val()
+  localStorage.setItem('name', name)
+  $(this).text(name)
+}
+
+function loadEvent (event) {
+  var dest = $(this).attr("href")
+  event.preventDefault()
+  history.pushState(null, event.target.textContent, event.target.href)
+  load()
+}
+
+function showHint (event) {
+    $(event.target).hide().parent().find('secret').fadeIn(2000)
+}
+
+function submit_code (e) {
+  e.preventDefault()
+  var exercise_name = $(this).parent('code-submission-form').attr('id')
+
+  $.post('submission', $(this).serialize() +'&exercise='+ exercise_name + '&name=' + localStorage.getItem('name'))
+
+  completed.push(exercise_name)
+  localStorage.setItem('completed', JSON.stringify(completed) )
+  $(this).html('<p>Code submitted... Thank you!</p>')
+}
+
+$('body').on('click', '.load', loadEvent)
+         .on('click', 'hint text', showHint)
+         .on('submit', '.student_code', submit_code)
+         .on('submit', '#name_form', add_name)
+
+
+$(window).on('popstate', load)
+
+
+
+</script>
+</body>
+</html>

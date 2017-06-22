@@ -1,0 +1,51 @@
+<section>
+<h2>setTimeout and setInterval</h2>
+
+<h4>Exercise 2</h4>
+<ol>
+  <li>Modify your timer to accept a number of seconds in an &lt;input&gt; field and start the timer when you click the "start" button.</li>
+  <li>Have a "stop" button that stops the timer. When the "stop" button is pressed, replace it with a "resume" button. </li>
+  <li>Allow the user to either resume or restart the timer.</li>
+</ol>
+
+<h4>Exercise 3</h4>
+
+<ol>
+  <li>Create a "click challenge" web page that counts how many times a user can click on a particular &lt;div&gt; in 10 seconds. </li>
+  <li>Have a button that starts the timer.</li>
+  <li>Have a div that counts their clicks for them. When the time is up, stop counting and show them a custom message based on how well they did and tell them what their "clicks per second" score was.</li>
+  <li>Save their "clicks per second" to a variable and allow them to try again to beat their record.</li>
+  <li>Save and show their "high score" between trials and let them know each time if they've set a new record.</li>
+  <li>Create a "mouse tracker" element that tells the user the x and y coordinates of the mouse as it moves around the page.</li>
+</ol>
+
+
+<h4>Exercise 4</h4>
+<ol>
+  <li>Create a page with a collection of elements (spans or divs), each with a class of "lightbox" and a set width and height (maybe about '50px' each). They should be tiled over the entire screen in multiple rows. You can do this yourself or it may be easier to use a grid system with rows and columns like the one bootstrap provides</li>
+  <li>Let the user click on a box to set its background to a random color.</li>
+  <li>Whenever your mouse enters a 'lightbox', highlight it with a noticable border and set its background to a random color.</li>
+  <li>When the mouse leaves the box remove the border.</li>
+  <li>Change the "click to color" functionality to let the user hold their mouse down to 'erase' the colors from the boxes it enters instead.</li>
+  <li>Remove the 'mouseover to draw' functionality and let the user click to select colors from a side palette. When they click and hold, let them "draw" that color into the boxes instead.</li>
+</ol>
+
+<h4>Exercise 5</h4>
+<ol>
+  <li>Create an input field that allows the user to type into it</li>
+  <li>Each time the press a key <strong>while focused on the input</strong> show them the corresponding keyCode for that key.</li>
+  <li>What is the keyCode for Enter? Tab? Shift? Other meta keys?</li>
+  <li>In a separate div, use `String.fromCharCode()` to show them the letter they typed.</li>
+  <li>What does `.toLowerCase()` do? How might we use it?</li>
+</ol>
+
+<h4>Exercise: Poem Memorizer</h4>
+<ol>
+  <li>Create an array of sentences which make up a short poem. Append them each to the body a div#poem-container when the page loads.</li>
+  <li>Now instead, wait 1 second after the page loads to append the poem to the page.</li>
+  <li>Now instead, add one line of the poem every second until you are out of lines.</li>
+  <li>Now instead, only add a line to the page each time the user clicks a "show next line" button. </li>
+  <li>Allow the user to input their own lines of the poem into an input field. When they click "add line" place that line into the array. How can we make sure that the lines come back out in the right order when we are adding and removing from the array at arbitrary times?</li>
+  <li>Create a <a href="http://www.w3schools.com/tags/tag_textarea.asp">&lt;textarea&gt;w</a> and allow a user to add a whole poem at one time. Use: `$('textarea').val().split('\n')` or `$('textarea').val().split('.')` (what's the difference?) to break the poem into an array of lines so it can be recalled one line at a time.</li>
+</ol>
+</section>

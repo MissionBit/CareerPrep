@@ -1,0 +1,76 @@
+<section>
+  <h2>What is HTML?</h2>
+  <p>HTML is a <strong>markup</strong> language for <strong>describing</strong> web documents (web pages).</p>
+  <ul>
+  <li>HTML stands for <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage</li>
+  	<li>A markup language has a set of <b>markup tags</b> that describe the document's content</li>
+  </ul>
+</section>
+
+<section>
+  <h2>EXAMPLE: A small HTML document</h2>
+<pre><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My First Heading&lt;/h1&gt;
+    &lt;p&gt;My first paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+</section>
+
+<section>
+  <h2>Example Explained</h2>
+  <ul>
+  <li>The <strong>DOCTYPE</strong> declaration defines the document type to be HTML</li>
+  <li>The text between <strong>&lt;html&gt;</strong> and <strong>&lt;/html&gt;</strong> describes an HTML document</li>
+   <li>The text between <strong>&lt;head&gt;</strong> and <strong>&lt;/head&gt;</strong> provides information about the document</li>
+   <li>The text between <strong>&lt;title&gt;</strong> and <strong>&lt;/title&gt;</strong> provides a title for the document</li>
+   <li>The text between <strong>&lt;body&gt;</strong> and <strong>&lt;/body&gt;</strong> describes the visible page content</li>
+   <li>The text between <strong>&lt;h1&gt;</strong> and <strong>&lt;/h1&gt;</strong> describes a heading</li>
+   <li>The text between <strong>&lt;p&gt;</strong> and <strong>&lt;/p&gt;</strong> describes a paragraph</li>
+  </ul>
+  <p>Using this description, a web browser can display a document with a heading and a paragraph.</p>
+  <hr>
+  <h2>Web Browsers</h2>
+  <p>The purpose of a web browser (Chrome, IE, Firefox, Safari) is to read HTML documents and display them.</p>
+  <p>The browser does not display the HTML tags, but uses them to determine how to display the document:</p>
+  <p><img alt="View in Browser" style="height:auto;width:635px;border:5px solid grey;" src="assets/images/browser.png" class="img-responsive"></p>
+</section>
+
+<section>
+    <h2>HTML Tags</h2>
+    <p>HTML tags are <strong>keywords</strong> (tag names) surrounded by <b>angle brackets</b>:</p>
+    <div class="htmlHigh" style="font-size:20px;padding:10px;margin-bottom:10px;word-wrap:break-word;font-family:Consolas,'courier new'">
+    &lt;</span> tagname</span>&gt;</span>content&lt;</span> /tagname</span>&gt;</span>
+    </div>
+
+    <ul>
+    <li>HTML tags normally come <b>in pairs</b> like &lt;p&gt; and &lt;/p&gt;</li>
+    <li>The first tag in a pair is the <b> start tag,</b> the second tag is the <b> end tag</b></li>
+    <li>The end tag is written like the start tag, but with a <strong>slash</strong> before the tag name </li>
+    </ul>
+</section>
+
+<section>
+  <h2>HTML Page Structure</h2>
+  <p>Below is a visualization of an HTML page structure:</p>
+  <div style="width:99%;border:1px solid grey;padding:3px;margin:0;background-color:#ddd">&lt;html&gt;
+  <div style="width:90%;border:1px solid grey;padding:3px;margin:20px">&lt;head&gt;
+  <div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;title&gt;Page title&lt;/title&gt;
+  </div>
+  &lt;/head&gt;
+  </div>
+  <div style="width:90%;border:1px solid grey;padding:3px;margin:20px;background-color:#fff">&lt;body&gt;
+  <div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;h1&gt;This is a heading&lt;/h1&gt;</div>
+  <div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;p&gt;This is a paragraph.&lt;/p&gt;</div>
+  <div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;p&gt;This is another paragraph.&lt;/p&gt;</div>
+  &lt;/body&gt;
+  </div>
+  &lt;/html&gt;
+  </div>
+</section>

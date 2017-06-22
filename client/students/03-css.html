@@ -1,0 +1,64 @@
+<section>
+  <h3>Introducing the <i>style</i> attribute</h3>
+  <p>Okay, so structured text is nice, but add some <i>style</i>. Create a new HTML document and try out all of the following:</p>
+  <alert>Write it out!! Don't use copy &amp; paste, you are only cheating yourself!!!</alert>
+  <pre><code class="html">  &lt;body style="background-color:lightgrey"&gt;
+  &lt;h1 style="color:blue"&gt;This is a heading&lt;/h1&gt;
+  &lt;h1 style="color:#AA22FF"&gt;Also a heading&lt;/h1&gt;
+  &lt;h1 style="color:rgb(0,255,255)"&gt;Moar!!&lt;/h1&gt;
+  &lt;p style="color:red;background-color:green"&gt;This is a paragraph.&lt;/p&gt;
+  &lt;img src="https://i.imgur.com/81qyN1y.jpg" style="height:100px;width:100px"&gt;</code></pre>
+
+  <p>What have we learned?</p>
+  <ol>
+    <li>The value of the HTML attribute named <code>style</code> styles HTML elements</li>
+    <li>The styles are described using a language called CSS. Here are the rules of CSS:</li>
+    <ol>
+      <li>CSS rules are key-value pairs (similar to HTML attributes)</li>
+      <li>The key represent the property to be changed (like 'color' or 'background-color')</li>
+      <li>The value represents what it should be changed to ('blue' or 'red')</li>
+      <li>The key and value are seperated by a colon</li>
+      <li>Each key-value pair is separated  with a semi-colon</li>
+    </ol>
+      <li>Colors can be described by name, as eight digit <a href="//simple.wikipedia.org/wiki/Base_(mathematics)" class="popup">hex (base 16) values</a> between <code>0</code> (black) and <code>F</code> (white), or as Red Green Blue triplets from <code>0</code> to <code>255</code></li>
+      <li>We can use the following css colors for our <code>background-color</code> and <code>color</code> attributes:</li>
+    </ol>
+  </ol>
+  <img src="assets/images/css_colors.jpg" alt="css colors" class="full">
+  <h3>My (fictional) vacation...</h3>
+  <ol>
+    <li>Create a web page recounting the (potentially fabricated) vacation you might have recently taken.</li>
+    <li>This should be the world's most fabulously colorful web page!</li>
+    <li>Describe some celebrity encounters that you may have had.</li>
+    <li>Catalogue your outrageous adventures and extreme sporting triumphs.</li>
+    <li>If you shifted into any film or book-inspired alternate universes or encountered otherworldly beings, include photo-documentation.</li>
+    <li>Use all three styles of declaring CSS colors</li>
+    <li>There should be at least 20 HTML elements on the page</li>
+    <li>Some elements should be nested at least three layers deep.</li>
+    <pre><code class="html">&lt;p&gt;This code is layer one&lt;b&gt;This is nested &lt;i&gt;third layer!&lt;/i&gt; back out&lt;/b&gt; to layer one.&lt;/p&gt;</code></pre>
+    <li>Include some links to other websites.</li>
+    <li>Throw some animated gifs of Richard Simmons dancing on there, or something...</li>
+    <li>Don't forget some secret comments!</li>
+    <li>HAVE FUN WITH YOUR WORK! We're web developers, dammit, not morticians!</li>
+    <li>Deploy your vaction page to Divshot, share it on Slack #general channel</li>
+    <li>Read some of your classmate's source code. Did anybody do something particularly clever?</li>
+  </ol>
+  <p>Here's some inspiration for you:</p>
+  <img src="assets/images/r_simmons.jpg" alt="Richard Simmons being Fabulous!">
+
+  <h3>What's all this?</h3>
+  <p>Try adding the below into the body of a fresh HTML document:</p>
+  <pre><code class="html">  &lt;h1 style="font-family:verdana;color:orange;"&gt;This is a heading&lt;/h1&gt;
+  &lt;p style="color:green;"&gt;This &lt;i style="color:orange;font-size:300%"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p style="color:green;"&gt;This &lt;i style="font-size:300%;"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p style="color:green;font-size:40px;text-align:center;font-family:'Times New Roman';"&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+  <p>What have we learned?</p>
+  <ol>
+    <li>Styles applied to <b>parent</b> elements effect their <b>children</b> (nested) elements, unless that style is overwritten.</li>
+    <li>We can put a lot of styles on a single HTML element, but it gets messy.</li>
+    <li>We can apply the same style to every tag of a particular type (all paragraphs should be green), but we have to reapply it on each element.</li>
+  </ol>
+
+  <p>Think over the last two points. How can we improve the situation? We'll look at the solution the designers of CSS chose in the next section.</p>
+</section>
+  <p>Have extra time? Maybe browse over this <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">ridiculously exaustive list of CSS properties</a>. Try a few out, why don't you?</p>

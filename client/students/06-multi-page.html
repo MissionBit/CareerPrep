@@ -1,0 +1,44 @@
+<section>
+<h3>Complex CSS Selectors</h3>
+  <p><strong>Exercise:</strong> As our documents grow, we'll need to leverage more complex CSS selection syntax. Read and try out each of the below in a trival example. <strong>Challenge yourself to move quickly and not spend too much time worrying about content</strong>. Just create a fresh HTML document with lorum ipsum text and structure it so you can test each selector type. </p>
+  <img src="assets/images/css_selectors.png" alt="css selectors" class="full">
+
+<h3>CSS Specificity</h3>
+  <p>When multiple conflicting CSS rules apply to a single element, which one wins out?</p>
+  <img src="assets/images/css_conflict.png" alt="css conflict">
+  <p>Recreate the below using your code editor and <strong>answer the following:</strong></p>
+  <ol>
+    <li>What size is the text of the paragraph which does not have the id intro?</li>
+    <li>What color are the bold tags which are inside of paragraphs?</li>
+    <li>What color are italic tags?</li>
+    <li>What font-family do paragraph tags have?</li>
+  </ol>
+  <img src="assets/images/specificity.png" alt="css specificity" class='full'>
+  <p>Would you like to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" class='popup'>know more?  </a></p>
+<hr>
+  <h3>Exercise: Choose your own adventure</h3>
+  <p>Create a series of html pages for a text-based "choose your own adventure" story, so that users can click different links to make choices to advance the story as they see fit. If you'd rather, you can create a "gift chooser" or "decision maker" feature for your community site. (i.e. "Which country should I travel to next?" for a travel-related group)</p>
+  <p>It would be a drag to have to rewrite that CSS code on each page... Let's use a link tag to share a single CSS document between multiple HTML files:</p>
+  <pre><code class="html">&lt;head&gt;
+  &lt;link href="styles.css" rel="stylesheet"&gt;
+&lt;/head&gt;</code></pre>
+  <ol>
+    <li>Create a "template" first with the style and structure that you'll want common to all pages and create a copy to work from for each individual page</li>
+    <li>Each page should have multiple links to choose the next page, and perhaps sometimes a link to jump back to the last page or even to the beginning</li>
+    <li>Use some div and span elements</li>
+    <li>Use some class and id attributes</li>
+    <li>Use some padding, margin, and border css properties</li>
+    <li>Use some complex css selectors</li>
+    <li>Use some css rules that are more specific and thus overwrite other more general rules for a particular element</li>
+  </ol>
+<hr>
+<h3>Exercise: A second Blog Post!</h3>
+<p>Your first post was such a roaring (fake) success, we should do another! We'd like to keep all the same styles consitent with the last post, but re-writing all that CSS would sure be a drag...</p>
+<ol>
+  <li>Create a (short) new blog post about a upcoming or current event of interest to the community.</li>
+  <li>Use a &lt;link&gt; tag to share a single <code>.css</code> file between both blog post HTML documents.</li>
+<li>Now take the css rules from inside your &lt;style&gt; and place them into the <code>.css</code> document.</li>
+<li>Link your blog posts together with each other and the rest of the site using a navigation bar</li>
+<li>Expand your linked <code>styles.css</code> to share the all styles site-wide. Replace your <code>&lt;style&gt;</code> tags on all community site pages with <code>&lt;link&gt;</code> tags pointing to <code>styles.css</code></li>
+</ol>
+</section>

@@ -1,0 +1,209 @@
+<section>
+  <summary>
+    <p>Objectives:</p>
+    <ul>
+      <li>Open and use the JavaScript Console REPL to evaluate simple expressions</li>
+      <li>Command the browser to console.log, alert, and prompt</li>
+      <li>Use &lt;script&gt; tags to add simple JavaScript functionality to our HTML documents</li>
+    </ul>
+  </summary>
+
+  <h3>JavaScript!</h3>
+  <p>We've learned how the browser retrieves an HTML document, either from the hard drive or over a network connection, loads it into memory as a <a href="javascript:void(0)" class="tooltip" data-tip="Document Object Model, the browser's tree-like, in-memory representation of the page state (pictured below)">DOM</a>, and renders it to the page with CSS styling applied.</p>
+  <img src="assets/images/dom2.png" alt="DOM">
+  <p>We can view the page, scroll around, click on a link to change pages, or submit a form. But other than that, once the page is rendered to the screen, it is functionally inert.</p>
+
+  <p>If we want more complex interactive behavior we need to use a <a href="javascript:void(0)" class="tooltip" data-tip="Scripts are files comprised of lines of code that can be read one at a time and interpreted as a series instructions to the computer. Scripts can automate the execution of tasks that would otherwise have to be typed in command-by-command by a human operator">scripting language</a> like JavaScript to describe what should happen when and how.</p>
+
+  <p>Before we start throwing down &lt;script&gt; tags or creating our own <code>.js</code> files, let's write a few lines by hand. Go ahead and open up your Chrome Developer Tools (<code>[CMD + SHIFT + ?]</code> if you forget how) and switch to the <strong>JavaScript Console.</strong> The Console is a <a href="javascript:void(0)" class="tooltip" data-tip="A Read Evaluate Print Loop waits for the user to input an instruction and press ENTER to signal they're done. The interpreter then READs the command, EVALUATEs (runs/ executes/ resolves) it, PRINTs the result, and LOOPs back to wait for another command.">REPL</a>.</p>
+  <img src="assets/images/console.png" class="full" alt="Javascript Console">
+  <hr>
+  <h3>The JavaScript Runtime Environment</h3>
+  <p>First off let's prove to ourselves that we are still living in the same world. Use the JavaScript console to instruct the browser to show you the DOM. <small>(The <code> &gt; </code> indicates that we are typing into a JavaScript REPL, not writing code in a file to be run later, omit it)</small></p>
+  <ul class="code">
+    <li><code>&gt; window.document</code></li>
+  </ul>
+  <p>Open it up and take a look! The <code>window</code> object holds the state of (information about) the currently open browser tab. It contains many <b>properties</b> (simply put: associated pieces of data), of which, the DOM (document) is one. Here are a few more, <b>check 'em out</b></p>
+  <ul class="code">
+    <li><code>&gt; window.location</code></li>
+    <li><code>&gt; window.history</code></li>
+  </ul>
+  <p>You can also look at the window object directly, but be warned, <b>it's intense!</b></p>
+  <ul class="code">
+    <li><code>&gt; window</code></li>
+  </ul>
+  <p>Any of the properties listed can be accessed using the <b>dot notation</b> property access format as seen above with the document, location, and history properties of the window object. <b>Try accessing a few.</b></p>
+  <p>Great, so we see that we're living in the same world, but how do we actually interact with the page? Make it respond to user actions? Change over time according to our wishes?</p>
+  <p>Well, we've got to take a few steps back to answer those questions. So strap yourself in... <b>JavaScript here we come!</b></p>
+  <hr>
+  <h3>The Number data type</h3>
+  <p><strong>Exercise:</strong> Type each of the following lines of code (<a href="javascript:void(0)" class="tooltip" data-tip="An expression is a series of values, variables and operators that, when interpreted, return a value. For example: 2+3 is an expression which evaluates to 5.">expressions</a>) into the console one at a time and consider the result.</p>
+  <ul class='code'>
+    <li><code>&gt; 2 + 3</code></li>
+    <li><code>&gt; 3 * 5 + 4</code></li>
+    <li><code>&gt; 3 * (5 + 4)</code></li>
+    <li><code>&gt; -300 * 2.57</code></li>
+    <li><code>&gt; <a href="javascript:void(0)" class="tooltip" data-tip="the modulo operation finds the remainder after division of one number by another">25 % 6</a></code></li>
+    <li><code>&gt; 1e4 * 2</code></li>
+  </ul>
+  <p><strong>What have we learned?</strong> We can use the console as a simple caluculator by employing values with the <a href="javascript:void(0)" class="tooltip" data-tip="All data are series of binary digits (1001001110), but we can encode them to mean different things. A data type refers to meta-data which determines if this value is a number, a string of letters, a boolean value (true/false), or something more complex like an object (collection of related information) or function (set of instructions).">data type</a> of number and mathematical <a href="javascript:void(0)" class="tooltip" data-tip="constructs which behave generally like subroutines (a sequence of instructions that perform a specific task), but often look like punctuation rather than names">operators</a> such as +, -, *, /, %.</p>
+  <p><b>Exercise:</b> From the console, calculate how many seconds old you are.</p>
+  <hr>
+  <h3>The String data type</h3>
+<ul class="code">
+  <li><code>&gt; "Hello, how are you?"</code></li>
+</ul>
+  <p>The string data type denotes a sequence of alphanumeric characters which are often useful for communicating information to weak-minded humans who aren't able to interact using pure logic.</p>
+
+  <p>What happens if we try to type the following into the console without the quotes? <small>(find out for yourself, before checking the answer)</small></p>
+  <ul class="code">
+    <li><code>&gt; Hello, how are you?</code></li>
+  </ul>
+  <hint>
+    <text>Show Answer</text>
+    <secret><b>An error!</b> The JavaScript interpreter tries to interpret it as an instruction, not as a string value!
+</secret>
+  </hint>
+  <p>We can evaluate non-numerical expressions as well. <b>To what value does the following expression resolve when evaluted?</b></p>
+
+  <ul class="code">
+    <li><code>&gt; 'Just fine,' + ' ' + 'thank you'</code></li>
+  </ul>
+<p>String concatenation is the operation of joining character strings end-to-end.</p>
+  <hr>
+  <h3>Alerting, Logging, and Prompting, oh my!</h3>
+  <p>Not only does the <code>window</code> object give us access to the current browser tab's state, we can also use it to issue commands to the browser. <b>What does this command do?</b></p>
+  <ul class=code>
+    <li><code>&gt; window.alert("Jello, whirled")</code></li>
+  </ul>
+
+  <p>Similar to the Terminal, the first part of the command references what <a href="javascript:void(0)" class="tooltip" data-tip="AKA subroutine: A sequence of program instructions that perform a specific task."><i>function</i></a> we're looking to run. Next comes the invokation operator <code class=hl >()</code> - similar to a mathematical operator ( +, -, * ) - which causes the JavaScript interpreter to actually run the function. Inside the parentheses we place the arguments we wish to pass as input. <small>(In this case the string to be displayed)</small></p>
+
+  <p>The <a href="javascript:void(0)" class="tooltip" data-tip="A series of values, variables and operators that, when interpreted, return a value.">expression</a> <code>2 + 3</code> resolves to the <b>value</b> 5. What value does the following expression resolve to? What is its <b>data type</b>?</p>
+  <ul class="code">
+    <li><code>&gt; window.prompt("How are you feeling today?")</code></li>
+  </ul>
+
+  <p>The <code>window</code> context is implied.</p>
+
+  <ul class="code">
+    <li><code>&gt; alert("Jello, whirled")</code></li>
+    <li><code>&gt; prompt("How are you feeling today?")</code></li>
+  </ul>
+<hr>
+  <p>Okay great, but I thought a scripting language was going to let us automate our work right? Typing things into the console isn't web scale!</p>
+  <p>In the same way that a &lt;style&gt; tag tells the browser to switch from the HTML interpreter to the CSS interpreter to read code inside it, the &lt;script&gt; tag tells the browser to interpret its contents according to the rules of JavaScript. </p>
+<pre><code class="html">&lt;html&gt;
+  &lt;head&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;mah payge&lt;/h1&gt;
+    &lt;p&gt;yup, yup&lt;/p&gt;
+
+    &lt;script&gt;
+      // the interpreter will skip any line that starts with a double slash
+      // these lines are explanatory comments to help squishy-brained humans
+
+      alert("Welcome to mah deng website, brah!")
+      prompt("How's it going?")
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<alert>Always, always, always, always, always, always, always place your script tags <b>directly before the closing body tag &lt;/body&gt;</b> in your HTML document. Always. Always. If you follow this simple rule, you will save yourself several dozen frustrating hours of debugging over the course of your career. You're welcome. <small><i>(p.s. yes, always)</i></small></alert>
+<hr>
+  <h3>Exercise: My First JavaScript Enabled Web Page</h3>
+  <ol>
+    <li>Create a new HTML document, correctly set up with html, head, and body tags</li>
+    <li>Add a script tag <b>directly before the closing body tag</b>.</li>
+    <li>Inside of a script tag, alert visitors that your site is extremely awesome and should thus be enjoyed with caution.</li>
+    <li>Prompt the user for their name</li>
+    <li>Greet them by name using another alert</li>
+  </ol>
+  <p>In steps 4 and 5, the word <code>alert</code> came before the word prompt. <b>Why did the prompt happen first?</b> <small>(I highly recommend you not move past this point until you can answer this question for yourself. Ask for help if you need to. <i>It's okay!</i>)</small></p>
+  <hr>
+  <p>Ok, though illustrative, alerts are annoying. That's why they're not often used. It is more usual to use the console to output information. <b>Try this:</b></p>
+  <pre><code class="html">&lt;script&gt;
+  window.console.log("Where is this message displayed?")
+&lt;/script&gt;</code></pre>
+<p>Or, more succinctly:</p>
+<pre><code class="html">&lt;script&gt;
+  console.log("This is mostly used for debugging.", "We'll learn how to write directly into the HTML document a little later.")
+&lt;/script&gt;</code></pre>
+<p><b>Exercise:</b> Ask the user what their favorite sports team is. Secretly log a message trash-talking their team in the console.</p>
+<p><b>Exercise:</b></p>
+<ol>
+  <li>Go back through your past projects and add a &lt;script&gt; tag at the bottom of each page, right before the &lt;/body&gt;.</li>
+  <li>Add some secret console.log goodness to each.</li>
+  <li>Add more JavaScript as you see fit.</li>
+</ol>
+
+<hr>
+
+<h3>Variables</h3>
+
+<p id=welcome_message>In programming, it can be extremely useful to store values for later use. Variables are identifiers (labels, nametags) used to set and retrieve stored values. They are called variables because you can change what value they hold based on user input, the current program state, etc.</p>
+
+<p>We use the <code>var</code> keyword to declare a variable. When first declared, variables have a value of <code>undefined</code>. The assignment <a href="javascript:void(0)" class="tooltip" data-tip="constructs which behave generally like subroutines (a sequence of instructions that perform a specific task), but often look like punctuation rather than names">operator</a> stores a value. <b>Type along in your console:</b></p>
+
+<ul class="code">
+  <li><code>&gt; var x</code></li>
+  <li><code>&gt; x</code></li>
+  <li><code>&gt; x = 1</code></li>
+  <li><code>&gt; x + 4</code></li>
+  <li><code>&gt; x </code></li>
+  <li><code>&gt; x = 5</code></li>
+  <li><code>&gt; var y = 2</code></li>
+  <li><code>&gt; x + y + 7</code></li>
+  <li><code>&gt; y = x + 7</code></li>
+</ul>
+
+<p>So when we write <code class=hl>var rate = 100</code> your JavaScript Runtime Environment jots down the variable "rate" in its ledger and gives it a pointer to a memory location:</p>
+<img src=assets/images/var.png alt=variable class=full>
+
+<p>Type the following in your console one line at a time <small>(don't type the comments)</small>:</p>
+<ul class="code">
+  <li><code>&gt; my_variable</code> // what does this error mean?</li>
+  <li><code>&gt; var my_variable</code></li>
+  <li><code>&gt; my_variable</code> // what has changed from the first line?</li>
+  <li><code>&gt; my_variable = "I'm a string value!"</code></li>
+  <li><code>&gt; typeof my_variable</code></li>
+</ul>
+<hr>
+<p>What is the value of <code>first</code> at the end of this sequence?</p>
+
+<ul class="code">
+  <li><code>&gt; var first, second</code></li>
+  <li><code>&gt; first = "hello"</code></li>
+  <li><code>&gt; second = "goodbye"</code></li>
+  <li><code>&gt; first = second</code></li>
+  <li><code>&gt; second = "wait, you've forgotten your hat!"</code></li>
+</ul>
+
+<p>In JavaScript, primitives (numbers, strings, booleans) are <i>pass by value</i>. This means that when you set one variable equal to another, the value stored there is copied over, and the two variables retain no lasting connection to each other. <small>(objects are <i>pass by reference</i>, we'll learn how that's different later)</small></p>
+<hr>
+<p>Now try some on your own:</p>
+
+<h4>Exercise 1:</h4>
+<ol>
+  <li>Declare variables a, b and c. Assign a number to each.</li>
+  <li>Declare variable d and assign it the value of a, b, and c added together.</li>
+  <li>Re-assign the value of b to a. Then change the value of b. What is the value of a?</li>
+</ol>
+
+<h4>Exercise 2:</h4>
+<ol>
+  <li>Create variables "hour" and "minute" to reflect the current time.</li>
+  <li>Write an expression to calculate how many seconds until midnight.</li>
+  <li>Change "minute" to be accurate again as time has probably passed.</li>
+  <li>Run the same calculation again (press the up key in the console to scroll back to it).</li>
+</ol>
+
+<h4>Exercise 3:</h4>
+<ol>
+  <li>Declare at least 10 variables such as 'name', 'age', 'birthday', 'hometown', 'occupation', 'favoriteFood', 'bestFriend', etc, and set their values equal to strings containing the appropriate information about yourself.</li>
+  <li>console.log a paragraph about yourself using the appropriate variables to insert the relevant information in the appropriate places.</li>
+  <li>Create a new HTML document and re-write the variables and the console.log in a &lt;script&gt; tag so that you'll have it for later.</li>
+</ol>
+
+</section>

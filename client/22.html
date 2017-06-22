@@ -1,0 +1,168 @@
+<h1>Simple MVC</h1>
+<section>
+<p>Remember this?</p>
+<pre><code class="javascript">$.get( 'http://jsonplaceholder.typicode.com/posts/1', function(weather_data){
+  console.log(weather_data)
+})</code></pre>
+
+<p>...and this?</p>
+<pre><code class="javascript">var thing = {
+    property: 'value',
+    method: function () {
+      console.log("i've got a " + this.property + "!")
+    }
+  }</code></pre>
+
+  <p>So try to think through how this works:</p>
+<pre><code class="javascript">var posts = []
+
+var post = {
+  url: 'http://jsonplaceholder.typicode.com/posts/',
+  $el: $('&lt;div class="post"&gt;').appendTo($('body')),
+  initialize: function(id){
+    this.$el.attr('id', id)
+    this.url += id
+    var thisPost = this // wtf? http://stackoverflow.com/questions/4886632/what-does-var-that-this-mean-in-javascript
+    $.get( this.url, function(data){
+       console.log(this) // window
+       thisPost.attributes = data
+       thisPost.render()
+     })
+     posts.push(this)
+  },
+  render: function(){
+    this.$el.append([
+      $('&lt;div&gt;').addClass('title').text(this.attributes.title),
+      $('&lt;div&gt;').addClass('body').text(this.attributes.body)
+    ])
+  }
+}
+
+post.initialize(1)</code></pre>
+
+<p>Don't be shy, give it a try! See how many ways you can break it and fix it again...</p>
+<p><b>Exercise:</b> Comment every line of the code above with a plain English explaination of what it does.</p>
+<hr>
+<h4>Exercise:</h4>
+<ol>
+  <li>Create a <code>post_factory</code> function that takes the id number of the post as an argument</li>
+  <li>Inside the <code>post_factory</code>, use the above code to fetch a post with that id and render it</li>
+  <li>Where should the <code>posts</code> array live? Inside <code>post_factory</code> or in the global scope? If in doubt, try creating a couple of posts with both ways. In only one of them should you be able to have multiple <code>post</code> objects referenced in the <code>posts</code> array when you're done.</li>
+  <li>Create a for loop that fetches and rendes posts 75 - 90 by calling <code>post_factory</code></li>
+  <li>Add a method <code>highlight</code> to each post object that adds a property <code>this.active = true</code> to the <code>post object</code> and also toggles a pre-defined class on that post's <code>this.$el</code> property</li>
+  <li>When active, that class should give the post a yellow background and red text color</li>
+  <li>Try calling <code>post.highlight()</code> manually on a few <code>post</code> objects from the <code>posts</code> array.</li>
+  <li>Reload the page, and iterate over the <code>posts</code> array, highlight all posts</li>
+  <li>Reload the page, and iterate over the <code>posts</code> array, highlighting every third post</li>
+</ol>
+<h4>Extra Credit:</h4>
+<ol>
+  <li>Inside <code>post.initialize</code> set up a click handler on <code>this.$el</code> such that when a user clicks on a post it should invoke <code>highlight</code> method to toggle the highlighting.</li>
+  <li>How can you get the <code>this</code> keyword to point to the <code>post</code> object rather than the window? hint: if we pass the click event <code>this.highlight.bind(this)</code> as its event handler, we will capture the correct context. Google it!</li>
+  <li>If the user clicks on the post a second time, remove the highlighting and set <code>post.active</code> to <code>false</code>.</li>
+  <li>Add an 'edit' button to the page under each post</li>
+  <li>When a user clicks the edit button, it should show them input fields</li>
+  <li>The input fields should be pre-populated w/ the posts current information</li>
+  <li>When the user makes edits and clicks 'save', change the posts' attr's and re-render the post</li>
+  <li>Play with the following:<pre><code class="javascript">localStorage.setItem('post1_attrs', JSON.stringify(posts[0].attributes))
+JSON.parse(localStorage.getItem('post1_attrs'))</code></pre></li>
+  <li>Google localStorage and JSON.stringify, then try using them to cache posts between page refreshes</li>
+  <li>Whenever you call <code>post_factory</code> with an id, check to see if that post has been cached</li>
+  <li>If so, constuct that post from its cached attributes rather than $.get from the server.</li>
+</ol>
+
+<hr>
+<h3>Imgur</h3>
+<p>Ok, new API, same idea...</p>
+
+<p>What is the <code>headers</code> property for? <a href="https://api.imgur.com/oauth2#register" target=_blank>(hint)</a>... I pre-registered a Client-ID for us to use, don't abuse it or we'll all get locked out!</p>
+<pre><code class="javascript">var get_pictures = function (searchTerm) {
+  $.ajax({
+    url: "https://api.imgur.com/3/gallery/search?q="+ encodeURI(searchTerm),
+    headers: { "Authorization": "Client-ID e3776adbe9c5fb9" },
+    success: function(response){
+      console.log(response)
+    }
+  })
+}
+
+get_pictures("baby deer")</code></pre>
+
+<h4>Exercises:</h4>
+<ol>
+  <li>Create an HTML page such that a user can enter a search term into an input field</li>
+  <li>When the user clicks the submit button, call <code>get_pictures</code> with the search term as an argument</li>
+  <li>Create a <code>picture_factory</code> similar to the <code>post_factory</code></li>
+  <li>When the ajax call returns, iterate over the response data & pass each picture's url & title to <code>picture_factory</code></li>
+</ol>
+<h4>Extra Credit:</h4>
+<ol>
+  <li>Create a method <code>favorite</code> that allows a user to click a button to favorite an image</li>
+  <li>Store an array of favorited images</li>
+  <li>Allow a user to switch back and forth between favorited images and all images</li>
+  <li>When a user initiates a new search, they should not lose their favorites.</li>
+  <li>Add a property <code>category</code> to each picture object which corresponds to the search term used</li>
+  <li>Keep a list of recently searched terms, allow users to click back to see recent results</li>
+  <li>We should never have to re-query imgur, unless we searching a term we've never searched before</li>
+  <li>Explore some of the other available <a href="https://api.imgur.com/endpoints">Imgur API endpoints</a></li>
+</ol>
+
+<hr>
+<h3>SoundCloud</h3>
+  <p>Now let's interact with a more complex API</p>
+
+<p>For this exercise you'll need to run a localhost process to serve your files via the <code>http://</code> protocol, rather than the <code>file://</code> protocol. On a Mac, in the Terminal, navigate to the directory with your html files and run:</p>
+<code>python -m SimpleHTTPServer</code>
+<p>Then put the following into your URL bar in your browser:</p>
+<code>http://localhost:8000/</code>
+<p>In your html page, add jQuery as well as a script tag w/ the following src attribute:</p>
+<code>http://connect.soundcloud.com/sdk.js</code>
+
+<p>This gives us access to the SoundCloud SDK. Just like jQuery gives us access to special functionality through the <code>$</code> object, the soundcloud SDK gives us access to functionality through the <code>SC</code> object.</p>
+
+<pre><code class="javascript">// Authenticate ourselves to SoundCloud
+SC.initialize({ client_id: "d29ad0142b2cd0a47ad2e561334c8e0f"})
+
+// Play the first track that matches the query 'bob marley'
+SC.get('/tracks', { q: 'bob marley'}, function(tracks) {
+  SC.oEmbed(tracks[0].uri, {auto_play: true}, document.body)
+})
+
+// List all tracks
+SC.get('/tracks', { q: 'bob marley'}, function(tracks) {
+ tracks.forEach(function(t){ $('body').append($('<div>').text(t.artwork_url + t.title + t.uri))})
+})</code></pre>
+
+  <p>Play with the above, then learn more by skimming through <a href="https://developers.soundcloud.com/docs/api/sdks#javascript">the docs</a>.</p>
+
+  <h4>Exercise:</h4>
+  <ol>
+    <li>Allow the user to input a search term, then click a button to play the first matching track</li>
+    <li>List all other matching tracks below the SoundCloud Embed</li>
+    <li>When the User clicks on one of the listed tracks, play it!</li>
+  </ol>
+
+  <hr>
+
+    <h3>JSONP</h3>
+    <p>Place the following in your URL bar, and try to understand the response. It's valid JavaScript code. What would it do?</p>
+    <code>https://en.wikipedia.org/w/api.php?action=opensearch&search=Ontario,%20CA&format=json&callback=function_to_run_when_server_responds</code>
+
+    <p>This technique is called JSONP, play with the following:</p>
+  <pre><code class="javascript">var function_to_run_when_server_responds = function(){
+    console.log(arguments)
+  }
+
+  $("head").append($("&lt;script&gt;").attr("src", "http://en.wikipedia.org/w/api.php?action=opensearch&search=Ontario,%20CA&format=json&callback=function_to_run_when_server_responds"))</code></pre>
+
+    <p>This practice is mostly deprecated by the above, but we should know that it exists.</p>
+  <ol>
+    <li>Create a page that allows the user to type in a search query and query Wikipedia</li>
+    <li>Show a running collection of summaries of Wikipedia queries and links to the full pages</li>
+  </ol>
+
+<hr>
+<p>Take a moment to appreciate all the hard work you've put in to become a programmer. You're doing a great job! Here, <a href="https://goo.gl/tM9LyM">this is for you</a>.</p>
+</section>
+
+<iframe src="https://docs.google.com/a/hackreactor.com/forms/d/e/1FAIpQLSf4QRoSNpaOTuSfO3fd-Hw5I8NyPzrBfn-Cv0s3oTjUQGE2Pw/viewform?embedded=true" width="760" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>

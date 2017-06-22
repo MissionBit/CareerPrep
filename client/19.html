@@ -1,0 +1,157 @@
+<h1>Re-Implementing Underscore</h1>
+<section>
+  <p>Ok, now that we've played around with Underscore, let's try rebuilding it from scratch!</p>
+
+  <h3>Set Up</h3>
+    <p>Create a blank .js file named <code>myUnderscore.js</code> to an HTML file of your liking. To your .js file, add an empty object and give it a variable of _</p>
+    <pre><code class="javascript">
+      var _ = {};
+    </code></pre>
+
+  <h3>Test Test Test</h3>
+    <p>As you write your own rendition of underscore methods, you need to get into the habit of testing everything thoroughly. We can wite tests by running the code with various inputs.</p>
+    <p>For example, if you had a function called <code>add</code>, you could test its invocaion like below in your developer console in Chrome:</p>
+    <pre><code>
+      var add = function (x, y) {
+        return x + y;
+      }
+
+      // tests
+      console.log(add(2, 3), ' should be 5');
+      console.log(add(-1, 100), ' should be 99');
+      console.log(add(5, -10), ' should be -5');
+      console.log(add(0, -10), ' should be -10');
+    </code></pre>
+    <h3>Time to Write Underscore!</h3>
+
+    <p>Before you start, please open up <a href="underscorejs.org" target="_blank">Underscore's Docs</a>. You'll definitely be referencing this a lot. Try to see if you can write these without using JavaScript's built-in methods (like <code>.pop, .push</code> and similar). Provided are some sample tests but they are not complete. Please write two more comprehensive tests for each method. The point of tests is to try to see where your code is weak---can you break it? If so, go back and see what's wrong!</p>
+    <p>You know what to do--open up your developer tools in Chrome (or Firefox) when you open your page in the browser to see the tests in action.</p>
+    <pre><code class="javascript">
+      // Takes in two parameters: the first is a mandatory array and the second is
+      // an optional 'n'.
+      // Returns the first element in the array
+      // If 'n' is included, it returns the first n elements in the array
+      _.first = function(array, n) {
+
+      }
+
+      // Exactly the same as _.first except it takes the last element(s).
+      // If n is undefined, return just the last element.
+      _.last = function(array, n) {
+
+      }
+
+      // Takes two parameters: the first is an array and the second is
+      // a callback.
+      // Iterates over the array and invokes the callback on every element.
+      // Extra Credit: Able to handle both objects and arrays
+      _.each = function(collection, callback) {
+
+      }
+
+      // Takes two parameters: the first is an array and the second is
+      // a callback.
+      // Returns a NEW array where each element in the new array
+      // is the result of invoking the callback on each element.
+      // Extra Credit: have map handle both objects and arrays
+      _.map = function(array, callback) {
+
+      }
+
+      // Tkes two parameters: the first is an array of objects and
+      // the second is a key.
+      // Returns a new array where each element is the extracted
+      // property value indicated by the second parameter.
+      // Returns null if the array does not contain objects.
+      // Returns an empty array if the key does not exist in the object.
+      _.pluck = function(array, key) {
+
+      }
+
+      // Takes two parameters: the first is an array and the second is
+      // a predicate.
+      // A predicate is a function that returns either true or false.
+      // Returns a new array of elements that had tested true when put through
+      // the predicate.
+      _.filter = function(array, predicate) {
+
+
+      }
+
+      // Takes three parameters: an array (or object), an iterator function, and an optional accumulator.
+      // Reduce turns an array or object into a single value by repetitively calling
+      // iterator(accumulator, item) for each item.
+      // Accumulator should be the return value of the previous iterator call.
+      // You can pass in a starting value for the accumulator as the third argument.
+      // If no starting value is passed, the first element in the provided collection is used as
+      // the accumulator, and is never passed to the iterator.
+      // In other words, in the case where a starting value is not passed, the iterator is not invoked
+      // until the second element, with the first element as it's second argument.
+      _.reduce = function(array, iterator, accumulator) {
+
+
+      }
+
+      // Test suite
+      console.log('_ should exist', !!_); // What does the double bang (!!) do? What does one give you?
+
+      console.log('---TESTING FIRST---')
+      console.log(_.first(['james', 'bond', 'lara', 'croft']), 'should be james');
+      console.log('your second test goes here')
+      console.log('your third test goes here')
+      console.log('---END FIRST---')
+
+      console.log('---TESTING LAST---')
+      console.log(_.last(['one', 'two', 'three']), 'should be "three"')
+      console.log('your second test goes here')
+      console.log('your third test goes here')
+      console.log('---END LAST---')
+
+      console.log('---TESTING EACH---')
+      _.each([6, 7, 8], function(number) {
+        console.log('testing each: ', number)
+      });
+
+      console.log'your second test goes here')
+      console.log('your third test goes here')
+      console.log('---END EACH---')
+
+      console.log('---TESTING MAP---')
+      var nums = _.map([1,2,3], function(number) {
+        return number * 2;
+      });
+      console.log(nums, 'should be [ 2, 4, 6 ]');
+      console.log('your second test goes here')
+      console.log('your third test goes here')
+      console.log('---END MAP---')
+
+      console.log('---TESTING PLUCK---')
+      var cars = [
+        {make: 'toyota', year: 1991},
+        {make: 'honda', year: 2010},
+        {make: 'mercedes', year: 1982}
+      ];
+      console.log(_.pluck(cars, 'make'), 'should be [ toyota, honda, mercedes ]');
+      console.log('your second test goes here')
+      console.log('your third test goes here')
+      console.log('---END PLUCK---')
+
+      console.log('---TESTING FILTER---')
+      function isEven(n) {
+        return n % 2 === 0
+      }
+      console.log(_.filter([1, 2, 3, 4, 5, 6], isEven), 'should be [2, 4, 6]')
+      console.log('your second test goes here')
+      console.log('your third test goes here')
+      console.log('---END FILTER---')
+
+      console.log('---TESTING Reduce---')
+      function add(a, b) {
+        return a + b;
+      }
+      console.log(_.reduce([1,2,3], add), 'should be 6')
+      console.log('your second test goes here')
+      console.log('your third test goes here')
+      console.log('---END Reduce---')
+    </code></pre>
+</section>

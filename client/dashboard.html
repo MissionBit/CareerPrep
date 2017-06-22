@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/css/lib.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div id="container"></div>
+  <script src="assets/js/lib.js"></script>
+  <script>
+  $.get('/data',function (data) {
+    var student, exercises, content = $('<div>')
+    for (var name in data) {
+      student = $('<div class=student>').appendTo(content)
+      $("<a class=name href=javascript:undefined>").text(name).appendTo(student)
+      exercises = $("<div class=exercises>").appendTo(student)
+      data[name].forEach(function (question) {
+        if (question.code){
+          exercises.append([
+            $('<h4>').text(question.exercise),
+            $('<pre>').html($('<code class=javascript>').text(question.code))
+          ])
+        }
+      })
+    }
+    $('#container').append(content)
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+    $('body').on('click', '.name', function(e){
+      var $exercises = $(this).siblings('.exercises')
+      $('.exercises').not($exercises).hide()
+      $exercises.toggle()
+    })
+  }, 'json')</script>
+</body>
+</html>

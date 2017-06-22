@@ -1,0 +1,91 @@
+<h1>AJAX & JSON</h1>
+<section>
+<p>Ajax is a means of interacting with servers behind the scenes using JavaScript without having to reload the page. This allows you to create complex interactive web apps that behave like desktop apps. One famous example is Gmail, which allows you to read, write, and receive emails, all without the need for refreshing the page.</p>
+
+<p>Visit the following URL in your browser: <code>http://api.openweathermap.org/data/2.5/weather?q=San%20Francisco&mode=json&units=imperial</code></p>
+<p>What does the %20 represent in the <a href="//en.wikipedia.org/wiki/Query_string" class=popup>query string</a>? (hint: try <code>encodeURI("San Francisco")</code> in your JS console, then google it)</p>
+<p>Now try the following line of code in your console:</p>
+
+<pre><code class="javascript">$.ajax({
+  method: 'GET',
+  url: 'http://api.openweathermap.org/data/2.5/weather?q=San%20Francisco&mode=json&units=imperial',
+  success: function(weather_data){
+    console.log(weather_data)
+  }
+})</code></pre>
+
+<p>
+Open your Network tab and initiate the AJAX request again to see the network request and response in action.</p>
+
+<img src="assets/images/ajax.png" class=full>
+<p>The most common thing to do with data returned from an AJAX request is show it to the user. We can use jQuery to do this, but only in the callback function <code>to_be_run_on_server_response</code>. If we try to use the <code>weather_data</code> outside that function, we won't have the response from the server yet.</p>
+<pre><code class="javascript">var to_be_run_on_server_response = function(weather_data){
+  $('#container').append(weather_data.main.temp)
+}
+
+$.get('http://api.openweathermap.org/data/2.5/weather?q=San%20Francisco&mode=json&units=imperial').success(to_be_run_on_server_response)</code></pre>
+
+<p><b>Exercise:</b> Create a simple weather page that shows the following data.</p>
+<ol>
+  <li>current temperature</li>
+  <li>today's high and low temperatures</li>
+  <li>the description of current weather conditions</li>
+  <li>current wind speed</li>
+  <li>The time of sunrise and sunset. (hint: <code>new Date(weatherData.sys.sunrise * 1000)</code> )</li>
+</ol>
+<p>Allow the user to click a button or link to show the weather in a different city <b>without reloading the page</b>. You will need to do the following:</p>
+<ol>
+  <li>Create one or more links across the top of the page with names of alternate cities.</li>
+  <li>Set up click handlers on the links that <code>event.preventDefault()</code> to prevent the browser from changing pages.</li>
+  <li>Clear the current contents of <code>#container</code>.</li>
+  <li>Tell the user that data is currently being fetched.</li>
+  <li>When data returns from the weather server, display it on the page</li>
+</ol>
+<p><b>Extra Credit:</b></p>
+<ol>
+  <li>Refactor your code so there is only a single click handler that understands which city's data is being requested based on what element received the click event.</li>
+  <li>Refactor your code so that all you need to do is add a new anchor tag to the page and all other functionality will work automatically.</li>
+  <li>Refactor your code so that there exists an array of city names and all links and click events are generated dynamically on page load</li>
+</ol>
+
+<hr>
+<p>Now let's try more complex interaction using a <a href="//en.wikipedia.org/wiki/Representational_state_transfer" class="popup">RESTful API</a>, which is to say a set of endpoints, available over a network, that serve JSON data in a predictable format based on that resource's name. (e.g. a post with the id of 7 is available at the path <code>/posts/7</code>).</p>
+<p>Here the server lives at <code>http://jsonplaceholder.typicode.com</code> and the path to the info we want is <code>/posts/1</code></p>
+<pre><code class="javascript">$.ajax({
+  method: 'GET',
+  url: 'http://jsonplaceholder.typicode.com/posts/1',
+  success: function(data) {
+    console.log(data)
+  }
+})</code></pre>
+<p>Using <a href="http://jsonplaceholder.typicode.com/">PlaceHolder JSON</a></p>
+<ol>
+<li>Retrieve the post with id of 1 from the server, in the success callback, display it on the page.</li>
+<li>Retrieve the post with id of 2 from the server, in the success callback, display it on the page.</li>
+<li>Abstract the success callback out into a separate function called <code>place_post_on_page</code>.</li>
+<li>Using a for loop, use AJAX calls to fetch posts with ids from 1 to 10 and pass them to your <code>place_post_on_page</code> function to display them on the page. Do they always appear in the same order? Why is this?</li>
+<li>Now instead, use the <code>/posts</code> endpoint to get all posts and display only their titles on the page. This is often called the "index" view.</li>
+<li>When a visitor clicks on the title of a post, clear the content area and replace it with the full information for that post, displaying all of its properties. This is often called the "show" view.</li>
+<li>Allow the user to navigate back to the "index" view from the "show" view.</li>
+<li>Network requests are expensive and slow. Refactor your code such that once you've fetched data once, it's cached as a javascript object and accessible immediately when the user moves back and forth between 'show' and 'index' views.</li>
+<li>When showing an individual post, fetch all '/comments' and append the ones whose 'postId' property matches the post's id.</li>
+<li>Fetch information about the user who made the post. Display their name and email under the post.</li>
+<li>Create a simple login form where users can input their email address and password (let's say their password is their zip code, which we can also find on the user objects) such that visitors can see all of their own posts and comments after they log in.</li>
+<li>Create forms to allow users to create a new post or edit existing posts, pointing the forms to the appropriate RESTful endpoints using <code>$.post()</code></li>
+</ol>
+
+<hr>
+<h3>About JSON (a look under the hood)</h3>
+<p>Because we can only send strings of text (or binary data) over a network, not arrays and objects in memory, modern sites convert their data to JSON (JavaScript Object Notation) format, and your jQuery <code>$.ajax()</code> callback converts it back to arrays, objects and primitive values. Check out <a href="http://learnxinyminutes.com/docs/json/">this example</a>. Here is what is happening for you behind the scenes (try it out in your console with the <a href="students/products.js" target=_blank><code>products</code> array</a> from your e-commerce site):</p>
+<pre><code class="javascript">// run these one line at a time in your console.
+
+// the server does this before sending information over the wire
+var products_array_represented_as_json_string = JSON.stringify(products)
+typeof products_array_represented_as_json_string
+
+// $.ajax() converts incoming JSON strings back into arrays, objects and primitive values before passing it into your callback function.
+JSON.parse(products_array_represented_as_json_string)
+</code></pre>
+</section>
+
+<iframe src="https://docs.google.com/a/hackreactor.com/forms/d/e/1FAIpQLSf4QRoSNpaOTuSfO3fd-Hw5I8NyPzrBfn-Cv0s3oTjUQGE2Pw/viewform?embedded=true" width="760" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>

@@ -1,0 +1,207 @@
+<section>
+  <h2>Better styling with the &lt;style&gt; tag</h2>
+  <p>Let's start with the following from the end of the last module:</p>
+  <alert>Write it out!! Don't use copy &amp; paste! You're only cheating yourself!</alert>
+  <pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 style="font-family:verdana;color:orange;"&gt;This is a heading&lt;/h1&gt;
+  &lt;p style="color:green;"&gt;This &lt;i style="color:orange;font-size:300%"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p style="color:green;"&gt;This &lt;i style="font-size:300%;"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p style="color:green;font-size:300%;text-align:center;font-family:'Times New Roman';"&gt;This is by far the most important part of the page!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  <p>So let's begin to refactor the mess above. CSS rules can be applied to an HTML page by placing them inside a <strong>&lt;style&gt; element</strong> inside the &lt;head&gt; element of the page.</p>
+  <p>We begin with a <strong>selector</strong> to indicate which elements the rules apply to. Then, inside of curly braces, we indicate how the elements should be styled. Declarations are split into two parts (a property and a value), are separated by a colon, and end with a semicolon</p>
+  <pre><code class="html">&lt;html&gt;
+  &lt;head&gt;
+  &lt;style&gt;
+    h1 {
+      font-family: verdana;
+    }
+    p {
+      color: green;
+    }
+    i {
+      font-size: 300%;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 style="color:orange;"&gt;This is a heading&lt;/h1&gt;
+  &lt;p&gt;This &lt;i style="color:orange;"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p&gt;This &lt;i&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p style="font-size:300%;text-align:center;font-family:'Times New Roman';"&gt;This is by far the most important part of the page!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Ok, so far, so good. We have styles common to tags of the same type as shared styles. How can we represent all the extra styling on that last &lt;p&gt; tag?</p>
+<p>Every HTML element can carry an <strong>id attribute</strong> to uniquely identify it. No two elements on the same page may have the same value for their id attributes. The css selector to match for an id starts with a hash.</p>
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  h1 {
+    font-family: verdana;
+  }
+  p {
+    color: green;
+  }
+  i {
+    font-size: 300%;
+  }
+  #primary {
+    font-size: 300%;
+    text-align: center;
+    font-family: 'Times New Roman';
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1 style="color:orange;"&gt;This is a heading&lt;/h1&gt;
+&lt;p&gt;This &lt;i style="color:orange;"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+&lt;p&gt;This &lt;i&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+&lt;p id="primary"&gt;This is by far the most important part of the page!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Okay, now what about the two oranged elements?</p>
+<p>Every HTML element can also carry one or more class names in a <strong>class attribute</strong> to identify several elements as being different from the other elements on the page. The css selector to match for a class starts with a period.</p>
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  h1 {
+    font-family: verdana;
+  }
+  p {
+    color: green;
+  }
+  i {
+    font-size: 300%;
+  }
+  #primary {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Times New Roman';
+  }
+  .important {
+    color: orange;
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 class="important"&gt;This is a heading&lt;/h1&gt;
+  &lt;p&gt;This &lt;i class="important"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p&gt;This &lt;i&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p id="primary"&gt;This is by far the most important part of the page!&lt;/p&gt;
+&lt;/body&gt;
+&lt;html&gt;</code></pre>
+<p>Elements can have more than one class, but should only ever have a single id. <strong>Why is that?</strong></p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  h1 {
+      font-family: verdana;
+  }
+  p {
+    color: green;
+  }
+  .big {
+    font-size: 300%;
+  }
+  #primary {
+    text-align: center;
+    font-family: 'Times New Roman';
+  }
+  .important {
+    color: orange;
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 class="important"&gt;This is a heading&lt;/h1&gt;
+  &lt;p&gt;This &lt;i class="important big"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p&gt;This &lt;i class="big"&gt;is&lt;/i&gt; a paragraph.&lt;/p&gt;
+  &lt;p  id="primary" class="big"&gt;This is by far the most important part of the page!&lt;/p&gt;
+&lt;/body&gt;
+&lt;html&gt;</code></pre>
+
+<p>Now we have seperated <strong>presentation</strong> from <strong>content</strong>. We can easily read the content of our HTML document without it being cluttered up with styles. By sharing styles we also save ourselves a lot of typing as we create larger and larger HTML documents.</p>
+<h3>Exercise: Refactor</h3>
+<p><strong>You will be judged</strong> by professional developers for placing styles directly on HTML elements. Revisit all of the HTML code you have written so far and purge your HTML elements of "style" attributes. Move all styling to a <strong>&lt;style&gt; tag</strong> in the &lt;head&gt; and look for (or change your code to create) opportunities to use <strong>id</strong> and <strong>class</strong> attributes.</p>
+</section>
+<section>
+  <h2>More Fun with HTML!</h2>
+  <p><strong><code>&lt;a href=""&gt;&lt;/a&gt;</code> links</strong> can specify a <a href="//en.wikipedia.org/wiki/Communications_protocol" class="popup">protocol</a> by which to process the URL. Most often we use <code>http:</code> or <code>https:</code> and the browser responds by throwing away the current HTML document, then sending a network request to fetch the new HTML document which it then parses into a <a href="//en.wikipedia.org/wiki/Document_Object_Model" class="popup">DOM</a> and renders into the browser's viewport.</p>
+  <p>The <code>mailto:</code> protocol will instead tell the browser to open a new email message and populate the 'to:' field w/ the email address.</p>
+  <pre><code class="html">&lt;a href="http://pbskids.org/rogers/videos/"&gt;Visit Mr. Roger's Neighborhood&lt;/a&gt;
+&lt;a href="mailto:mr.rogers@neverland.com?Subject=My%20hero"&gt;Email Mr. Rogers&lt;/a&gt;</code></pre>
+<h4>Exercise:</h4>
+<ul>
+  <li>Try out the above two links in a fresh HTML document. Be sure to include the html, head, and body tags.</li>
+  <li>Add a (fake or real) email contact to your community site</li>
+</ul>
+<hr>
+  <p><strong>&lt;iframe&gt; tags</strong> let you display an entire HTML document as part of your page.</p>
+<pre><code class="html">&lt;iframe src="http://www.weather.gov/" width="800" height="300"&gt;&lt;/iframe&gt;
+&lt;iframe src="http://example.com" width="200" height="200" style="border:none"&gt;&lt;/iframe&gt;</code></pre>
+<p>Note that the site linked in the <code>src</code> attribute must consent to be displayed. So this may not work with all websites.</p>
+<ol>
+  <li>Embed a <a href="https://support.google.com/youtube/answer/171780?hl=en" class="popup">YouTube video</a> on your vacation report or another page</li>
+  <li>Embed a <a href="https://support.google.com/maps/answer/3544418?hl=en" class="popup">Google Map</a> on one of your pages</li>
+  <li>Try embedding a few of your other favorite web sites. If it doesn't show up, switch to the Console section of the Chrome Developer Tools <code>[CMD + OPT + I]</code> and look for an error message: "Refused to display"</li>
+</ol>
+<img src="assets/images/js_console.png" alt="JS Console" class="full">
+<hr>
+<p><strong>&lt;audio&gt; tags</strong> allow us to embed a music file:</p>
+<audio controls>
+  <source src="http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2015.mp3" type="audio/mpeg">
+</audio>
+<pre><code class="html">&lt;audio controls&gt;
+  &lt;source src="http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2015.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+<p>You can use a few different attributes on a &lt;audio&gt; tag</p>
+<ul>
+  <li><strong>autoplay</strong>-	Specifies that the audio will start playing as soon as it is ready</li>
+  <li><strong>controls</strong>- Specifies that audio controls should be displayed (such as a play/pause button etc)</li>
+  <li><strong>loop</strong>- Specifies that the audio will start over again, every time it is finished</li>
+</ul>
+
+<h3>Exercise: Media Page!</h3>
+<p>Your community site needs a media page! It should contain pictures, audio, and video relevant to your community. Maybe educational content, and perhaps some fun stuff too. Include short explainations of each piece of content</p>
+<ol>
+  <li>Include YouTube videos of interest to your community</li>
+  <li>Add some <code>.mp3</code> audio files</li>
+  <li>In the &lt;style&gt; tag, apply a few css styles to each of the following:</li>
+  <pre><code class="css">body {
+}
+h1 {
+}
+p {
+}</code></pre>
+  <li>Use at least 5 distinct id attributes and at least 2 class attributes to style the page for example:</li>
+  <pre><code class="css">#lead-video {
+}
+.video-container {
+}
+.caption {
+}</code></pre>
+  <li>The id attributes should refer to exactly one HTML element a piece.</li>
+  <li>The class attributes could refer to 0 or 1 HTML elements, but let's have at least two or three element with the same class</li>
+</ol>
+<hr>
+<p>The <strong><code>background</code> CSS property</strong> can set background properties other than just the color: color, image url, repeat, and position, among others.</p>
+<pre><code class="css">body {
+    background: #000000 url("http://fanaru.com/doge/image/18361-doge-follow-your-dreams.jpg") no-repeat fixed center;
+}</code></pre>
+
+<p><strong>Exercise: More from Mr. Rogers</strong></p>
+<ol>
+  <li>Expand the Mr. Roger's neighborhood page to give Mr. Rogers the online rememberance he deserves!</li>
+  <li>Use a background image on the body</li>
+  <li>Use another background image on a div which has text content inside it</li>
+  <li>Give that div a class or id and in the &lt;style&gt; tag give it a fixed width and height</li>
+  <li>Don't be afraid to get in there and really <em>praise</i> Mr. Rogers. He truly was an amazing human being.</li>
+</ol>
+<div class="youtube"><iframe width="420" height="315" src="//www.youtube.com/ibed/NQqKBqj5xhY?start=46&end=110" frameborder="0" allowfullscreen></iframe></div>
+</section>

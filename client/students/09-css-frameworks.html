@@ -1,0 +1,53 @@
+<section>
+  <h2>CSS FRAMEWORKS</h2>
+  <p>Okay, so we've learned that doing layout with CSS by hand is confusing, inconsistent between different browsers, resolutions and devices and just generally a great, big pain in the button. Well...</p>
+  <img src="http://scyp.net/wp-content/uploads/2015/01/18271-good-news-everyone-i-was-just-kidding-professor-farnsworth-wallpaper-1280x1280-1-750x410.jpg" alt="good news">
+  <p><strong>Good news everyone! CSS Frameworks exist!</strong> A framework (or library) just means "a bunch of pre-written code", usually code that solves frequently-encountered problems common to many projects. <strong>A lazy programmer is a good programmer. Don't reinvent the wheel!</strong></p>
+  <p>Here is a simple web page which builds off of a super-simple CSS framework called <a href="http://minimalcss.com/">Minimal CSS</a>. <strong>Let's take a look!</strong></p>
+  <ol>
+    <li>Open the Minimal CSS link and take a look around the demo page.</li>
+    <li>View Source (<code>[CMD + SHIFT + ?]</code> and type in "source" if you can't remember the keyboard shortcut) and make a list of the classes being used on the page.</li>
+    <li>Open the Chrome Developer Tools and inspect various <code>.row</code> and <code>.col-n</code> elements. Where did they get those styles?</li>
+    <li>From the view source page, open the link to the <code>minimal.css</code> stylesheet and read over the css rules defined there.</li>
+  </ol>
+  <img src="assets/images/minimal_css.png" alt="dev tools">
+  <p>Above I've selected a div with the class <code>col-6</code> from the example site. Here's what we've learned about this element:</p>
+  <ul>
+    <li>It has no styles applied directly to it by an HTML style attribute</li>
+    <li>On line 37 of the linked stylesheet <code>minimal.css</code> there is a rule that applies only to the class <code>col-6</code> that sets its width.</li>
+    <li>On line 28 of <code>minimal.css</code> it picks up more styles from a rule that is applied to multiple column classes.</li>
+    <li>On line 7 of <code>minimal.css</code> it gets its <code>margin</code> and <code>padding</code> from a rule applied to all elements on the page.</li>
+    <li>It is a div, so the browser displays it as a <code>block</code> element.</li>
+  </ul>
+  <hr>
+  <h3>Exercise: Community Site Pintrest </h3>
+  <p>Let's make a new web page that has a bunch of inspirational text and images for our online community members in a single place. We can use <code>minimal.css</code> to create a lot of small divs in multiple configurations to make it visually interesting. </p>
+  <img src="http://3.bp.blogspot.com/-A6Yh4p6Wdog/UouD-vE9B0I/AAAAAAAAAJc/7k4hOwmP4pA/s1600/collectionview-2.png" alt="pin board">
+  <ol>
+    <li>Set up a new HTML document</li>
+    <li>Download <a href="http://minimalcss.com/minimal.css">minimal.css</a> and link it in the head</li>
+    <li>Create a <code>styles.css</code> and link it IMMEDIATELY AFTER your css framework. <strong>Why not before?</strong></li>
+    <li>Place the content of the page in a fixed-width, centered #container</li>
+    <li>Have a full width header and footer section</li>
+    <li>Create a crazy interspersed grid of captioned images and text.</li>
+  </ol>
+</section>
+<section>
+  <h3>Bootstrap!</h3>
+  <p>Bootstrap is a more fully-featured framework that gives us pre-written CSS and JavaScript code (we'll just focus on the CSS for now). The CSS alone consists of <a href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">8000+ lines of code!!!</a>. </p>
+
+  <p>This will be an exercise in <a href="javascript:void(0)" class="tooltip" data-tip="Super-core programming skill, especially as you move into professional roles where you may be stepping into a codebase already-in-proress with thousands of files and hundreds of thousands or even millions of lines of existing code.">ignoring complexity</a> and zeroing to finding only the information you need to take the next step forward. (<strong>Hint:</strong> Try using <code>[CMD + F]</code> to search Bootstrap's <a href="http://getbootstrap.com/css/">CSS documentation</a> page for each bolded term below.)</p>
+  <pre><code class="html">&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"&gt;</code></pre>
+  <p>You can make this page about anything, but if you're lacking inspiration <a href="https://www.google.com/search?q=adorable+animals&tbm=isch">may I suggest...</a></p>
+  <ol>
+    <li>Add the above link code to the head of a fresh HTML document.</li>
+    <li>Browse through <a href="http://getbootstrap.com/css/">the documentation</a> of the CSS portion of Boostrap.</li>
+    <li>Create a simple <strong>grid system</strong> for your page.</li>
+    <li>Create a section of <strong>lead body copy</strong></li>
+    <li>Use some <strong>marked text</strong></li>
+    <li>Use some <strong>text alignment classes</strong></li>
+    <li>Create a table with <strong>striped rows</strong></li>
+    <li>Use some <strong>button classes</strong></li>
+    <li>Try a few <strong>image shapes</strong></li>
+  </ol>
+</section>

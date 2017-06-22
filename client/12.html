@@ -1,0 +1,142 @@
+<h1>Events</h1>
+<section>
+<pre><code class="javascript">// we've defined a function and set it equal to a variable
+var fn = function () {
+  console.log('heeey')
+}
+
+// of course, we can invoke it manually
+fn()
+
+// Alternately, we can ask the browser to run it at a later time
+
+// The below is called an <b>event handler</b>, take a guess at what it does...
+// Add it to an HTML document containing a div#target and test it out
+document.querySelector('#target').addEventListener('click', fn)
+
+// Often times, instead of using a variable, we'll just define the function inline
+document.querySelector('#target').addEventListener('click', function() {
+  console.log('same deal')
+})</code></pre>
+<p>An <b>event handler</b> is a function (subroutine) that is run each time a specific type of input is received from the user.</p>
+<h4>Exercise: </h4>
+<ol>
+  <li>Make the above code work inside a script tag in an HTML document <small>(you'll need a #target element on the page)</small></li>
+  <li>Define a function <code>beeper</code></li>
+  <li>Create a button on the page</li>
+  <li>Every time the user clicks a button, add an HTML element to the bottom of the page with the word "beep"</li>
+  <li>Also change the body's background color each time a user clicks the button. Hint:</li>
+</ol>
+<pre><code class="javascript">var randomColor = '#' + Math.random().toString(16).slice(2, 8)</code></pre>
+<p>How does this work?</p>
+
+<hr>
+<p>Ok, that's the native JavaScript syntax for adding <b>event handlers</b> to the page. Now let's see jQuery's way:</p>
+
+<pre><code class="javascript">$('div').on('click', function(){
+  console.log('A div has been clicked!')
+})
+
+// shortcut
+$('#target').click(function(){
+  $('#target').show().css('color', 'red').text('boom goes the dynamite!')
+})</code></pre>
+
+<h4>Exercise:</h4>
+<ol>
+  <li>Make the above code work inside a script tag in an HTML document</li>
+  <li>Create a div with the text "show me the money". If the user clicks on it, show them the money!</li>
+  <li>Create a div with the text "show me the Oprah". If the user clicks on it, show them the Oprah!</li>
+  <li>Create a div with the text "show me the Opera". If the user clicks on it, show them the Opera!</li>
+  <li>Make it so that when a user clicks on one item to show it, all the others hide first if they are already shown.</li>
+  <li>When a user clicks on an item that is already shown, hide it instead.</li>
+</ol>
+
+<hr>
+<pre><code class="javascript">$('#target').on('mouseover', function(){
+  $('#target').addClass('highlighted')
+})
+$('#target').on('mouseleave', function(){
+  $('#target').removeClass('highlighted')
+})</code></pre>
+<h4>Exercise:</h4>
+<ol>
+  <li>Place the above code into a script tag in an HTML document</li>
+  <li>Make sure there is a #target element on the page and that it has a non-zero height and width</li>
+  <li>Define CSS rules for the 'highlighted' class</li>
+  <li>Make sure everything is wired up correctly and works as you would expect</li>
+  <li>Place an image on the page that disappears when you place your mouse over a particular div#magic. Maybe this one of <a href="//en.wikipedia.org/wiki/Margaret_Hamilton_(scientist)#/media/File:Margaret_Hamilton.gif" class="popup">Margaret Hamilton</a>.</li>
+  <li>How many different ways can you think of to accomplish that task?</li>
+</ol>
+
+<hr>
+<pre><code class="javascript">var mouse_tracker = function(event){
+  console.log(event.pageX, event.pageY, !!event.which)
+})
+
+$('body').on('mousemove', mouse_tracker)</code></pre>
+<h4>Exercise:</h4>
+<ol>
+  <li>How can we inspect the event object in the console? What properties and methods does it have?</li>
+  <li>Do click events and mouseover events get arguments passed into each invocation of their event handler functions as well? Do they have the same properties?</li>
+  <li>Create a small <code>position: fixed</code> &lt;img&gt; that follows the cursor around the screen. Maybe a <a href="https://www.google.com/search?q=puppy+walking+gif&es_sm=91&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAWoVChMIno7mzKHexgIVUSmICh3S4Q_N&biw=1305&bih=732&dpr=1.1" target=_blank>gif of a puppy walking</a>.</li>
+  <li>Figure out how to hide the cursor with CSS</li>
+  <li>Make the image follow the mouse only if the mouse button is pressed</li>
+</ol>
+
+<hr>
+<p>In addition to the <code>arguments</code> keyword, each function invocation also has access to the <b>calling context</b> via the <code>this</code> keyword. Event handlers are called in the context of the element that received the event.</p>
+<pre><code class="javascript">var el_finder = function(event){
+  console.log("calling el_finder for:", this, event.target)
+  $(this).attr('id', 'active');
+}
+
+$('div').click(el_finder)</code></pre>
+
+<h4>Exercise:</h4>
+<ol>
+  <li>Place the above code in an HTML document with at least one div and test it out.</li>
+  <li>Create an HTML document <a href="http://www.catipsum.com/" target=_blank>with at least 5 paragraphs</a></li>
+  <li>Give each paragraph a unique id attribute</li>
+  <li>Create a div#output at the top of the page</li>
+  <li>Create a click handler that shows the id attribute of the last paragraph that was clicked on in the div#output</li>
+  <li>Change the <code>color</code> and <code>background-color</code> of a clicked-on div to make it stand out</li>
+  <li>When you click on another div, clear the special styling of any perviously clicked-on divs</li>
+  <li>Is this easier to do by styling directly with <code>.css()</code> or by adding and removing a class name? Try both ways</li>
+</ol>
+
+<pre><code class="javascript">$('button#go').on('click', function(){
+  $('#output').text( $('input#color').val() )
+})</code></pre>
+<h4>Exercise:</h4>
+<ol>
+  <li>Guess what does the code above does. How would you go about testing your theory?</li>
+  <li>Place the above code in a fresh HTML document</li>
+  <li>Create the correct HTML elements referenced by the click handler</li>
+  <li>When a user types a color into the input and presses the go button, change the background color of the page to that color</li>
+</ol>
+
+<pre><code class="javascript">$('input#type').on('keypress', function (e) {
+  $('label').text(e.keyCode)
+})
+
+$('body').on('keypress', function(e){
+  String.fromCharCode(e.keyCode)
+})</code></pre>
+<h4>Exercise:</h4>
+<ol>
+  <li>Try out the above code in an appropriately set up HTML document</li>
+  <li>What's the difference between the event's keyCode property and the actual letter?</li>
+  <li>What's the difference between putting the <code>keypress</code> handler on the input and on the body?</li>
+  <li>If the <code>keypress</code> handler is placed on the body and we type into the input, does the event handler run? Why is this?</li>
+  <li>Create a keylogger that concatenates every letter the user types to a string called "nsa_surveillance"</li>
+  <li>Show the user everything they've typed in a div#output</li>
+  <li>Create your own version of <a href="http://play.typeracer.com" target=_blank>Type Racer</a></li>
+</ol>
+
+<hr>
+<p><b>Exercise:</b> There exist jQuery event handlers <code>.focus()</code> and <code>.blur()</code> <a href="http://oscarotero.com/jquery">Figure out what they do</a> and then use them productively in an HTML document</p>
+
+
+</section>
+<iframe src="https://docs.google.com/a/hackreactor.com/forms/d/e/1FAIpQLSf4QRoSNpaOTuSfO3fd-Hw5I8NyPzrBfn-Cv0s3oTjUQGE2Pw/viewform?embedded=true" width="760" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>

@@ -1,0 +1,153 @@
+<h1>Larger Web Documents</h1>
+<section>
+<h2>Multi-Section Web Pages</h2>
+<p>Ok, now that we have our styling in order, let's think about how to build larger web pages in an orderly way...</p>
+
+<pre><code class="html">&lt;div id="greeting" class="section"&gt;
+  &lt;h1&gt;Hello!&lt;/h1&gt;
+  &lt;p&gt;This content is all related!&lt;/p&gt;
+  &lt;p&gt;Nice that we can group it using a "div" tag!&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p>The &lt;div&gt; element is a generic <a href="javascript:void(0)" class="tooltip" data-tip="Block elements are quite greedy. They always start on a new line and take up the full width of the page, forcing the next HTML element down to the next line.">block element</a> which defines a section of your page. Unlike block elements with specific meaning and implied default styling (like &lt;h1&gt; and &lt;p&gt; tags), &lt;div&gt; elements don't change the appearance of the page until styles are applied to them.</p>
+
+<pre><code class="html">&lt;p&gt;Sometimes, &lt;span class="highlight"&gt;all we really want&lt;/span&gt; is
+to be able to refer to certain sections of our page, but we want to completely
+&lt;span class="highlight"&gt;control their styling&lt;/span&gt;, and not get the
+"b" or "i" tags involved&lt;/p&gt;</code></pre>
+<p>The &lt;span&gt; element is a generic <a href="javascript:void(0)" class="tooltip" data-tip="Inline elements are very humble. They do not start on a new line and only takes up as much width as they need to fit their contents.">inline element</a> which defines a section of your page. Unlike inline elements with specific meaning and implied default styling (like &lt;b&gt; and &lt;i&gt; tags), &lt;span&gt; elements don't change the appearance of the page until styles are applied to them.</p>
+
+
+<h3>Exercise: My First Blog Post</h3>
+<p>You know what your community site needs? Some content to attract members!</p>
+<ol>
+  <li>Create a blog post detailing what a new member to your community might need to know to get up to speed with the group.</li>
+  <li>The blog post should have- each in its own &lt;div&gt;- a header area, a nav bar area, a content area, and a footer area (with some contact info, disclaimer, etc).</li>
+  <li>The content area should have multiple header and paragraph tags. Add some styles for each tag type.</li>
+  <li>Give each &lt;div&gt; its own id attribute ("header", "nav", "content", and "footer"), and style each a bit (maybe they each have a different background color).</li>
+  <li>Add some generic &lt;span&gt; tags around bits of important text. Give each a class of "important", and style them so that information stands out! Maybe a yellow background, red text, a heavier font-weight and a slightly larger font-size</li>
+  <li>Add some &lt;span&gt; tags around bits of un-important text. Give each a class of "nice-to-know", and style that text a bit lighter and smaller.</li>
+</ol>
+
+<hr>
+<h3>The CSS Box Model</h3>
+<img src="assets/images/borders.png" alt="border boxes">
+<p>Every HTML element has a box around it, even if you cannot see it. We can show a visible border around every HTML element on the page using the CSS border property and the "match all" selector:</p>
+
+<pre><code class="css">* {
+  border: 1px solid red;
+}</code></pre>
+<p><b>Exercise:</b> Recreate the "Cottage Garden" page above, red- &amp; green-boxes included!</p>
+<hr>
+<p>The CSS padding property defines the extra space inside the border:</p>
+
+<pre><code class="css">div {
+    padding: 10px;
+}</code></pre>
+
+<p>The CSS margin property defines the extra space outside the border:</p>
+
+<pre><code class="css">div {
+    margin: 30px;
+}</code></pre>
+
+<p>We can also manually set the width and height of the element itself. When you do this, you'll want to set the box-sizing for <a href="//css-tricks.com/box-sizing/" class="popup">obscure reasons</a>:</p>
+
+<pre><code class="css">div {
+    box-sizing: border-box;
+    width: 300px;
+    height: 200px;
+}</code></pre>
+
+<p><b>What's the difference?</b> Try giving the selected elements a different background color than the rest of the page... Also, use the Elements panel of the Chrome Dev Tools <code>[CMD + OPTION + I]</code> to inspect the spacing around the element.</p>
+<img src="assets/images/box_model.png" alt="box model">
+<hr>
+<h3>Exercise: Boxes, Boxes, Everywhere!</h3>
+<p>Make a very boxy web page...</p>
+<ol>
+  <li>Create a bunch of dang divs and spans on your page.</li>
+  <li>This is a web page about boxes. Add content about boxes. Cardboard boxes, metal boxes, self-imposed emotional boxes, whatever...</li>
+  <li>Using a mix of class, id, and tag selectors, give boxes different <code>background-color</code>s.</li>
+  <li>Give boxes a set height, width, border, padding, and margin.</li>
+  <li>Answer the following questions:</li>
+  <ol>
+    <li>Can images have borders, margins, and padding?</li>
+    <li>What happens when you give an element so much padding that it's larger than the height and width screen</li>
+    <li>What's so great about boxes anyway?</li>
+  </ol>
+  <li>Figure out what "giving" an element each of these css rules does:</li>
+  <ol>
+    <li><code>border-radius: 10px;</code></li>
+    <li><code>margin-top: 20px;</code></li>
+    <li><code>padding-right: 20px;</code></li>
+    <li><code>border-left: 10px solid red;</code></li>
+    <li><code>padding: 20px 10px;</code></li>
+    <li><code>padding: 20px 5px 10px;</code></li>
+    <li><code>padding: 20px 5px 10px 50px;</code></li>
+  </ol>
+  <li>Try this on a div which wraps all other elements of the page... <code>width:960px; margin: 0 auto;</code> What does this do? Why would we want it?</li>
+</ol>
+<h3>Exercise: I need space!</h3>
+<p><b>You will be judged</b> by professional developers for unorganized HTML code... Look back over the HTML documents you've created up to this point. For each one:</p>
+<ol>
+  <li>Wrap all of the HTML elements in the body in a div with an id of "container". Give it the following css rules: <code>width:960px; margin: 0 auto;</code></li>
+  <li>Identify distinct sections, and wrap them in &lt;div&gt;'s</li>
+  <li>Give those divs <b>id</b>s or <b>class</b>es to identify them</li>
+  <li>Give divs some margin, padding, and borders as appropriate.</li>
+  <li>Find places where you've used &lt;b&gt; and &lt;i&gt; tags and replace some of them with styled &lt;span&gt;'s</li>
+  <li>Give some elements borders</li>
+</ol>
+<hr>
+
+  <h3>Exercise: Comments!</h3>
+  <p>Our blog's looking good so far, but you know what we need? A comments section. We don't have any real users yet, so we'll just have to make them up...</p>
+  <ol>
+    <li>Make a comment section after your blog post</li>
+    <li>Fill it with admiring comments</li>
+    <li>Some comments should have replies. Indent them 20px.</li>
+    <li>Nest replies multiple levels deep to create the illusion of a lively conversation.</li>
+  </ol>
+  </section>
+  <section>
+  <h3>Complex CSS Selectors</h3>
+    <p><strong>Exercise:</strong> As our documents grow, we'll need to leverage more complex CSS selection syntax. Read and try out each of the below in a trival example. <strong>Challenge yourself to move quickly and not spend too much time worrying about content</strong>. Just create a fresh HTML document with lorum ipsum text and structure it so you can test each selector type. </p>
+    <img src="assets/images/css_selectors.png" alt="css selectors" class="full">
+
+  <h3>CSS Specificity</h3>
+    <p>When multiple conflicting CSS rules apply to a single element, which one wins out?</p>
+    <img src="assets/images/css_conflict.png" alt="css conflict">
+    <p>Recreate the below using your code editor and <strong>answer the following:</strong></p>
+    <ol>
+      <li>What size is the text of the paragraph which does not have the id intro?</li>
+      <li>What color are the bold tags which are inside of paragraphs?</li>
+      <li>What color are italic tags?</li>
+      <li>What font-family do paragraph tags have?</li>
+    </ol>
+    <img src="assets/images/specificity.png" alt="css specificity" class='full'>
+    <p>Would you like to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" class='popup'>know more?  </a></p>
+  <hr>
+    <h3>Exercise: Choose your own adventure</h3>
+    <p>Create a series of html pages for a text-based "choose your own adventure" story, so that users can click different links to make choices to advance the story as they see fit. If you'd rather, you can create a "gift chooser" or "decision maker" feature for your community site. (i.e. "Which country should I travel to next?" for a travel-related group)</p>
+    <p>It would be a drag to have to rewrite that CSS code on each page... Let's use a link tag to share a single CSS document between multiple HTML files:</p>
+    <pre><code class="html">&lt;head&gt;
+    &lt;link href="styles.css" rel="stylesheet"&gt;
+  &lt;/head&gt;</code></pre>
+    <ol>
+      <li>Create a "template" first with the style and structure that you'll want common to all pages and create a copy to work from for each individual page</li>
+      <li>Each page should have multiple links to choose the next page, and perhaps sometimes a link to jump back to the last page or even to the beginning</li>
+      <li>Use some div and span elements</li>
+      <li>Use some class and id attributes</li>
+      <li>Use some padding, margin, and border css properties</li>
+      <li>Use some complex css selectors</li>
+      <li>Use some css rules that are more specific and thus overwrite other more general rules for a particular element</li>
+    </ol>
+  <hr>
+  <h3>Exercise: A second Blog Post!</h3>
+  <p>Your first post was such a roaring (fake) success, we should do another! We'd like to keep all the same styles consitent with the last post, but re-writing all that CSS would sure be a drag...</p>
+  <ol>
+    <li>Create a (short) new blog post about a upcoming or current event of interest to the community.</li>
+    <li>Use a &lt;link&gt; tag to share a single <code>.css</code> file between both blog post HTML documents.</li>
+  <li>Now take the css rules from inside your &lt;style&gt; and place them into the <code>.css</code> document.</li>
+  <li>Link your blog posts together with each other and the rest of the site using a navigation bar</li>
+  <li>Expand your linked <code>styles.css</code> to share the all styles site-wide. Replace your <code>&lt;style&gt;</code> tags on all community site pages with <code>&lt;link&gt;</code> tags pointing to <code>styles.css</code></li>
+  </ol>
+  </section>

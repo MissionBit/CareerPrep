@@ -1,0 +1,145 @@
+<h1>Halfway Hackathon</h1>
+<section>
+<p><b>Congratulations!</b> Today we are at the halfway point in our class. Let's celebrate with a hackathon! A hackathon is a great opportunity to work on a larger, real-world project, while reviewing and solidifying the core concepts that we've covered in the first half of the course.</p>
+
+<h3>Step 1: Make a Plan</h3>
+<ol>
+  <li>Take a few minutes to brainstorm some project ideas. This could be related to your community site, a stand-alone project, or just a crazy mash-up site to help you practice different coding concepts</li>
+  <li>Review the <b>Step 3: Coding</b> section below to consider the different concepts that we hope to practice during this project.</li>
+  <li>In groups of four, hold a <i>standup</i> meeting to present your plan of what you'd like to accomplish, and potential stumbling blocks.</li>
+  <li>If someone mentions being concerned about a concept that you feel solid on, offer to be a resource for them if they have questions.</li>
+</ol>
+<hr>
+<h3>Step 2: Set up a GitHub repo</h3>
+<ol>
+  <li>Open the <b>Terminal</b> and run:</li>
+  <li><code>git config --global user.name "YOUR NAME"</code></li>
+  <li><code>git config --global user.email "YOUR EMAIL ADDRESS"</code></li>
+  <li>Go to <a href="http://github.com">GitHub</a> and sign in or sign up for an account</li>
+  <li>Create a new repository on GitHub by clicking the <b>new repository</b> menu, upper-right</li>
+  <li>Follow the instructions presented in the new repository</li>
+  <li>If you'd like to know more about the philosophy behind version control, check out <a href="http://tom.preston-werner.com/2009/05/19/the-git-parable.html">The Git Parable</a></li>
+</ol>
+<hr>
+
+<h3>Step 3: Coding</h3>
+<p>The following lists the core web development skills that you should feel comfortable using in your project thus far:</p>
+<ol>
+  <li>Use Markdown to create a <code>README.md</code> file introducing your project. Push to GitHub and see it rendered on your repository's main page</li>
+  <li>Create an HTML document using the following HTML tags:
+    <ul>
+      <li>html, head, title, body</li>
+      <li>header and paragraph tags</li>
+      <li>bold and italic tags</li>
+      <li>divs and spans</li>
+      <li>ordered and unordered lists</li>
+      <li>images and links</li>
+      <li>horizontal rule and line break</li>
+    </ul>
+  </li>
+  <li>Use a style attribute on an HTML element, then a &lt;style&gt; tag in the head, then a &lt;link&gt; tag to a separate <code>.css</code> document to include CSS styles in your page. Try to use the following CSS properties at a minimum:
+    <ul>
+      <li>color, background-color, background-image</li>
+      <li>font-size, font-family</li>
+      <li>height, width, max-width</li>
+      <li>margin, padding, border, border-radius</li>
+    </ul>
+  </li>
+  <li>Refactor your code to use classes and ids.</li>
+  <li>Use some complex CSS selectors such as descendent selectors</li>
+  <li>Use an iframe to embed videos or maps on your page</li>
+  <li>Use float and and position: fixed to position some elements</li>
+  <li>Create an HTML form incorporating various inputs (text, password, email, textarea, radio, checkbox, select menu, submit, etc)</li>
+  <li>Make your form live using <a href="http://formspree.io">Formspree</a></li>
+  <li>Use the <a href="http://getbootstrap.com/css/" target=_blank>Bootstrap</a> grid system to lay out your page</li>
+  <li>Use some pre-written Bootstrap CSS classes on various elements of your page</li>
+  <li>Use <code>alert</code>, <code>prompt</code>, and <code>console.log</code> where appropriate</li>
+  <li>Set and retrieve values from JavaScript variables</li>
+  <li>Use <code>document.querySelector</code> in conjunction with <code>textContent</code> and <code>innerHTML</code> to retrieve and place content on the page</li>
+  <li>Use <code>if</code>, <code>elseif</code> and <code>else</code> to implement branching logic on the basis of comparing variables and values</li>
+  <li>Use logical and (<code>&&</code>), logical or (<code>||</code>), and the ternary operator</li>
+  <li>Use <code>while</code> loops to do work multiple times until a condition is met</li>
+  <li>Use the <code>Math</code> object and <code>parseInt</code></li>
+  <li>Use <code>jQuery</code> to select existing HTML elements on the page</li>
+  <li>Use jQuery's <code>.css()</code>, <code>.attr()</code>, <code>.text()</code>, <code>.html()</code>, <code>.append()</code>, and <code>.val()</code> to both get and set values</li>
+  <li>Use some jQuery effects like <code>.show()</code>, <code>.slideDown()</code> and <code>.fadeOut()</code></li>
+</ol>
+<h4>Stretch Goals</h4>
+<ol>
+  <li>Use some of <a href="http://getbootstrap.com/javascript/">Bootstrap's JavaScript utilties</a></li>
+  <li>Try incorporating some <a href="http://jqueryhouse.com/50-jquery-bootstrap-plugins-for-your-next-projects/" target=_blank>jQuery Plug-ins</a></li>
+</ol>
+<hr>
+<h3>Step 4: Deploy & Promote</h3>
+<ol>
+  <li>Deploy your code to Divshot using your command line tools</li>
+  <li>Post a link on Slack so your classmates can enjoy your work</li>
+  <li>Send it to your friends and family members so they can be proud of you</li>
+  <li>Social media?</li>
+</ol>
+<hr>
+<h3>Step 5: Profit?</h3>
+<ol>
+  <li>Monetize</li>
+  <li>Monetize</li>
+  <li>Monetize</li>
+</ol>
+<hr>
+<h3>A note regarding best practices</h3>
+<p>Try to decipher the code below. What does it do?</p>
+
+<pre><code class="javascript">var i = 1, n = 5, j
+while (i <= n){
+j = 1;
+var msg = '';
+if (i === 1) {
+msg += 'Welcome ' + i;
+} else if (i > 1) {
+msg += 'Welcome ' + i + ', meet';
+}
+while (j < n) {
+if( j > 0 && j < i) {
+if (j === i - 1) {
+if (j === 1) {
+msg += ' ' + j;
+} else {
+msg += ' and ' + j;
+}
+} else {
+if (j === 1 && i === 3){
+msg += ' ' + j;
+} else {
+msg += ' ' + j +',';
+}
+}
+}
+console.log(msg)
+j++;
+}</code></pre>
+<p>Pretty tough right? Here are some problems:</p>
+<ol>
+  <li>No indentation</li>
+  <li>Obscure variable names</li>
+  <li>A bit verbose</li>
+</ol>
+<p>What happens when we clean it up?</p>
+<pre><code class="javascript">var guest_number, announcement_message, arrival_number = 1, total_number_of_guests = 5
+
+while (arrival_number <= total_number_of_guests){
+  guest_number = 1, announcement_message = 'Welcome ' + arrival_number
+
+  if (arrival_number > 1) {
+    announcement_message += ', meet ' + guest_number
+
+    while (++guest_number < arrival_number ) {
+      if (guest_number !== arrival_number - 1) {
+        announcement_message += ', ' + guest_number
+      } else {
+        announcement_message += ' and ' + guest_number
+      }
+    }
+  }
+  arrival_number++
+  console.log(announcement_message)
+}</code></pre>
+</section>

@@ -1,0 +1,126 @@
+<h1>jQuery</h1>
+<section>
+<p>jQuery is a library (a bunch of pre-written code), written in JavaScript, designed to make it easier to manipulate a web page and do various web-related work.</p>
+
+<p><b>Exercise:</b> <a href="https://code.jquery.com/jquery-2.1.1.js" target="_blank">Open it up</a> and skim over it. How many lines of code is it?</p>
+
+<small>Consider downloading a <a href="https://chrome.google.com/webstore/detail/javascript-and-css-code-b/iiglodndmmefofehaibmaignglbpdald" target=_blank>source code beautifier</a> chrome extension to auto-indent and syntax highlight source code <code class=b>[CMD + OPT + U]</code></small>
+
+<pre><code class="html">&lt;script src="https://code.jquery.com/jquery-2.1.1.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  $('body').text('hello?')
+&lt;/script&gt;</code></pre>
+
+<p><b>Exercise:</b> Place the above in a fresh HTML document, just above the closing body tag. The first tag includes the jQuery libary and makes it available to the page. The second script uses it to do some work. </p>
+
+<h3>The $ Character</h3>
+<p>In the same way that <code>window</code> stores an object with a bunch of <a href="javascript:void(0)" class="tooltip" data-tip="pieces of information associated with an object">properties</a> and <a href="javascript:void(0)" class="tooltip" data-tip="properties of type function, which are meant to be run with the invocation operator ()">methods</a> related to the web page, jQuery uses the <code>$</code> variable to store an object that contains the library's functionality. To see if jQuery is included on the page, type <code>$</code> into the JavaScript console. You should see the following in reply:</p>
+<ul class=code>
+  <li><code>function jQuery(selector, context)</code></li>
+</ul>
+<p><code>$()</code> is a <a href="javascript:void(0)" class="tooltip" data-tip="A function is an object which stores a subroutine- a sequence of lines of code, packaged as a unit- that can be run using the invocation operator">function</a> designed to take in a string- a css selector- such as <code>$('#primary')</code> as input, and return all matching elements, wrapped with jQuery super powers.</p>
+
+<p><b>Exercise:</b> Referencing <a href="http://oscarotero.com/jquery/" target='_blank'>the documentation</a>, <b>Create an appropriate HTML document on which to try out the following:</b></p>
+
+<pre><code class="javascript">$('body').css('background-color', 'red')
+$('img').attr('src','http://i.imgur.com/nWGCwiE.gif')
+
+$('h1').text('hello')
+$('#notification').html('&lt;div class="alert"&gt;Hold on! &lt;b&gt;an error&lt;/b&gt; has occured!&lt;/p&gt;')
+$('.container').append("&lt;p&gt;What's the difference between &lt;i&gt;.append()&lt;/i&gt; and .html()?&lt;/p&gt;")</code></pre>
+<hr>
+<p><b>Exercise:</b> Using <a href="students/examples/jquery-selecting.html" target="_blank">the provided HTML document</a></p>
+<ol>
+  <li>Include the jQuery library in the file</li>
+  <li>Write an expression using jQuery that targets all h1 elements and makes their font-color blue</li>
+  <li>... that targets the body element and turns its background red</li>
+  <li>... that targets the element with the id "everything" and increases its font-size</li>
+  <li>... that targets all elements with the class "holder" and adds a black border</li>
+  <li>... that targets all li elements within ul elements and bold them</li>
+  <li>... that targets p elements coming immediately after an h1 element and makes it green</li>
+  <li>... that targets the element with the id of "secret" and changes its display property to 'none'</li>
+  <li>... now change #secret's display property back to block</li>
+  <li>... that targets the element with the id of "change-me" and changes its text to a new sentence</li>
+  <li>... that appends new text to the end of the sentence in #change-me</li>
+  <li>... that replaces #change-me's contents with two new paragraph tags with content included</li>
+  <li>... that appends a new paragraph to #change-me</li>
+  <li>... that targets the all li elements and changes their text to a new sentence</li>
+  <li>... that targets the all li elements and appends new text to all of them</li>
+  <li>... that targets the element with the id of "everything" and appends an ordered list with three list elements inside</li>
+</ol>
+<hr>
+<h3>Exercise: Theme Changer</h3>
+<ol>
+  <li>Create a web page that asks the user what color theme they'd like to view the web page in.</li>
+  <li>Keep asking until they enter a valid input (hint: You can end the <code>while</code> loop manually using the <code>break</code> keyword)</li>
+  <li>Use jQuery to change the css of various elements on the page to use at least three shades of that color. <small>e.g. If they choose "green", show a light green background, with green text and dark green borders</small></li>
+  <li>Use jQuery to display a message letting the user know what theme has been applied to the page</li>
+  <li>Have at least three color schemes for a visitor to choose from <small>(maybe green, blue and red)</small></li>
+  <li>Place different images on the page depending on the theme</li>
+  <li><b>Extra Credit:</b> Allow the user to enter in a hex value and programmatically create lighter and darker tones of that color.</li>
+</ol>
+<hr>
+<h3>jQuery Effects</h3>
+<p><b>Exercise:</b> Learn a little about <a href="http://learn.jquery.com/effects/">jQuery Effects</a> Try each of the following:</p>
+<ul>
+  <li><code>$('h1').show()</code> - convenience method to set element's 'display' property to 'block'</li>
+  <li><code>$('p#secret').hide()</code> - set element's 'display' property to 'none'</li>
+  <li><code>$('ol li').fadeIn()</code> - fade in a set of matched elements over time</li>
+  <li><code>$('p .comments').fadeOut()</code> - fade out as set of matched elements over time</li>
+  <li><code>$('div#thing').slideDown()</code> - animate an element sliding down over time</li>
+  <li><code>$('#message').slideUp()</code> - animate an element sliding up over time</li>
+  <li><code>$('.alert').slideToggle()</code> - toggle between an element sliding up or down over time depending on whether it's visible or not</li>
+</ul>
+
+<p><b>Exercise:</b> Include the <a href="http://learn.jquery.com/jquery-ui/getting-started/">jQuery User Interface</a> plug-in on your site to add additional functionality to jQuery. Try it out!</p>
+
+<hr>
+
+<h3>Creating HTML elements using jQuery</h3>
+<p>Open an HTML document and type the following in, one line at a time.</p>
+<pre><code class="javascript">var new_div = $('&lt;div class="important"&gt;Got a new div coming in here!&lt;/div&gt;')
+
+// can we see the new div on the page yet?
+new_div.css('color','red').attr('id','primary').text("Hi, I'm new here")
+
+// is it on the page yet?
+$('body').append(new_div)
+
+// how about now?
+
+// what's this do?
+new_div.fadeOut(2000).delay(1000).fadeIn().slideUp(4000)</code></pre>
+<p>Here we are creating new jQuery-wrapped HTML elements in JavaScript memory, manipulating them, then appending them to the DOM, which makes them appear on the page. We are also using <a href="javascript:void(0)" class="tooltip" data-tip="jQuery gives back the original HTML element as the return value from each method invocation so that you can then call another method on it.">method chaining</a> to run multiple consecutive operations on a jQuery wrapped DOM node.</p>
+<p><b>Exercise:</b> Construct an HTML document entirely using jQuery...</p>
+<ol>
+  <li>Start with an empty HTML document with jQuery included.</li>
+  <li>Place a second &lt;script&gt; tag on the page to contain your JavaScript</li>
+  <li>Use jQuery to create a new &lt;div&gt; tag with an id of <code>container</code> and append it to the body </li>
+  <li>Use jQuery to create a new &lt;img&gt; tag and place it inside #container</li>
+  <li>Give the img a src attribute with the URL of a funny picture</li>
+  <li>Use jQuery to change the image to be really small</li>
+  <li>Now make it really big</li>
+  <li>Now add a few more images and some text captions and use various jQuery effects to make them dance around!</li>
+  <li>Use <code>Math.random()</code> and <code>position:fixed</code> to randomize the placement of the various HTML elements on your page. Every time you hit refresh, your page should rearrange itself. <code>window.innerHeight</code> and <code>window.innerWidth</code> might come in handy.</li>
+</ol>
+
+<form class='student_code'>
+  <h4>Upload your code to divshot using the CLI and submit a link to your live page:</h4>
+  <p>This can be an exercise above, or a project of your own design that uses a significant amount of jQuery.</p>
+  <input type="hidden" name="exercise" value="15-jQuery">
+    <table>
+      <tr>
+        <td>Your Name:</td>
+        <td><input type="text" name="name"></td>
+      </tr>
+      <tr>
+        <td>Divshot URL:</td>
+        <td><input type="text" name="url"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit" value="Send"></td>
+      </tr>
+    </table>
+</form>
+</section>

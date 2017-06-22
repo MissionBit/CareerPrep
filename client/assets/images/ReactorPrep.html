@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ReactorPrep</title>
+    <link rel="stylesheet" href="assets/css/lib.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+  </style>
+
+</head>
+<body onload="load();">
+<div id="container">
+  <header>Reactor Prep</header>
+  <nav>
+    <section>
+    <p>Week 1:</p>
+    <ol>
+
+<li><a class="load done" href="#students/00-setup.html">0: Computers &amp; Setup</a></li>
+<li><a class="load done" href="#students/01-markdown.html">1: Formatting &amp; Markdown</a></li>
+<li><a class="load done" href="#students/02-html.html">2: HTML Tags</a></li>
+<li><a class="load done" href="#students/03-css.html">3: Styling HTML </a></li>
+<li><a class="load done" href="#students/04-css.html">4: The &lt;style&gt; Tag </a></li>
+<li><a class="load done" href="#students/05-multi-section.html">5: Multi-Section Pages</a></li>
+
+<li><a class="load done" href="#students/06-multi-page.html">6: Multi-Pages Sites</a></li>
+<li><a class="load done" href="#students/07-forms.html">7: HTML Forms</a></li>
+
+<li><a class="load done" href="#students/08-positioning.html">8: Positioning</a></li>
+<li><a class="load done" href="#students/09-css-frameworks.html">9: CSS Frameworks</a></li>
+</ol>
+
+</section>
+
+<section>
+  <p>Week 2:</p>
+  <ol>
+    <li class='current'><a class="load" href="#students/10-terminal.html">Terminal</a></li>
+    <li><a class="load" href="#students/11-javascript.html">JavaScript, Ho!</a></li>
+  </ol>
+
+</section>
+
+
+
+  </nav>
+  <div id="content"></div>
+</div>
+
+<script src="assets/js/lib.js"></script>
+<script>
+
+function load (e) {
+  $('#content').load(location.hash.substring(1) || $('nav li>a').not('.done').eq(0).attr('href').substring(1), function () {
+    $('.popup').each(function (i, el) {
+      $(el).magnificPopup({type:$(el).attr('href').substring(0,2) === '//' ? 'iframe': 'ajax'});
+
+    });
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+  });
+}
+
+function loadEvent (event) {
+  var dest = $(this).attr("href");
+  event.preventDefault();
+  history.pushState(null, event.target.textContent, event.target.href);
+  load();
+}
+
+function showHint (event) {
+    $(event.target).hide().parent().find('secret').fadeIn(2000);
+}
+
+$('body').on('click', '.load', loadEvent)
+         .on('click', 'hint text', showHint);
+
+$(window).on('popstate', load);
+
+
+
+</script>
+</body>
+</html>

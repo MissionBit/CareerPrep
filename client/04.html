@@ -1,0 +1,212 @@
+<h1>Forms & Positioning</h1>
+<section>
+  <h3>Collect user input with forms!</h3>
+  <p>HTML forms are used to collect user input. The &lt;form&gt; element defines an HTML form. Form elements are different types of input elements, checkboxes, radio buttons, submit buttons, and more. <strong>Try it out on your page:</strong></p>
+  <pre><code class="html">&lt;form&gt;
+  &lt;input type="text"&gt;
+  &lt;input type="password"&gt;
+  &lt;input type="email"&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;</code></pre>
+
+<p>Great! let's try a more complex example.</p>
+<alert>Write it out!! Don't use copy &amp; paste!</alert>
+<pre><code class="html">&lt;!--
+  The action attribute defines where on the server the form data should be sent
+  The method attribute specifies the HTTP method (GET or POST)
+--&gt;
+
+&lt;form action="form-responses/new" method="POST"&gt;
+
+  &lt;input type="text" name="firstname" value="default" size="100" autofocus&gt;
+  &lt;input type="password" name="pswd"&gt;
+  &lt;input type="email" name="userEmail" placeholder="hello@site.com"&gt;
+
+  &lt;input type="radio" name="weird" value="code-blue" checked&gt;&lt;span&gt;pick this!&lt;/span&gt;
+  &lt;input type="radio" name="weird" value="code-red" checked&gt;&lt;span&gt;or pick this&lt;/span&gt;
+
+  &lt;input type="checkbox" name="optin" value="trusting" checked&gt;You agree to everything
+  &lt;input type="checkbox" name="optout" value="skeptical" disabled&gt;Wait, what?
+
+  &lt;select name="car"&gt;
+    &lt;optgroup label="Swedish Cars"&gt;
+      &lt;option value="boring"&gt;Volvo&lt;/option&gt;
+      &lt;option value="cool"&gt;Honda&lt;/option&gt;
+    &lt;/optgroup&gt;
+  &lt;/select&gt;
+
+  &lt;textarea name="user_message" rows="8" cols="40"&gt;&lt;/textarea&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+
+&lt;!--
+  HERE IS THE BODY OF THE 'POST' NETWORK REQUEST GENERATED UPON 'SUBMIT'
+  firstname=user+numero+uno&pswd=secretstuff&userEmail=me%40site.com&weird=code-blue&optin=sucker&car=boring&userMessage=what+about++++spaces%3F%0D%0Aand%0D%0A+++indentation%3F
+--&gt;</code></pre>
+<h3>Exercise: Style the Form</h3>
+<ol>
+  <li>Create your own version of the above form, NO COPY &amp; PASTE</li>
+  <li>Take a look in your browser... It's a mess!</li>
+  <li>Add line breaks (&lt;br&gt; tags) between elements</li>
+  <li>Add labels for each element</li>
+  <li>In your Chrome Developer tools, go to the Network tab, click the "preserve log" button and submit your form. Click on the POST request to view the content of the network traffic.</li>
+  <li>Check out the <strong>form data</strong> specifically.</li>
+  <li><strong>WHY DID THIS POST REQUEST FAIL?</strong></li>
+</ol>
+<img src="assets/images/network_tab.png" alt="network tab" class="full">
+</section><section>
+<h3>Thinking about network traffic</h3>
+<p><strong>Exercise: </strong>Take five minutes to understand <a href="//www.youtube.com/watch?v=7_LPdttKXPc" class="popup">How the internet works</a>.</p>
+<ul>
+  <li>A GET request asks for information (like an HTML document, CSS file, or image) from the server</li>
+  <li>A POST request sends information (like a user's form input or a file to upload) to the server</li>
+</ul>
+<img src="assets/images/get_request.png" alt="get request">
+
+</section><section>
+<h3>HTML5 Form Elements</h3>
+<pre><code class="html">&lt;input type="date" name="birthday"&gt;</code></pre>
+<p>HTML5 gives us fancy new input types. Give them all a try by setting the <code>type</code> attribute of an input element to the following:</p>
+<ul>
+  <li>color</li>
+  <li>date</li>
+  <li>datetime</li>
+  <li>datetime-local</li>
+  <li>file</li>
+  <li>email</li>
+  <li>month</li>
+  <li>number</li>
+  <li>range</li>
+  <li>search</li>
+  <li>tel</li>
+  <li>time</li>
+  <li>url</li>
+  <li>week</li>
+</ul>
+<p>We can also use HTML attributes to change the behavior of form elements or do <a href="javascript:void(0)" class="tooltip" data-tip="Typical validation includes: Has the user filled in all required fields? Entered a valid url or email address?
+Has the user entered text in a numeric field?">form validation</a> to only allow users to submit the form when certain conditions are met. Try out a few:</p>
+<pre><code class="html">&lt;input type="text" name="country_code" pattern="[A-Za-z]{3}"&gt;</code></pre>
+<ul>
+    <li>disabled	-- Specifies that an input field should be disabled</li>
+    <li>max	      -- Specifies the maximum value for an input field</li>
+    <li>maxlength	-- Specifies the maximum number of character for an input field</li>
+    <li>min	      -- Specifies the minimum value for an input field</li>
+    <li>pattern	  -- Specifies a <a href="//simple.wikipedia.org/wiki/Regular_expression" class="popup">regular expression</a> to check the input value against</li>
+    <li>readonly	-- Specifies that an input field is read only (cannot be changed)</li>
+    <li>required	-- Specifies that an input field is required (must be filled out)</li>
+    <li>value	    -- Specifies the default value for an input field</li>
+</ul>
+  <h3>Hovering, Focusing, &amp; Pseudo-selectors!</h3>
+  <p>Your browser is always monitoring your interaction with the web page. It watches the position of the mouse, tracks which HTML element is currently <a href="javascript:void(0)" class="tooltip" data-tip="Focus indicates the component which is selected to receive input (such as text entered at the keyboard). Moving the focus away from a specific element (perhaps to give focus to a different input area) is known as a blur event.">focused</a>, and waits to accept mouse clicks and keyboard input from the user.</p>
+  <p><strong>Psuedo-classes</strong> can be used to style HTML elements only under particular conditions. Add a few of the following to your form:</p>
+  <img src="assets/images/pseudo-selectors.png" alt="pseudo selectors" class="full">
+<hr>
+  <h3>Exercise: Create a Sign-up Form</h3>
+  <p>Your community site needs a sign-up form! (and this one will actually work, promise)</p>
+  <ol>
+    <li>Ask your users to fill out your form to apply to join the community</li>
+    <li>The form should collect their name, username, password, and email</li>
+    <li>Ask them to introduce themselves using a &lt;textarea&gt; element</li>
+    <li>Ask them to fill in a "get to know you" survey using dropdown menus, checkboxes, radio buttons, and various other form elements</li>
+    <li>Use <a href="http://formspree.io/">Formspree</a> to have form responses emailed to you</li>
+  </ol>
+  <warn>Note: you'll need to have your site deployed (on divshot, for example) for Formspree to work</warn>
+
+</section>
+<section>
+  <h2>Page Layouts with CSS</h2>
+  <p>Up until this point, we've worked only with single-column HTML documents. What if we want more complex layouts. Maybe a snazzy sidebar, like this?</p>
+  <img src="assets/images/2-column-layout.jpg" alt="">
+  <p><strong>Let's give it a go!</strong></p>
+  <h3>Exercise 1: A Page for Hipsters</h3>
+  <p>Hipsters have money and buy ridiculous things. Let's take advantage of this situation by building a very hip 2-column website to sell them hand-stitched leather whatevers.</p>
+  <h4>Step 1: no layout</h4>
+  <p>Create a new HTML document with a bunch of text from <a href="http://hipsum.co/" target="_blank">hipster ipsum</a>. We want a lot of text to make them feel at home. Have at least 10 paragraphs.</p>
+  <p>Having no layout makes <a href="javascript:void(0)" class="tooltip" data-tip="A block-level element starts on a new line and stretches out to the left and right as far as it can.">block</a> elements (like &lt;div&gt;,&lt;h1&gt;,&lt;p&gt;) really wide, which gets kind of annoying to read.</p>
+  <h4>Step 2: margin auto</h4>
+  <pre><code class="css">#container {
+  width: 960px;
+  margin: 0 auto;
+}</code></pre>
+  <p>Let's add a container div to surround the content on our page with the above styles applied. We've seen this before. It just gives a fixed width to the content and centers it.</p>
+  <h4>Step 3: flexible sizing for small screens</h4>
+  <p>Try squishing the browser window really narrow though. What happens?</p>
+  <pre><code class="css">#container {
+  max-width: 960px;
+  margin: 0 auto;
+}</code></pre>
+<p>What if we change our CSS to use <code>max-width</code> instead. What changes?</p>
+<h4>Step 3: brand and navigation divs</h4>
+<ol>
+  <li>Let's put our content inside a div#content (still inside #container)</li>
+  <li>Above div#content (still inside #container), add a div#header, which should contain div#brand and div#nav</li>
+  <li>Give every id'd div a different background-color so we can see what's going on.</li>
+  <li>Place a logo and company name in #brand</li>
+  <li>Mock out a few fake links for the #nav</li>
+  <li>The navigation links should be an unordered list.</li>
+  <li>How can we make the list items horizontal? Try it first, then check <a href="javascript:void(0)" class="tooltip" data-tip="#nav li { display: inline; list-style-type: none; }">the solution</a></li>
+</ol>
+<p></p>
+<p></p>
+<h4>Step 4: fixed header</h4>
+<p>What if we want our branding and navigation to be visible no matter how far the user scrolls? Let's tell the browser we want the element with the id "header" to stay in a fixed position no matter how we scroll the screen, as if it were a sticker, stuck on the user's screen.</p>
+<pre><code class="css">#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+}</code></pre>
+<p>Discover the following:</p>
+<ol>
+  <li>We've taken the #header out of the <a href="javascript:void(0)" class="tooltip" data-tip="When the browser renders divs onto the screen, it sees  fixed elements as hovering above the page, stuck to the user's viewport, so it lets other elements slip underneath it.">page flow</a>. How do we <a href="javascript:void(0)" class="tooltip" data-tip="Can we give some element a margin-top CSS property to push it out from under the #header?">prevent it from overlapping</a> our content?</li>
+  <li>What if we place our #header above #container instead of inside it?</li>
+  <li>What if we give the header a set height and width?</li>
+  <li>What if we give the the "top" and "left" properties non-zero pixel values (like 10px)?</li>
+  <li>What if we change the "top" and "left" properties to "bottom" and "right" respectively?</li>
+</ol>
+<h4>Step 5: a second column</h4>
+<p>Okay things are getting serious now...</p>
+<ol>
+  <li>Create a div#sidebar as the last element inside the #container</li>
+  <li>Put a bunch of pictures of snazzy hipster things to buy in there</li>
+  <li>Give #container a css rule <code>position:relative;</code> <a href="javascript:void(0)" class="tooltip" data-tip="Relative behaves the same as default (static) positioning unless we move it. In this case, confusingly, all it does is give the absolutely-positioned #content element the proper reference to offset itself from...">why?</a></li>
+  <li>Give #content css rules <code>position: absolute; width: 600px;</code> <a href="javascript:void(0)" class="tooltip" data-tip="Like fixed, absolute removes itself from the page flow (hovers over the rest of the content) and offsets itself from the nearest positioned ancestor using top and left.">why?</a></li>
+  <li>Give #sidebar css rules <code>width: 350px; margin-left: 600px;</code> <a href="javascript:void(0)" class="tooltip" data-tip="position: absolute has taken #content out of the page flow, without the margin, #sidebar would overlap it.">why?</a></li>
+  <li><strong>Confused yet?</strong> Check out this <a href="http://learnlayout.com/position.html" target="_blank">quick demo</a> illustrating the different types of positioning</li>
+</ol>
+<p>Okay, the above works, but it's a bit confusing, it doesn't squish itself for small screens, and for complicated reasons, if our <code>position: absolute;</code> element is larger than our container, it overflows its bounds.</p>
+
+<h4>Step 6: A better way</h4>
+<p>Another CSS property which has been hacked into layout duty is float. Float was originally intended for wrapping text around images. Try adding a few images mixed in with the hipster ipsum <em>inside</em> any paragraph tags just mixed into the middle of the text. Observe the result, and then give them the following style:</p>
+<pre><code class="css">#content img {
+  float: right;
+  margin: 0 0 1em 1em;
+}</code></pre>
+<p>Now try floating them left instead.</p>
+<p>Okay, now for the big finale!</p>
+<ol>
+  <li>Remove the position, and margin-left css properties from #container, #content, and #sidebar respectively</li>
+  <li>Add <code>float:left</code> to both #content and #sidebar</li>
+  <li>Where did the background color go from our #container?</li>
+  <li>Add <code>overflow: auto;</code> to #container</li>
+  <li>Change the widths of #content and #sidebar to 75% and 25% resepectively and try making the browser window really narrow.</li>
+  <li>What is the difference in behavior between #container having 'width' vs 'max-width' when making the browser narrower?</li>
+</ol>
+<h4>Step N: clean-up</h4>
+<p>Let's add some padding, margins, borders, background colors, etc to make things look nice. What happens if we don't use the <code>border-box</code> CSS property on every element?</p>
+<pre><code class="css">* {
+  box-sizing: border-box;
+}</code></pre>
+  <h3>Exercise: Improving Our Community Site</h3>
+  <p>Ok, let's get fancy! Design a two column layout for your community site.</p>
+  <alert>Although you can reference it, do not copy &amp; paste code from the hipster site.</alert>
+  <ol>
+    <li>There should be a div#container that centers the content</li>
+    <li>Create a div#header that contains the brand and nav links</li>
+    <li>Add a div#brand with the logo</li>
+    <li>Add a div#nav with the site navigation links</li>
+    <li>Add a div#content to hold that specific page's content</li>
+    <li>Add a div#sidebar with extra content that should be shown on every page</li>
+    <li>Add a div#footer if you'd like</li>
+  </ol>
+  <p>There's <strong>A LOT</strong> more to know about CSS layout. If you have extra time, and are interested, I highly recommend reading <a href="http://learnlayout.com/">this site</a> from start to finish.</p>
+</section>

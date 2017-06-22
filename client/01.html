@@ -1,0 +1,322 @@
+<h1>Markup Languages</h1>
+<section>
+<h2>A little about computers...</h2>
+<p>A computer is essentially an adding machine wired to a clock that ticks/ performs a simple calculation a couple billion times a second, querying and saving back data to a storage device (hard drive or memory) as it goes. <a href="http://www.simplecpu.com/" target="_blank">Learn more... <span class='icon'>&#x238B;</span></a></p>
+
+<h3>Operating System</h3>
+<img src="assets/images/os.gif" alt="operating system" />
+
+<p>The operating system is the program (series of instructions) that runs when you turn on your computer. It handles inputs (keyboard, mouse, camera, network connections) and outputs (monitor, speakers, network connections), manages shared access to computing resources and memory, and reads and writes data to the file system on behalf of any number of simultaneously running applications (web browser, code editor, text document, music player, etc) </p>
+
+<h3>User Interfaces</h3>
+
+<p>Computers can receive user input through either a command line interface (CLI) or a graphical user interface (GUI).</p>
+
+<img src="assets/images/cli.gif" alt="command line interface" />
+
+<p>In a command line interface (A.K.A. "Console", "Terminal", or "Shell"), the user types commands using the keyboard to tell the computer to take an action. The computer will display the results of the operation by writing text to the screen.</p>
+
+<img src="assets/images/gui.jpg" alt="graphical user interface" />
+
+<p>In a graphical user interface, the mouse is used to interact with <a href="javascript:void(0)" data-tip="emulating the aesthetics of physical objects- in this case, the files, folders, calendars and desktops of an office environment" class="tooltip">skeuomorphic</a> icons to open files and applications, navigate the file system, or change settings as well as input text through the keyboard which is passed to the currently "focused" element (such as the body of an email or the URL bar in your browser).</p>
+
+<p>Graphical user interfaces are generally thought easier to use. Command lines allow programmers more powerful and fine-grained control over their computers.</p>
+
+<h3>File System</h3>
+
+<img src="assets/images/memory.gif" alt="memory" />
+<p>The file system organizes the data stored on your hard disk. The underlying storage mechanism has no concept of a file, it only knows of disk blocks, containing binary data, numbered sequentially by their memory address.</p>
+
+<img src="assets/images/tree.jpg" alt="tree" />
+<p>The file system does the translation between the formless series of 1's and 0's and the <strong>data structures</strong> the users interact with (files organized in folders).</p>
+
+<img src="assets/images/fs.png" alt="file system" />
+<img src="assets/images/finder.png" alt="finder" />
+
+<h2>Exercises</h2>
+
+<p>Make a folder on the desktop to hold all your code for this course.</p>
+<ol>
+  <li><code>[CMD + TAB]</code> to switch to <code>Finder</code></li>
+  <li><code>[CMD + SHIFT + D]</code> to open your file system to the Desktop folder</li>
+  <li><code>[CMD + SHIFT + N]</code> to create a new folder</li>
+  <li><a href="https://atom.io/">Download Atom</a> and move it to your Applications folder.</li>
+  <li>Open the search bar <code>[CMD + SPACE]</code> and type <code>atom</code> to open it</li>
+  <li>Create a new window <code>[CMD + SHIFT + N]</code></li>
+  <li>Create a new file <code>[CMD + N]</code></li>
+  <li>Write a short poem</li>
+  <li>Save <code>[CMD + S]</code> the file into your code folder with a <code>.txt</code> <a href="javascript:void(0)" data-tip="The dot-deliniated suffix of a file name indicating its encoding (file format), thus by what rules it should be evaluated." class="tooltip">file extension</a></li>
+</ol>
+<p><strong>A note on file names:</strong> For practical reasons to do with how files are referenced in different contexts, always save files in all lower case letters with no spaces. We recommend <code>using_underscores.html</code></p>
+
+<p>Interview your partner and create a text document introducing them (they should make one introducing you, too). Here are some ideas to get you started:</p>
+
+<ol>
+  <li>A short bio</li>
+  <li>What is their programming background?</li>
+  <li>Why do they want to learn to code?</li>
+  <li>What are their goals for this course specifically?</li>
+  <li>Other hobbies and interests?</li>
+  <li>What are their favorite websites?</li>
+</ol>
+
+<p>Be prepared to give a 30 second presentation introducing your partner.</p>
+
+</section>
+<section>
+<h2>Formatting &amp; Markdown</h2>
+<h3>Formatted Text</h3>
+<img src="assets/images/word.jpg" alt="word document"/>
+<p>Text is cool, but you know what's <strong>really cool?</strong> <em><a href="javascript:void(0);" class="tooltip" data-tip="Formatted text, styled text, or rich text- as opposed to plain text- has encoded styling information: colors, styles (boldface, italic), sizes, and special features (such as hyperlinks).">formatted text</a></em>. Let's translate our <code>.txt</code> text document introducing our partner into a <code>.rtf</code> Rich Text Format one.</p>
+<ol>
+  <li>Search <code>[CMD + SPACE]</code> for the <em>textEdit</em> application and create a formatted document.</li>
+  <li>Copy in the notes from your interview.</li>
+  <li>Use the GUI-style toolbar to create bold, italic, and underlined text.</li>
+  <li>Set the color of certain text and background sections.</li>
+  <li>Change the font face, font size, and font style.</li>
+  <li>Change the justification (left, center, right).</li>
+  <li>Create bulleted and numbered lists.</li>
+  <li>Get help<code>[CMD + SHIFT + ?]</code> to find the "attach file" option to add a picture</li>
+  <li>Get help<code>[CMD + SHIFT + ?]</code> to find the "add link" option to link selected text to a <a href="students/reference/file_path.html" class='popup'>file path</a> or <a href="//simple.wikipedia.org/wiki/Uniform_Resource_Locator" class='popup'>url</a>.</li>
+  <li>Save the document<code>[CMD + S]</code> with a <code>.rtf</code> file extension</li>
+  <li>Try opening your <code>.rtf</code> document using Atom. What's up with that?</li>
+</ol>
+<h3>Markdown</h3>
+<p>Formatted text is nice, but clicking buttons will never scale. We need to be able to <a href="javascript:void(0)" class='tooltip' data-tip="Done with code, rather than via direct user interaction. For example, consider resizing columns in Excel. You could manually click and drag every column, or you could write a script to cycle through each and set its width property.">programmatically</a> describe how we want our text processed.</p>
+<p>Markdown is a markup language. Markup languages mix-in special sequences of coded characters to specify the intended layout and style of their text.</p>
+<p>Copy this Markdown code into your Atom code editor and search for 'markdown preview' in the command palette <code>[CMD + SHIFT + P]</code> to have it parsed and rendered.</p>
+<pre><code class='markdown'># This is a header
+## This is an even smaller header
+### Even smaller...
+###### Quite small
+
+Here is some normal text. A paragraph, even!
+
+*This text is in italics.*
+
+**This text is in bold.**
+
+***This text is in both.***
+
+~~This text is rendered with strikethrough.~~
+
+Sometimes you want to embed some \*stylized text\*
+right into **your paragraph.** Pretty cool, right!
+
+* Item
+* Item
+* Another item
+
+or
+
++ Item
++ Item
++ One more item
+
+or
+
+- Item
+- Item
+- One last item
+
+
+1. Item one
+2. Item two
+3. Item three
+
+w/ sub-lists
+
+1. Item one
+2. Item two
+3. Item three
+    1. Sub-item
+    2. Sub-item
+4. Item four
+
+---
+
+[I'm a link to a web page!](http://www.google.com)
+
+![alt text](https://i.imgur.com/81qyN1y.jpg)
+
+![local photo](assets/profile.png)</pre></code>
+
+<h2>Markdown Exercises</h2>
+
+<p>The <code>local photo</code> showed up fine for me... How come it's broken for you?</p>
+<p>Copy the interview with your partner into Atom and mark it up in the Markdown format. Use <code>[CTRL + SHIFT + L]</code> to set the <a href="javascript:void(0)" class='tooltip' data-tip="A system of rules by which to interpret text characters in a file in order to a meaningful set of instructions which can be acted upon. ">encoding language</a> for the <a href="//en.wikipedia.org/wiki/Syntax_highlighting" class='popup'>syntax highlighter</a>. At a minimum, use the following formatting:</p>
+
+<ol>
+  <li>Headers of several different sizes</li>
+  <li>italic text</li>
+  <li>bold text</li>
+  <li>an unordered list</li>
+  <li>an ordered list</li>
+  <li>a "horizontal rule" delimiter</li>
+  <li>a link to a web page</li>
+  <li>a link to an image on the web</li>
+  <li>a link to an image on your computer</li>
+  <li>Link to a few of their favorite web sites</li>
+  <li>Be creative! <a href="//learnxinyminutes.com/docs/markdown/" class='popup'>Explore...</a></li>
+</ol>
+
+<p>When you are done, save your work as a <a href="https://gist.github.com/">public gist</a> and share it in slack chat. Copy a few other people's markdown files into your Atom code editor and practice using "markdown preview" to show them in their rendered form.</p>
+
+<p>Use the command palette to copy the markdown as HTML. Paste it into a new document and puzzle over it.</p>
+
+<h3>Challenge:</h3>
+<p>Over the course of this class, you are going to build the Internet's premier watering hole for a very specific community. Examples include: Foodies in Topeka, Russian-speaking fantasy football enthusiasts, and alpaca-fur-loving fashionitas.</p>
+
+<ol>
+  <li>Take a moment to think of a couple of ideas. They can be funny or serious or anything else. No rules.</li>
+  <li>Close your eyes and envision your ideal community members in as much detail as possible. How will they want to interact with your site? Are you excited to invest time in helping these people?</li>
+  <li>Collect feedback about your ideas from some of your classmates. Also take some time to get to know them a little.</li>
+  <li>Give them your feedback on their ideas.</li>
+  <li>Decide on your final idea and prepare a 30-second elevator pitch to present it to the class.</li>
+  <li>Create a one page "pitch sheet" using Markdown to hand out to investors. Include some charts and graphs as well as inspirational stock photography.</li>
+</ol>
+
+</section>
+
+
+<section>
+  <h2>What is HTML?</h2>
+  <p>HTML is a <b>markup</b> language for describing the <b>structure</b> and <b>content</b> of web documents (web pages). It is comprised of markup <b>tags</b> and text content nested inside each other.</p>
+
+<img src="assets/images/html_breakdown.png" alt="html breakdown" >
+
+    <h3>HTML Tags</h3>
+    <p>HTML tags are <b>keywords</b> (tag names) surrounded by <b>angle brackets</b>:</p>
+    <div style="font-size:20px;padding:10px;margin-bottom:10px;word-wrap:break-word;font-family:Consolas,'courier new'">
+    &lt;tagname&gt;content&lt;/tagname&gt;
+    </div>
+
+    <ul>
+      <li>HTML tags normally come <b>in pairs</b> like &lt;p&gt; and &lt;/p&gt;</li>
+      <li>The first tag in a pair is the <b> start tag,</b> the second tag is the <b> end tag</b></li>
+      <li>The end tag is written like the start tag, but with a <b>slash</b> before the tag name </li>
+    </ul>
+<h3>A small HTML file</h3>
+<p>As written by the programmer in a code editor, it is an inert document- data sitting on the hard drive- until its code is <b>executed</b> by an interpreter:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My First Heading&lt;/h1&gt;
+    &lt;p&gt;My first paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3>Web Browsers</h3>
+<p>The purpose of a web browser (Chrome, IE, Firefox, Safari) is to read HTML documents and display them.</p>
+<h3>Reading &amp; Parsing</h3>
+<p>By following the proscribed rules of HTML, a web browser understands this to be a document with a heading and a paragraph. Here is what the browser <b>interpreter</b> thinks when given this code.</p>
+  <ul>
+    <li>The <b>DOCTYPE</b> declaration defines the document type to be HTML</li>
+    <li>The text between <b>&lt;html&gt;</b> and <b>&lt;/html&gt;</b> describes an HTML document</li>
+     <li>The text between <b>&lt;head&gt;</b> and <b>&lt;/head&gt;</b> provides information about the document</li>
+     <li>The text between <b>&lt;title&gt;</b> and <b>&lt;/title&gt;</b> provides a title for the document</li>
+     <li>The text between <b>&lt;body&gt;</b> and <b>&lt;/body&gt;</b> describes the visible page content</li>
+     <li>The text between <b>&lt;h1&gt;</b> and <b>&lt;/h1&gt;</b> describes a heading</li>
+     <li>The text between <b>&lt;p&gt;</b> and <b>&lt;/p&gt;</b> describes a paragraph</li>
+  </ul>
+<p>It then <b>parses</b> apart the file. The white area below (inside the &lt;body&gt; tag) is the only part that actually appears in the <b>browser window</b> (visible to the user).</p>
+
+    <div style="width:99%;border:1px solid grey;padding:3px;margin:0;background-color:#ddd">&lt;html&gt;
+    <div style="width:90%;border:1px solid grey;padding:3px;margin:20px">&lt;head&gt;
+    <div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;title&gt;Page title&lt;/title&gt;
+    </div>
+    &lt;/head&gt;
+    </div>
+    <div style="width:90%;border:1px solid grey;padding:3px;margin:20px;background-color:#fff">&lt;body&gt;
+    <div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;h1&gt;This is a heading&lt;/h1&gt;</div>
+    <div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;p&gt;This is a paragraph.&lt;/p&gt;</div>
+    &lt;/body&gt;
+    </div>
+    &lt;/html&gt;
+    </div>
+
+  <p>It builds an in-memory representation of a new web page called a <b>Document Object Model</b></p>
+  <img src="assets/images/dom.png" alt="document object model">
+  <p>And <b>renders</b> into the browser <code>window</code> for the user to see and interact with:</p>
+  <p><img alt="View in Browser" style="height:auto;width:635px;border:5px solid grey;" src="assets/images/browser.png" class="img-responsive"></p>
+
+  <h3>See for yourself:</h3>
+  <ol>
+    <li><a href="https://www.google.com/chrome/browser/desktop/index.html">Download Chrome</a> (web browser)</li>
+    <li> <a href="students/examples/1-basic-html.html" target="_blank">Open this file<span class='icon'>&#x238B;</span></a> and view its source <code>[CMD + OPTION + U]</code>.</li>
+    <li>Use the Elements panel of the Chrome developer tools [CMD + OPTION + I] to answer the following questions:</li>
+    <img src="assets/images/elements.png" alt="elements panel">
+
+    <ol>
+      <li>What font-size does the browser give an &lt;h1&gt; element by default?</li>
+      <li>What font-weight does the browser give an &lt;h1&gt; element by default?</li>
+      <li>How does the browser render the extra spaces and new lines in the last paragraph?</li>
+      <li>Are there any parts of the body that are not rendered into the browser window?</li>
+    </ol>
+  </ol>
+
+  <h3>My First HTML Document</h3>
+  <ol>
+    <li>Create your own HTML document similar to the above, without copy &amp; pasting.</li>
+    <li>Save the file as <code>index.html</code></li>
+    <li>Make it a launch announcement for the online community you are starting.</li>
+    <li>Describe what kind of community it will be, and the types of goals you have for it.</li>
+    <li>Set a few rules and guidelines that members will need to follow.</li>
+    <li>Correctly set up the HTML document with a head and body tag</li>
+    <li>The page should have a title tag in the head</li>
+    <li>Use an h1 tag</li>
+    <li>We'll need some paragraphs of text</li>
+    <li>Save the file as <code>index.html</code> in your code folder.</li>
+    <li>View your <code>html</code> file rendered in the browser by switching focus <code>[CMD + TAB]</code> to the <code>Finder</code> GUI and Opening the File System to your Desktop folder <code>[CMD + SHIFT + D]</code>. Open the context menu <code>[CTRL + click]</code> and send the file as an input to the Chrome (web browser) application.</li>
+    <li>View Source <code>[CMD + OPT + U]</code> to see your file's source code from the browser's point of view.</li>
+  </ol>
+
+  <h3>A few new HTML tags</h3>
+  <p>Now check out <a href="students/examples/2-basic-html.html" target="_blank">this page! <span class='icon'>&#x238B;</span></a></p>
+  <ol>
+    <li>Use the Elements panel of the Chrome developer tools <code>[CMD + OPT + I]</code> to answer the following questions:</li>
+    <ol>
+      <li>What font-size does the browser give an &lt;h2&gt; element by default?</li>
+      <li>What font-size does the browser give an &lt;h6&gt; element by default?</li>
+      <li>What font-style does the browser give an &lt;em&gt; element by default?</li>
+      <li>What text-decoration does the browser give an &lt;a&gt; element by default?</li>
+      <li>What list-style-type does the browser give an &lt;li&gt; element which is a child of a  &lt;ul&gt; by default?</li>
+
+    </ol>
+  </ol>
+  <h3>Some things to note:</h3>
+  <img src="assets/images/links.png" alt="links">
+  <p>This link tag has an attribute whose name is <b>href</b> and whose value is a url.</p>
+  <p>Attributes provide additional information about an element. They appear on the opening tag of the element and are made up of two parts: a <b>name</b> and a <b>value</b>, separated by an equals sign.</p>
+  <pre><code class="htlm">&lt;img src="https://i.imgur.com/81qyN1y.jpg" alt="This text will show up, only if the image doesn't (also good for screen readers)"&gt;</code></pre>
+  <p>Image tags have an attribute named <b>src</b> whose <b>value</b> is the location of the image to be displayed.</p>
+
+  <h3>Exercise: About Us</h3>
+  <p>Let's write an "About Us" page introducing (the potentially fictional) individuals running your community site.</p>
+  <ol>
+    <li>Correctly set up the HTML document with a head and body tag</li>
+    <li>The page should have a title tag in the head</li>
+    <li>Use a few "horizontal rule" delimiters or line break tags as appropriate</li>
+    <li>Use at least three different sizes of header tags</li>
+    <li>Use ordered and unordered lists</li>
+    <li>Use some &lt;em&gt; and &lt;b&gt; tags</li>
+    <li>Use some &lt;br&gt; and &lt;hr&gt; tags</li>
+    <li>Include profile photos</li>
+    <li>In fact, we'll need plenty of images (on your computer or on the web). Users love images!</li>
+    <li>Link to some external websites</li>
+    <li>Create a "navigation bar" to allow users to click between the landing page and the "about us" section</li>
+    <li>We need easter eggs! Have at least a few SECRET COMMENTS that visitors can only see if they view your source code!</li>
+  </ol>
+
+  <h3>Deploy!</h3>
+  <p>Okay! Great work so far. Now let's get our web pages live in the internet.</p>
+  <ol>
+    <li>Sign up for free <a href="https://github.com/">Github</a> static hosting</a>.</li>
+    <li>Follow the instructions on <a href="https://pages.github.com">Github Pages</a>. Make sure to select the "Project Site" and "Start from scratch" options.</li>
+    <li>Follow the directions. If you need an example, use <a href="https://www.youtube.com/watch?v=HrmAopxeXzc">this video</a> walkthrough.</li>
+  </ol>
+
+<p><b>Done Already?</b> If you're feeling bold, check out this <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML reference document</a> which lists all the available HTML tags. We'll cover some of them later- like forms and iframes- but others are too obscure or specialized for us to spend time on, so read up if you're interested!</p>
+</section>

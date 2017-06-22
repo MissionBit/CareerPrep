@@ -1,0 +1,300 @@
+<h1>Objects</h1>
+<section>
+<p>JavaScript has two built-in <a href="//en.wikipedia.org/wiki/Associative_array" class="popup">associative array</a> data types to help us store and work with <i>collections</i> of values: Arrays, which are collections of values accessible at sequential integer keys...  </p>
+<pre><code class="javascript">var my_array = ["one", "two", "three"]
+
+my_array[0]
+my_array[1]
+my_array[2] = "not three"</code></pre>
+<p>... and Objects, which are collections of values accessible at arbitrary string keys:</p>
+<pre><code class="javascript">var person = {
+  "name": "Mario",
+  "job": "Plumber"
+}
+
+person["name"]
+person["job"]</code></pre>
+<img src="assets/images/object.png" alt="person object">
+<p>Like arrays, we use the bracket syntax to access and set values</p>
+<pre><code class="javascript">person['name'] = 'Luigi'</code></pre>
+<img src="assets/images/object2.png" alt="person object">
+<hr>
+<h4>Exercise:</h4>
+<ol>
+  <li>Create a variable called <code>my_cat</code> and assign to it an empty object</li>
+  <li>Assign <code>my_cat</code> a <code>name</code> property, which should hold a string value</li>
+  <li>Add an <code>age</code> property holding an integer value</li>
+  <li>Add an <code>alive</code> property holding an boolean value</li>
+  <li>Add at least four more properties such as <code>favorite_toy</code>, and <code>napping_spot</code></li>
+</ol>
+<hr>
+<p>Something to note- because property keys are always string values, quotation marks are optional:</p>
+<pre><code class="javascript">var person = {
+  "name": "Mario",
+  "job": "Plumber",
+  "age" : 55,
+  "licenced": true
+}
+
+var person = {
+  name: "Mario",
+  job: "Plumber",
+  age : 55,
+  licenced: true
+}</code></pre>
+
+<p>Often times we access properties of our objects using variables instead of string literals:</p>
+<pre><code class="javascript">var human = {}
+human['name'] = 'bob'
+human['age'] = 75
+
+var property = 'age'
+
+// what property key are we referencing here? what is its value?
+human[property]
+
+property = 'location'
+
+// at what <i>key</i> will we find the value "San Francisco"?
+human[property] = 'San Francisco'</code></pre>
+<h4>Exercise:</h4>
+<ol>
+  <li>Create a variable called <code>my_dream_life</code> and assign to it an empty object</li>
+  <li>Create a variable called <code>property_key</code> and assign to it the string value <code>"job"</code></li>
+  <li>Use the <code>property_key</code> variable, not the literal string <code>"job"</code> to add a <code>job</code> property to your dream life object.</li>
+  <li>Create a variable <code>another_property_key</code> and give it a value "salary".</li>
+  <li>Use <code>another_property_key</code>, not the literal string <code>"salary"</code>, to quantify the value of human life.</li>
+  <li>What does <code>my_dream_life[property_key]</code> return?</li>
+  <li>What does <code>my_dream_life["job"]</code> return?</li>
+  <li>Assign a string <code>"car"</code> to the variable <code>next_property</code></li>
+  <li>Use the variable <code>next_property</code> to add your dream car to your dream life object.</li>
+  <li>What does <code>my_dream_life[next_property]</code> return?</li>
+  <li>What does <code>my_dream_life["car"]</code> return?</li>
+  <li>Assign the <code>my_dream_life</code> three more properties using the <code>property_key</code> variable rather than literal strings and access them each using variables as well</li>
+</ol>
+<hr>
+<p>We use the <code>person["job"]</code> syntax so often, JavaScript decided to include a more confusing way to do the same thing: <code>person.job</code>. It's called <b>dot notation</b> as opposed to the <b>bracket notation</b> we're used to.</p>
+<pre><code class="javascript">var car = {
+  make: "Toyota"
+}
+
+car["model"] = "Camry"
+car["model"]
+car.model
+
+car.model = "Prius"
+car["model"]
+car.model
+
+var prop = 'year'
+// how can we set the car's year using the variable prop?</code></pre>
+<h4>Exercise:</h4>
+<ol>
+  <li>Which should we use above: <code>car[prop] = 1992</code> or <code>car.prop = 1992</code>? Try both ways!</li>
+  <li>What happens when you ask for a property that is not registered to the object? i.e. to what value does the expression <code>car['nothing_here']</code> resolve to? what about <code>car.nothing_here</code>?</li>
+  <li>Create your own <code>dream_car</code> object.</li>
+  <li><b>Use dot notation</b> to add properties <code>make</code>, <code>model</code>, and <code>color</code> with values of type string, <code>year</code> with a value of type number, and <code>registered</code> with a value of type boolean.</li>
+</ol>
+<hr>
+<p><b>Exercise:</b> On lines ending '??', figure out what the expression will evaluate to. <b>First form a hypthosis</b>, then <b>try it in the console</b>.</p>
+<pre><code class="javascript">var demo_object = {
+    one: 1,
+    two: 2,
+    three: 3
+}
+var one = "three"
+
+demo_object['two'] // ??
+demo_object[one] // ??
+
+var state_capitals = {
+    California: 'Sacramento',
+    Texas: 'Austin'
+}
+
+var place = 'California'
+
+state_capitals['place'] // ??
+state_capitals.place   // ??
+state_capitals[place] // ??
+
+state_capitals['California'] // ??
+state_capitals.California   // ??
+state_capitals[California] // ??</code></pre>
+<hr>
+<p>Although it's less common than with arrays, sometimes we'll want to iterate over every property in an object. There is a special language-level statement to handle this, the <code>for in</code> loop.</p>
+<pre><code class="javascript">var obj = {
+    greeting: 'howdy',
+    direction: 'down',
+    color: 'red',
+    'spaces-and-dashes can be used': ' but need to have quotes'
+}
+
+for (var key in obj) {
+    console.log(obj[key]) //why don't we need quotes around key??
+    // what would happen if we logged obj.key instead? Why? Test it.
+}</code></pre>
+<h4>Exercise:</h4>
+<ol>
+  <li>Use a <code>for in</code> loop to iterate over your <code>cat</code>, <code>dream_car</code> and <code>dream_life</code> objects. Re-write the loop from scratch each time and use a variable name other than <code>key</code> for each one.</li>
+  <li>Use a <code>for in</code> loop to search <code>obj</code> for the key <code>color</code> and use jQuery to append its value to a special div on your web page.</li>
+  <li>Search <code>obj</code> for the value <code>"down"</code>, and append its key into the div.</li>
+  <li>Create a variable <code>target_key</code> and assign it a string <code>"greeting"</code>. Use the <code>target_key</code> variable and <code>for in</code> to find the <code>greeting</code> property and append its value into the div.</li>
+</ol>
+<hr>
+
+<pre><code class="javascript">var numbers = [2, 4, 5, 37, 0]
+var doubled_numbers = {} // should be { 2: 4, 4: 8, 5: 10, 37: 74, 0: 0 }</code></pre>
+<p><b>Exercise:</b> Take the array <code>numbers</code> and place each value into an empty object where the object's keys are the numbers and the values are double that number.</p>
+
+
+<hr>
+
+<h4>String Operations</h4>
+<pre><code class="javascript">var greeting = "Hello and welcome!"
+
+greeting[0] // "H"
+
+!!greeting.match("welcome") // true
+!!greeting.match("goodbye") // false
+
+var words = greeting.split(' ')</code></pre>
+
+<p><b>Exercise:</b> Loop through the famous array add only people whose names start with 'a' to your favorites</p>
+
+<pre><code class="javascript">var favorites = []
+
+var famous = ['alex smith', 'amy whinehouse', 'cameron diaz', 'brad pitt',
+    'ashton kutcher', 'mark whalberg', 'morgan freeman', 'mila kunis']</code></pre>
+
+<h4>Exercise:</h4>
+<ol>
+  <li> Loop through the politicos object and add each person's name to the <code>famous</code> array.</li>
+  <li>Loop through the politicos object and add the names of jobs that people with Obama in their name hold to the <code>obama_jobs</code> array.</li>
+</ol>
+
+
+<pre><code class="javascript">var obama_jobs = []
+
+var politicos = {
+    secretary_of_state: 'hillary clinton',
+    potus: 'barack obama',
+    flotus: 'michelle obama',
+    vice_prez: 'joe biden',
+    gov_of_california: 'jerry brown'
+}</code></pre>
+
+<h4>Exercise:</h4>
+<ol>
+  <li>Create a new empty object <code>b_named_politicos</code></li>
+  <li>Add any politico whose first OR last name starts with a 'b' as a property of the <code>b_named_politicos</code> object with their job title as the key and their name as the value</li>
+  <li>Create a new empty object <code>reverse_politico_lookup</code></li>
+  <li>Create a reverse lookup table by iterating over the politicos object and adding each person to the <code>reverse_politico_lookup</code> object with their name as a key and their job title as the value.</li>
+</ol>
+
+<hr>
+<p>Examine the unexpected behavior regarding arrays and objects...</p>
+
+<pre><code class="javascript">numbers[0]
+numbers["0"]
+
+doubled_numbers[0]
+doubled_numbers["0"]
+
+typeof 37 // 'number'
+typeof "hello" // 'string'
+typeof undefined // 'undefined'
+typeof function() {} // 'function'
+
+typeof { a: 1 } // 'object'
+typeof [ 1, 2, 3 ] // 'object' (?!?! not useful)
+
+Array.isArray({ a: 1 }) // false
+Array.isArray([ 1, 2, 3 ]) // true</code></pre>
+
+<p><b>Exercise:</b></p>
+<ol>
+  <li>Using the below as a starting point, write a function that takes any value and tells you what type it is.</li>
+  <li>Make sure this handles Arrays correctly!</li>
+</ol>
+
+<pre><code class="javascript">var type_tester = function(input) {
+    console.log(input)
+}
+
+type_tester(3)
+type_tester('hello')
+type_tester({})
+type_tester([])
+</code></pre>
+<hr>
+<p>Just like arrays, objects can hold values of any data type. That includes arrays, objects, and functions.</p>
+<pre><code class="javascript">var complex_object = {
+  string: "I'm a string!",
+  number: 42,
+  array: ["all sorts of stuff", 10, true, undefined, {me: "an object", more: "find me in here!"}, function(){console.log('beepity-beep')}],
+  simple_object: {name: 'bob', location: 'basement'},
+  fn: function(){
+    console.log("fn has been invoked! Checking both kinds of invocation-time inputs...")
+    console.log("what is my calling context?", this)
+    console.log("what are my arguments?", arguments)
+  }
+}
+
+complex_object.string
+complex_object.array[4]
+complex_object.simple_object.name
+complex_object.fn("stuff", "more stuff", "even more stuff!")</code></pre>
+
+<h4>Exercise:</h4>
+<ol>
+  <li>Load <code>complex_object</code> into a script tag in an HTML document.</li>
+  <li>Use jQuery to append <code>complex_object</code>'s' <code>string</code> and <code>number</code> properties into a div#primative_data_types</li>
+  <li>Iterate over each property in <code>complex_object.array</code> and use jQuery to append its value to a div#array_values. Decide for yourself what to do in the case of objects or functions.</li>
+  <li>Place bob's name and location in their own div</li>
+  <li>Make the code that logs <code>'beepity-beep'</code> run</li>
+  <li>Understand the various aspects of the <code>complex_object.fn</code> method</li>
+  <li>Create your own complex object and try placing some of its properties on the page. How complex can you make it?</li>
+  <li>Give your object a property whose value is an array of other objects that themselves each have at least one function and one array property.</li>
+</ol>
+
+<hr>
+<p>Arrays and objects are often used in combination</p>
+
+<pre><code class="javascript">var them_dogs = [{
+    name: 'Henry',
+    age: 0.5,
+    breed: 'Aussie',
+    food: 'kibble',
+    toys: ['tennis ball', 'chew toy'],
+    picture: 'http://rubyriverminiaustralianshepherds.com/wp-content/uploads/aussie-puppy-for-sale-940x412.jpg'
+}, {
+    name: 'Tilly',
+    age: 5,
+    breed: 'Mutt',
+    food: 'kibble',
+    toys: ['bone', 'kong', 'squeaky toy'],
+    picture: 'http://www.dogchannel.com/images/zones/top_promo/excited-mixed-breed.jpg'
+}, {
+    name: 'Apollo',
+    age: 10,
+    breed: 'Labrador',
+    food: 'absolutely anything',
+    toys: ['old sock', 'other old sock', 'more old socks'],
+    picture: 'http://media.cmgdigital.com/shared/img/photos/2014/08/01/5a/66/LadyLabrador.jpg'
+}]</code></pre>
+
+<h4>Exercises</h4>
+<ol>
+  <li>Iterate over <code>them_dogs</code> and log each dog's name</li>
+  <li>Iterate over <code>them_dogs</code> and add all the toys to a new <code>all_toys</code> array</li>
+  <li>Write a function that takes an array of dogs and a toy as an input and returns the name of the dog that owns that toy.</li>
+  <li>Using jQuery, place the pictures of each dog on a web page with its name underneath.</li>
+  <li>Create "Dogbook" (which is of course Facebook for dogs) and populate it using the above</li>
+</ol>
+<hr>
+<p>Take a moment to appreciate all the hard work you've put in to become a programmer. You're doing a great job! Here, <a href="http://cdn.iwastesomuchtime.com/632014032559.jpg">this is for you...</a></p>
+
+</section>
+
+<iframe src="https://docs.google.com/a/hackreactor.com/forms/d/e/1FAIpQLSf4QRoSNpaOTuSfO3fd-Hw5I8NyPzrBfn-Cv0s3oTjUQGE2Pw/viewform?embedded=true" width="760" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>

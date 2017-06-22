@@ -1,0 +1,177 @@
+<section>
+  <summary>
+    <p>Objectives:</p>
+    <ul>
+      <li>Use the CLI to navigate the file system</li>
+      <li>Use Node Package Manager to install software (libraries)</li>
+      <li>Deploy sites to a static hosting service using the CLI</li>
+    </ul>
+  </summary>
+  <warn>If you haven't already, <a href="https://nodejs.org/download/">download Node</a>. <small>(It's a JavaScript interpreter with other helpful tools)</small></warn>
+<h3>A Brief Detour Through the Terminal</h3>
+  <p>The Terminal is a Command Line Interface which we can use to issue instructions to our computer. More specifically it's a REPL: Read Evaluate Print Loop.</p>
+
+  <p>A REPL waits for the user to input an instruction and press ENTER to signal they're done. The interpreter then READs the command, EVALUATEs (runs/ executes/ resolves) it, PRINTs the result, and LOOPs back to wait for another command.</p>
+  <img src="assets/images/cli.gif" alt="Command Line">
+  <p>If you've ever played a text adventure game, you've used a REPL:</p>
+
+  <pre><code class="nohighlight">  You are in a small room with a window and a table.
+  > leave room
+  The door is closed.
+  > open door
+  The door is locked.
+  > look at table
+  There is a box on the table.
+  > open box</code></pre>
+
+  <p><i>"Thanks, for the history lesson, Grandpa!"</i>, but <b>what's it good for</b>? Well, hasn't deploying your HTML documents live using the GUI and the Divshot website been a pain? We can accomplish the same task with a simple command using our CLI: <code>divshot push</code> Let's find out how.</p>
+  <hr>
+  <p>Let's open our Terminal after finding it with our Operating System <code>[⌘ + SPACE]</code> and issue some commands</p>
+
+  <pre><code class="nohighlight">
+  date
+
+  cal
+  </code></pre>
+
+  <p>Often times when you see an example of commands to type into the Terminal, it will start w/ a <code>$</code> or a <code>&gt;</code>, which represents the command prompt. You don't actually type this in, the computer wouldn't understand, it's just an indicator to the programmer that this command should be typed into the command line, not written in a file to be run later.</p>
+
+  <pre><code class="nohighlight">
+  $ date
+
+  $ cal
+  </code></pre>
+
+  <p>First we'll have to <b>navigate the file system</b> to find the folder with our HTML documents. Type in the following to <b>P</b>rint your current <b>W</b>orking <b>D</b>irectory.</p>
+
+  <pre><code class="nohighlight">
+  $ pwd
+  </code></pre>
+
+  <p>The result <code>/Users/myName</code> is a <a href="javascript:void(0)" class="tooltip" data-tip="A path specifies a unique location in a file system expressed as a list of nested directories seperated by slashes. Files and folders can be represented by either absolute or relative paths.">file path</a> representing your <b>home directory</b>- by default where you go when you login to your computer. If your computer has multiple logins, each user has their own home directory.</p>
+
+  <img src="assets/images/osx_fs.png" alt="OSX file system">
+  <p>Starting with the root directory, file paths for the above file system might be <code>/Users/Bill/Documents/file.txt</code> to reference Bill's text document or <code>/Users/Jane</code> to reference Jane's home folder.</p>
+
+  <p><code>[⌘ + TAB]</code> to switch to your GUI (called Finder) and open your home directory there too <code>[⌘ + SHIFT + H]</code>. There are all the files and folders. How do we <b>L</b>i<b>S</b>t them in the Terminal?</p>
+
+  <pre><code class="nohighlight">
+    $ ls
+  </code></pre>
+
+  <p>The above lists the contents of the current directory by default.</p>
+
+  <pre><code class="nohighlight">
+    $ ls /Users/YourName/Desktop
+  </code></pre>
+
+
+  <p>The piece of text after the command is an <a href="javascript:void(0)" class="tooltip" data-tip="Data provided as input to the invocation of a particular subroutine">argument</a> to the <code>ls</code> <a href="javascript:void(0)" class="tooltip" data-tip="a sequence of program instructions that perform a specific task">subroutine</a> <small>(AKA a function)</small>. In this case a file path indicating which directory to list the contents of.</p>
+  <p>According to the rules of the Terminal, when you press ENTER after typing in your command, your input is split on each space character, and Terminal interprets the first word as the name of the subroutine (lines of code) to be run. It invokes (runs) it, passing in all additional words as arguments (inputs).</p>
+
+  <p>When working from your home directory, the below should all do the exact same thing. Mouse over to see how the computer interprets each file path and <b>write your own ls commands to test it out!</b></p>
+  <p class='indent'><code class="nohighlight">
+    $ ls <a href="javascript:void(0)" class="tooltip" data-tip="This starts with a slash, so this is a ABSOLUTE FILE PATH. Start from the root directory, find the Users folder, inside that find the YourName folder, inside that find the Desktop folder and pass that to the ls command">/Users/YourName/Desktop</a><br>
+    $ ls <a href="javascript:void(0)" class="tooltip" data-tip="I see a dot, this is a RELATIVE FILE PATH. That means start with my current directory, from here find the Desktop folder">./Desktop</a><br>
+    $ ls <a href="javascript:void(0)" class="tooltip" data-tip="I don't see a dot, but this doesn't start with a slash, so I'll start from the current directory by default and look for the Desktop folder">Desktop</a><br>
+    $ ls <a href="javascript:void(0)" class="tooltip" data-tip="Two dots! That means go to my parent directory, and start searching from there">../YourName/Desktop</a><br>
+    $ ls <a href="javascript:void(0)" class="tooltip" data-tip="Go to my parent directory, and then its parent directory and start searching from there">../../Users/YourName/Desktop</a>
+  </code></p>
+
+  <p>Do you think the last three file paths are ABSOLUTE or RELATIVE?</p>
+
+
+  <p>So we can click on folders to open them in our GUI. What about in Terminal? Let's <b>C</b>hange <b>D</b>irectory into the <code>Desktop</code> folder. (P.S. you can start typing <code>Desk</code> and then press <code>[TAB]</code> to autocomplete file and folder names).</p>
+  <pre><code class="nohighlight">
+    $ cd Desktop
+  </code></pre>
+
+  <p>Ok, see how your command prompt changed to show you that you're in a new directory? Pretty messy right? We need to do a bit of confusing housekeeping to make this easier to see. Don't think too hard, just run this command... (<i>just this once</i> you can copy & paste)</p>
+
+  <pre><code class="nohighlight">
+    echo "PS1='\w: '" > ~/.bash_profile; source ~/.bash_profile
+  </code></pre>
+
+  <p>Tada! (maybe)... There is a lot of potential for that command to go wrong, ask for help if you get an error or don't see a cleaner interface.</p>
+  <pre><code class="nohighlight">
+    $ cd ~/Desktop
+  </code></pre>
+
+  <p><b>Exercise:</b> Let's get really comfortable with file paths. Type <code>cd</code> and a space into the Terminal, and then using your GUI, try drag and dropping a folders into Terminal. Hit enter to run the change directory subroutine and then <code>ls</code> to see the contents of that folder. <b>Do this at least 5 times</b> with a variety of folders.</p>
+  <img src="assets/images/drag-folder.gif" alt="drag folder">
+<hr>
+<h3>Divshot CLI</h3>
+<p>Let's install the command line interface for Divshot so we don't have to drag and drop any more, but rather use <code>divshot push</code> to upload our code. We'll need Node installed so we can use the <b>N</b>ode <b>P</b>ackage <b>M</b>anager to install the divshot-cli. First check to see if Node is installed (<a href="https://nodejs.org/download/">download</a>) and available by typing <code>node -v</code> If you see any version number (e.g. <code>v0.10.28</code>), you're good to go!</p>
+<pre><code class="nohighlight">
+  npm install -g divshot-cli
+  divshot login
+  cd ./myProjectFolder
+  divshot init
+  divshot push production
+</code></pre>
+<p><b>Exercise:</b> Deploy at least three seperate projects to divshot using only the Command Line Interface.</p>
+
+<warn><small>Note: This process is highly error prone, so don't hesitate to ask for help if you get an error. More documentation is available <a href="http://docs.divshot.com/guides/quick-start">here</a>.</small></warn>
+<hr>
+<h3>Lots More!</h3>
+<p>You'll want to understand the following, at least at a conceptual level. <b>Try each command:</b></p>
+<pre><code class="nohighlight">
+    pwd
+    ls .
+
+    cd [directory]
+    cd /
+    cd ..
+    cd ../..
+    ls
+    ls [directory]
+
+    mkdir [directory]    = make a new directory
+    mv [file] [new file] = move/rename file
+    cp [file] [new file] = copy file
+    rm [bad file]        = remove file
+    rm -rf               = remove a directory and all contents
+
+    cat [file]           = show file in Terminal
+    atom [file]          = open file in Atom
+    atom [folder]        = open entire folder as a project in Atom
+    open [folder]        = open a folder in the Finder
+    open [file]          = open a file using the default application for its type
+                 <small>(<i>alternately we could say:</i> invoke the application and pass this file as an input)</small>
+
+
+    ↑/↓                  = scroll through command history
+    history              = see full command history
+    !32                  = re-run previous command #32
+    sudo [command]       = run command as Administrator (root) <= fixes many installation errors
+    sudo !!              = rerun previous as Administrator
+
+    [TAB]                = autocomplete
+    node                 = start the node JavaScript REPL
+    ^C                   = interrupt process (quit back to CLI)
+    ^A/^E                = go to start/end of line
+    ⌘T                   = open new Terminal tab
+
+
+    Paths:
+    /                    = root
+    ~                    = home
+    .                    = current directory
+    ..                   = parent directory
+
+    /Users/JimBob        = absolute path
+    ./Dropbox/Projects   = relative path
+    Dropbox/Projects     = shorter relative path
+
+
+    Flags:
+    command [-flags] [file file file...]
+    -h, --help
+    -v, --verbose or --version
+    -r, -R, --recursive
+    -l, --list
+    -f, --force</code></pre>
+
+<h3>More Information:</h3>
+<p>Want to know more? Check out <a href="http://cli.learncodethehardway.org/book/">Learn CLI the Hard Way</a></p>
+</section>

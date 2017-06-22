@@ -1,0 +1,198 @@
+<h1>Functions</h1>
+<section>
+<p>A function is an object containing a subroutine that defines a sequence of lines of code, packaged as a unit. When defined and saved as a variable, we can reference it by that variable name, and use the invocation operator <code>()</code> to run it 0, 1, or many times.</p>
+
+<pre><code class="javascript">// definition
+var greeter = function () {
+  console.log( "Hello, nice to meet you." )
+}
+
+// do we see a console.log yet?
+
+// reference
+greeter
+
+// do we see a console.log yet?
+
+// invocation
+greeter()
+
+// do we see a console.log yet?
+
+greeter()
+greeter()
+greeter()
+// what about now?</code></pre>
+
+<p>The above is a function that creates side effects when run. The function's side effect is a message logged in the console. Run each of the above lines of code one at a time. At what point does the greeting actually appear in the console?</p>
+
+<h4>Exercises:</h4>
+<ol>
+  <li>Define a function that console.logs a simple message and the time: <code>new Date()</code></li>
+  <li>Invoke your function multiple times from the console.</li>
+  <li>Place your function in a script tag in an HTML document.</li>
+  <li>Invoke it multiple times in the script tag.</li>
+  <li>Open the HTML document in your browser and hit reload a few times.</li>
+  <li>Define a function that generates an enthusiastic string of text and uses jQuery to <code>.append()</code> it to the HTML document (in an #output div for example).</li>
+  <li>Invoke it a few dozen times from the console.</li>
+</ol>
+<hr>
+
+<p>A function w/ a return value, but no side effects</p>
+
+<pre><code class="javascript">var greeter = function () {
+  return 'Hello'
+}
+
+// saving the return value
+var greeting = greeter()
+
+// what value does the variable greeting hold?
+
+// using the return value to compose larger expressions
+console.log(greeting + ", nice to meet you.")
+
+// what's the difference here?
+console.log(greeter() + ", nice to meet you.")</code></pre>
+
+<p>The result of evaluating an expression consisting of a function reference followed by an invocation operator is the value to the right of the keyword <code>return</code> inside the function when the code is run.</p>
+
+<pre><code class="javascript">var saying_generator = function () {
+  var phrase = "Heeey, " + "it's the " + " Fonz."
+  return phrase
+}
+
+// What is the return value?
+var saying = saying_generator()
+
+var broken_saying_generator = function () {
+  var phrase = "Heeey, " + "it's the " + " Fonz."
+  phrase
+}
+
+// What about now?
+var broken_saying = broken_saying_generator()</code></pre>
+
+<h4>Exercises:</h4>
+<ol>
+  <li>In a script tag, define a new function called <code>get_sentence</code></li>
+  <li><code>get_sentence</code> should select a sentence randomly between two or more options and return it</li>
+  <li>Save the return value to a variable called <code>new_sentence</code></li>
+  <li>Use jQuery to add the sentence inside a new <code>&lt;p&gt; tag</code> to the end of the HTML document</li>
+  <li>Refactor your code so that it doesn't need the <code>new_sentence</code> variable</li>
+  <li>Use a while loop to run <code>get_sentence</code> ten times in a row so we can make sure the sentence really is random.</li>
+  <li>What is the statistical likelihood that we randomly get the same sentence ten times in a row?</li>
+</ol>
+
+<hr>
+<p>During every function invocation, you have access to the arguments keyword, which contains all the inputs to the function invocation. Play with this concept until <i>you're sure</i> you understand it.</p>
+
+<pre><code class="javascript">var inspector = function () {
+  console.log(arguments)
+}
+
+// try each invocation individually and ponder the result
+inspector(3)
+
+inspector(3 + 7)
+inspector(3, 7)
+
+inspector("hello")
+inspector("hello" + " " + "how are you")
+inspector("hello", "how are you")
+
+inspector("hello", 7, true, undefined, null, 3 + 12, "nice to" + " meet you")</code></pre>
+<h4>Exercises: </h4>
+<ol>
+  <li>Create a function <code>log_and_return</code> that console.logs all of its inputs and then returns them from the function invocation.</li>
+  <li>Store the return value as a variable <code>returned_values</code></li>
+  <li>Pass that variable as an argument to a second invocation of <code>log_and_return</code></li>
+</ol>
+
+<hr>
+<p>It's unwieldy to work with the <code>arguments</code> keyword directly. Usually we use named <b>parameters</b> to give our inputs (arguments) variable names for the length of the function invocation</p>
+
+<pre><code class="javascript">var value_logger = function (value) {
+  console.log(value)
+}
+
+value_logger("Howdy ho, neighborino!")
+
+// parameters and variables defined in function invocations are local to that invocation
+value     // ReferenceError: No variable 'value' exists
+
+
+value_logger(3 + 7)
+
+// where's the seven?
+value_logger(3, 7)
+
+var doubler = function (num) {
+  return num * 2
+}
+
+// is it ten?
+var should_be_ten = doubler(5)
+
+var double_value_logger = function (value1, value2) {
+  console.log(value1, value2)
+}
+
+double_value_logger("hello", "how are you")
+
+// what is value2?
+double_value_logger("hello")
+
+var add = function(num1, num2){
+  return num1 + num2
+}
+
+var sum = add(7, 12)</code></pre>
+
+<p><b>Exercises:</b> Simple Math</p>
+<ol>
+  <li>Write a function called <code>tripler</code> that takes a number and returns triple the value.</li>
+  <li>Create a function <code>multiply</code> that takes two numbers as inputs and returns their product</li>
+  <li>Create a function <code>divide</code> that takes two numbers as inputs and returns the result of dividing the first by the second</li>
+  <li>Create a function <code>remainder</code> that takes two numbers as inputs and returns the result of modulo the first by the second</li>
+  <li>Using only the functions you wrote above, and no operators, calculate the value of tripling 5, multiplying that by 12, dividing by 2 and then finding the remainder of dividing that by 3.</li>
+  <li>Write 4 more lines of code that use all of your math functions in a single expression</li>
+</ol>
+<hr>
+<p><b>Exercise:</b> Constructing sentences</p>
+<ol>
+  <li>Write a function called <code>string_printer</code>, that takes a string as an argument and uses <code>$('#output').text()</code> to place it into a specific &lt;div&gt; on the web page. Call it multiple times with different strings from the console.</li>
+  <li>Does <code>string_printer</code> use a <i>side effect</i> or a <i>return value</i>?</li>
+  <li>Write a function called <code>funny_sentence</code> that takes a noun, an adjective, a verb, and an adverb as inputs, and constructs a string of html text and uses <code>$('#output').append()</code> to place it on the page.</li>
+  <li>Put each word argument you pass in into spans that have css rules that styles them differently to make them stand out.</li>
+  <li>Invoke <code>funny_sentence</code> 5 times from within a &lt;script&gt; tag and see the result on the page.</li>
+  <li><b>Extra Credit: </b> Create a version of <code>funny_sentence</code> that takes no inputs, but rather constructs a funny sentence on its own from randomly chosen words</li>
+</ol>
+<hr>
+<p><b>Exercise:</b> Remember while loops?</p>
+
+<ol>
+  <li>Write a function called <code>factoral_of_n</code> that takes a number and returns the <a href="//en.wikipedia.org/wiki/Factorial" class=popup>factoral</a> i.e. <code>factoral_of_n(5)</code> should return 120 (5x4x3x2x1).</li>
+  <li>Write a function called <code>count_by_n</code> that has parameters <code>count_by</code> and <code>count_up_to</code>, and console.log's the numbers up to <code>count_up_to</code> by intervals of <code>count_by</code>.</li>
+</ol>
+<hr>
+<warn>Rewrite the below from scratch if you can, try not to reference your previous fizzbuzz code.</warn>
+<p><b>Exercise:</b> FizzBuzz 2: FizzBuzz's revenge</p>
+<ol>
+    <li>Write a function <code>this_that</code> that takes in two strings and reimplements fizzBuzz using those two words instead of 'fizz' and 'buzz' (prints the numbers from 1 to 100. But for multiples of three print word1 instead of the number and for the multiples of five print word2. For numbers which are multiples of both three and five print word1word2.)</li>
+    <li>In the first iteration, have <code>this_that</code> return a long string of the counting seperated by commas</li>
+    <li>Now refactor such that <code>this_that</code> uses <code>$('#output').append()</code> each time to add new divs to the page</li>
+    <li>Allow the user to input a <code>count_up_to</code> argument</li>
+    <li>Allow the user to input <code>fizz_num</code> and <code>buzz_num</code> arguments to set the word substitutions to multiples of something other than 3 and 5</li>
+</ol>
+<hr>
+<p><b>Exercise: </b> Fibonacci</p>
+<p>By definition, the first two numbers in the Fibonacci sequence are 0 and 1, and each subsequent number is the sum of the previous two. For example, the first ten Fibonacci numbers are:</p>
+
+<p><code>0, 1, 1, 2, 3, 5, 8, 13, 21, 34</code></p>
+
+<p>Write a function that accepts a number and returns the number at that position in the fibonnaci sequence.</p>
+
+
+</section>
+<iframe src="https://docs.google.com/a/hackreactor.com/forms/d/e/1FAIpQLSf4QRoSNpaOTuSfO3fd-Hw5I8NyPzrBfn-Cv0s3oTjUQGE2Pw/viewform?embedded=true" width="760" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
