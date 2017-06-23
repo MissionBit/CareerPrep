@@ -1,199 +1,214 @@
-<h1>Command Line & CSS Frameworks</h1>
+  <h1>Command Line & CSS Frameworks</h1>
 
-<section>
-  <summary>
-    If you haven't already, <a href="https://nodejs.org/download/">download Node</a>. (It's a JavaScript interpreter with other helpful tools)
-  </summary>
+  <section>
+    <summary>
+      If you haven't already, <a href="https://nodejs.org/download/">download Node</a>. (It's a JavaScript interpreter with other helpful tools)
+    </summary>
 
-  <h2>A Detour Through the Terminal</h2>
-    <p>On <a href="#01.html">day one</a>, we briefly learned about the difference between the GUI (graphical user interface) and the CLI (command line interface). These are the two interfaces from which computers can receive instruction from humans.</p>
-    <img src="assets/images/cli.gif" alt="Command Line">
+    <h2>A Detour Through the Terminal</h2>
+      <p>On <a href="#01.html">day one</a>, we briefly learned about the difference between the GUI (graphical user interface) and the CLI (command line interface). These are the two interfaces from which computers can receive instruction from humans.</p>
+      <img src="assets/images/cli.gif" alt="Command Line">
 
-  <h3>So how do we get to this command line interface thing?</h3>
-    <p>We can implement the command line interface using a program called <b>Terminal</b> on our Macs. Through Terminal, we'll be able to access our <b>shell</b>, a command interpreter. The most common shell, and the one used in our Macs, is called <b>bash</b>. The Terminal is just a tool we use to view the shell, akin to using a browser to view the web.
+    <h3>So how do we get to this command line interface thing?</h3>
+      <p>We can implement the command line interface using a program called <b>Command Prompt</b> on our PCs. Through Command Prompt, we'll be able to access our <b>shell</b>, a command interpreter. The most common shell, and the one used in UNIX based systems like Linux and Mac OS, is called <b>bash</b>. The equivalent to Command Prompt on UNIX systems is known as Terminal.  The Command Prompt (or Terminal) is just a tool we use to view the shell, akin to using a browser to view the web.  Windows 10 has the ability to run a Terminal emulator from the Command Line, so you can use the bash commands.
 
-  <h3>Let's Start! Basic Bash Commands</h3>
-    <p>Open your Terminal by using Spotlight Search <code>[⌘ + SPACE]</code>, typing in Terminal and pressing enter.</p>
-    <p>The prompt usually shows you some basic information, usually your username and hostname. It might look something like this:</p>
+    <h3>Let's Start! Basic Bash Commands</h3>
+      <p>Open your Command Prompt by hitting the Windows key on the left side of the bottom row of your keyboard, typing in 'cmd' and pressing enter.  You can also fire up your Command Prompt by mousing down to your tray and clicking on the black box icon showing <b>C:\...</b></p>
 
-      <pre><code class="nohighlight">
-      oliviapope@gladiator-laptop:
-      </code></pre>
+      <p>The prompt usually shows you some basic information, usually your username and hostname. It might look something like this:</p>
 
-    <warn><p>Often times when you see an example of commands to type into the Terminal, it will start with a <code>$</code> or a <code>&gt;</code>. You don't actually type in those symbols; when you see something like <code>$ pwd</code>, it's just an indicator to the programmer that this command should be typed into the command line, not written in a file to be run later.</p></warn>
+        <pre><code class="nohighlight">
+        C:\Users\MissionBit>
+        </code></pre>
 
-    <p>When you start up Terminal, you'll begin inside of your <b>root directory</b>. Root directories are usually represented with a ~. We can use a few commands to navigate through our computer's file system.<p>
+      <p><b>C:</b> is the hard drive inside your computer, and <b>Users</b> is the Users folder, where all of the system's user accounts are kept.  <b>MissionBit</b> is the user account you're currently logged into.</p>
 
-    <p>We'll learn how to <b>navigate the file system</b> using the command line. Type in the following to <b>p</b>rint your current <b>w</b>orking <b>d</b>irectory.</p>
+      <p>Next, type 'bash'</p>
 
-      <pre><code class="nohighlight">
-      $ pwd
-      </code></pre>
-
-    <p>What does it give you? What does current working directory mean? How is this similar to your Finder app?</p>
-
-    <img src="./assets/images/finder2.png" alt="finder icon">
-
-    <p>The result <code>/Users/[yourUsername]</code> is a file path representing your <b>home directory</b> - by default where you are when you login to your computer. If your computer has multiple logins, each user has their own home directory. A file path specifies a unique location in a file system expressed as a list of nested directories seperated by slashes. Files and folders can be represented by either absolute or relative paths.</p>
-    <p>Can you find your current directory in Finder?</p>
-
-    <p>Use <code>[⌘ + TAB]</code> to switch to your GUI (called Finder) and open your home directory there, too <code>[⌘ + SHIFT + H]</code>. There are all the files and folders. How do we <b>l</b>i<b>s</b>t them in the Terminal?</p>
+      <p>Now, you're using a bash shell inside Windows! It might look something like this:</p>
 
       <pre><code class="nohighlight">
-        $ ls
+      MissionBit@Desktop-STQNDTL: 
       </code></pre>
 
-    <p>The above lists the contents of the current directory by default. What does the below do?</p>
+      <p>Windows 10 is the first edition of the Windows operating system that has included the capability to use a bash shell inside of the Windows operating system.  You're doing amazing new things already!</p>
 
-      <pre><code class="nohighlight">
-        $ ls /Users/[yourUsername]/Desktop
-      </code></pre>
+      <warn><p>Often, when you see an example of commands intended to be typed into the Terminal, it will start with a <code>$</code> or a <code>&gt;</code>. You don't actually type in those symbols; when you see something like <code>$ pwd</code>, it's just an indicator to the programmer that this command should be typed into the command line, not written in a file to be run later.</p></warn>
 
-    <p>Use <code>cd</code> followed by the path of your file to <b>c</b>hange to a particular <b>d</b>irectory.</p>
-      <pre><code class="nohighlight">
-      $ cd [filepath]
-      </code></pre>
-    <p>For example, if I have a folder called <code>Projects</code> in my Documents folder, the path would be <code>Documents/Projects</code> from my root directory. Thus, I would type:</p>
-      <pre><code class="nohighlight">
-        $ cd Documents/Projects
-      </code></pre>
-    <p>to get into my folder using command line.</p>
+      <p>We can use a few commands to navigate through our computer's file system.<p>
 
-    <p>The piece of text after the command is an <a href="javascript:void(0)" class="tooltip" data-tip="Data provided as input to the invocation of a particular subroutine">argument</a> to the <code>ls</code> <a href="javascript:void(0)" class="tooltip" data-tip="a sequence of program instructions that perform a specific task">subroutine</a> <small>(AKA a function)</small>. In this case a file path indicating which directory to list the contents of.</p>
-    <p>These are some of the most basic commands for getting around your file system.</p>
+      <p>We'll learn how to <b>navigate the file system</b> using the command line. Type in the following to <b>p</b>rint your current <b>w</b>orking <b>d</b>irectory.</p>
 
-    <p>When working from your home directory, the below should all do the exact same thing. Mouse over to see how the computer interprets each file path and <b>write your own ls commands to test it out!</b></p>
-    <p class='indent'><code class="nohighlight">
-      $ ls <a href="javascript:void(0)" class="tooltip" data-tip="This starts with a slash, so this is a ABSOLUTE FILE PATH. Start from the root directory, find the Users folder, inside that find the YourName folder, inside that find the Desktop folder and pass that to the ls command">/Users/[yourUsername]/Desktop</a><br>
-      $ ls <a href="javascript:void(0)" class="tooltip" data-tip="I see a dot, this is a RELATIVE FILE PATH. That means start with my current directory, from here find the Desktop folder">./Desktop</a><br>
-      $ ls <a href="javascript:void(0)" class="tooltip" data-tip="I don't see a dot, but this doesn't start with a slash, so I'll start from the current directory by default and look for the Desktop folder">Desktop</a><br>
-      $ ls <a href="javascript:void(0)" class="tooltip" data-tip="Two dots! That means go to my parent directory, and start searching from there">../[yourUsername]/Desktop</a><br>
-      $ ls <a href="javascript:void(0)" class="tooltip" data-tip="Go to my parent directory, and then its parent directory and start searching from there">../../Users/[yourUsername]/Desktop</a>
-    </code></p>
+        <pre><code class="nohighlight">
+        $ pwd
+        </code></pre>
 
-    <p>Do you think the last three file paths are ABSOLUTE or RELATIVE?</p> In other words, will they be able to work anywhere? Or do they depend on what your current directory is?</p>
+      <p>What does it give you? What does current working directory mean? How is this similar to your File Explorer program?</p>
 
-  <h3>File Names 101</h3>
-    <ul>
-      <li>File names are case-sensitive! (if you haven't noticed this yet)</li>
-      <li>They can be any character (besides /)</li>
-      <li>File extensions are the letters that go after the '.' in your file (letter.txt, corgi.jpg, index.html) and they are more for convenience than anything. When we see a .txt we know it's a text file. When a computer sees a file extension indicating a photo, they'll already have a default program to open your photo in.</li>
-    </ul>
+      <p>You can access your File Explorer program by either clicking on the file icon in your tray, or pressing the Windows key and typing 'file'</p>
 
-  <h3>Tips & Tricks: Short Cuts</h3>
-    <ul>
-      <li>Up/Down Arrows: In your Terminal, hit the 'up' arrow. What do you see? Hit it again. You can use your up and down arrows to see the previous commands you've given to Terminal.</li>
-      <li>Tab: Auto-completes file names for you</li>
-      <li>Ctrl-a & Ctrl-e: Goes to the beginning and the end of the command, respectively</li>
-    </ul>
+      <img src="./assets/images/fileExplorer.png" alt="finder icon">
 
-  <h3>Exercise: Get comfortable with command line!</h3>
-  <p>Type <code>cd</code> and a space into the Terminal, and then using your GUI, try drag and dropping a folders into Terminal. Hit enter to run the change directory subroutine and then <code>ls</code> to see the contents of that folder. <b>Do this at least 3 times</b> with a variety of folders. Try to use the short cuts above!</p>
+      <p>The result <code>/Users/[yourUsername]</code> is a file path representing your <b>home directory</b> - by default where you are when you login to your computer. If your computer has multiple logins, each user has their own home directory. A file path specifies a unique location in a file system expressed as a list of nested directories seperated by slashes. Files and folders can be represented by either absolute or relative paths.</p>
+      <p>Can you find your current directory in File Explorer?</p>
 
-  <img src="assets/images/drag-folder.gif" alt="drag folder">
+      <p>Use <code>[Alt + Tab]</code> to switch between open programs, and open your home directory there. Click on the arrow next to 'This PC' - this expands a list of folders in the computer's main directory. N There are all the files and folders. Next, click on 'Users' - there is MissionBit. You can see all of the folders inside your home directory.  How do we <b>l</b>i<b>s</b>t them in the Terminal?</p>
 
-  <h3>Exercise: Try some of these out!</h3>
-    <p>As you may have guessed, there's a lot more commands. You definitely won't be expected to know them all but here are some useful ones for beginners. <b>Try them if you're curious! But remember to be careful with <code>rm -rf</code></b></p>
-    <pre><code class="nohighlight">
-        ls .
+      <p> Time to <code>[Alt + Tab]</code> back over to your Command Prompt window that's running the bash shell.  Now you can use the 'ls' command to see all the files in your home directory! </p>
 
-        cd /
-        cd ..
-        cd ../..
-        ls
-        ls [directory]
+        <pre><code class="nohighlight">
+          $ ls
+        </code></pre>
 
-        mkdir [directory]    = make a new directory
-        mv [filepath] [new filepath] = move/rename file
-        cp [filepath] [new filepath] = copy file
-        rm [filepath]    = remove file
-        rm -rf               = remove a directory and all contents
+      <p>The above lists the contents of the current directory by default. What does the below do?</p>
 
-        atom [file]          = open file in Atom
-        atom [folder]        = open entire folder as a project in Atom
-        open [folder]        = open a folder in the Finder
-        open [file]          = open a file using the default application for its type
-    </code></pre>
+        <pre><code class="nohighlight">
+          $ ls /mnt/c/Users/MissionBit/Desktop
+        </code></pre>
 
-  <h3>Exercise: Deploy your project using Surge's CLI</h3>
-    <p>We'll be using the command line to <b>push</b> your html website up into the interwebs using Terminal. We'll need Node installed so we can use the <b>N</b>ode <b>P</b>ackage <b>M</b>anager to install Surge's command line interface.</p>
-    <ol>
-      <li>Using your Terminal, navigate (<code>cd</code>) into the inside of the folder you want to publish. Rename your html file <code>index.html</code></li>
-      <li>Check if Node is installed using your Terminal: <code>node --version</code> </li>
-      <li>You should see some numbers (e.g. <code>v5.50</code>) If it's not installed, please <a href="https://nodejs.org/download/">download</a> and install it.</li>
-      <li>Install Surge CLI using NPM: <code>npm install --global surge</code></li> The <code>--global</code> means that we want the Surge CLI to be installed for the whole computer, not just for the directory we are in.
-      <li>Enter <code>surge</code> and you'll be prompted to make an account.<br>
-        <img src="https://surge.sh/images/help/getting-started-with-surge.gif" style="width:500px;">
-      </li>
-      <li>Surge will deploy your <code>index.html</code> file for you and give you a random domain with which it is published to</li>
-    </ol>
+      <p>Use <code>cd</code> followed by the path of your file to <b>c</b>hange to a particular <b>d</b>irectory.</p>
+        <pre><code class="nohighlight">
+          $ cd [filepath]
+        </code></pre>
+      <p>For example, if I have a folder called <code>Projects</code> in my Documents folder, the path would be <code>Documents/Projects</code> from my root directory. Thus, I would type:</p>
+        <pre><code class="nohighlight">
+          $ cd Documents/Projects
+        </code></pre>
+      <p>to get into my folder u4sing command line.</p>
 
-    <p>Here's a short video provided by Surge if you are stuck.</p>
-    <p><iframe width="560" height="315" src="https://www.youtube.com/embed/-EjdMvYPSVU" frameborder="0" allowfullscreen></iframe></p>
+      <p>The piece of text after the command is an <a href="javascript:void(0)" class="tooltip" data-tip="Data provided as input to the invocation of a particular subroutine">argument</a> to the <code>ls</code> <a href="javascript:void(0)" class="tooltip" data-tip="a sequence of program instructions that perform a specific task">subroutine</a> <small>(AKA a function)</small>. In this case a file path indicating which directory to list the contents of.</p>
+      <p>These are some of the most basic commands for getting around your file system.</p>
 
-  <warn><small>Note: This process is highly error prone, so don't hesitate to ask for help if you get an error. More documentation is available <a href="https://surge.sh/help/getting-started-with-surge">here</a>.</small></warn>
+      <p>When working from your home directory, the below should all do the exact same thing. Mouse over to see how the computer interprets each file path and <b>write your own ls commands to test it out!</b></p>
+      <p class='indent'><code class="nohighlight">
+        $ ls <a href="javascript:void(0)" class="tooltip" data-tip="This starts with a slash, so this is a ABSOLUTE FILE PATH. Start from the root directory, find the Users folder, inside that find the YourName folder, inside that find the Desktop folder and pass that to the ls command">/Users/[yourUsername]/Desktop</a><br>
+        $ ls <a href="javascript:void(0)" class="tooltip" data-tip="I see a dot, this is a RELATIVE FILE PATH. That means start with my current directory, from here find the Desktop folder">./Desktop</a><br>
+        $ ls <a href="javascript:void(0)" class="tooltip" data-tip="I don't see a dot, but this doesn't start with a slash, so I'll start from the current directory by default and look for the Desktop folder">Desktop</a><br>
+        $ ls <a href="javascript:void(0)" class="tooltip" data-tip="Two dots! That means go to my parent directory, and start searching from there">../[yourUsername]/Desktop</a><br>
+        $ ls <a href="javascript:void(0)" class="tooltip" data-tip="Go to my parent directory, and then its parent directory and start searching from there">../../Users/[yourUsername]/Desktop</a>
+      </code></p>
 
+      <p>Do you think the last three file paths are ABSOLUTE or RELATIVE?</p> In other words, will they be able to work anywhere? Or do they depend on what your current directory is?</p>
 
-  <h3>More Information:</h3>
-    <p>Want to know more? Check out <a href="http://cli.learncodethehardway.org/book/">Learn CLI the Hard Way</a></p>
-</section>
+    <h3>File Names 101</h3>
+      <ul>
+        <li>File names are case-sensitive! (if you haven't noticed this yet)</li>
+        <li>They can be any character (besides /)</li>
+        <li>File extensions are the letters that go after the '.' in your file (letter.txt, corgi.jpg, index.html) and they are more for convenience than anything. When we see a .txt we know it's a text file. When a computer sees a file extension indicating a photo, they'll already have a default program to open your photo in.</li>
+      </ul>
 
-<hr>
+    <h3>Tips & Tricks: Short Cuts</h3>
+      <ul>
+        <li>Up/Down Arrows: In your Terminal, hit the 'up' arrow. What do you see? Hit it again. You can use your up and down arrows to see the previous commands you've given to Terminal.</li>
+        <li>Tab: Auto-completes file names for you</li>
+        <li>Ctrl-a & Ctrl-e: Goes to the beginning and the end of the command, respectively</li>
+      </ul>
 
-<section>
-  <h2>CSS Frameworks</h2>
-  <p>Okay, so we've learned that doing layout with CSS by hand is confusing, inconsistent between different browsers, resolutions and devices and just generally a great, big pain in the button. Well...</p>
-  <img src="http://scyp.net/wp-content/uploads/2015/01/18271-good-news-everyone-i-was-just-kidding-professor-farnsworth-wallpaper-1280x1280-1-750x410.jpg" alt="good news">
-  <p><strong>Good news everyone! CSS Frameworks exist!</strong> A framework (or library) just means "a bunch of pre-written code", usually code that solves frequently-encountered problems common to many projects. <strong>A lazy programmer is a good programmer. Don't reinvent the wheel!</strong></p>
-  <p>Here is a simple web page which builds off of a super-simple CSS framework called <a href="http://minimalcss.com/">Minimal CSS</a>. <strong>Let's take a look!</strong></p>
-  <ol>
-    <li>Open the Minimal CSS link and take a look around the demo page.</li>
-    <li>View Source (<code>[CMD + SHIFT + ?]</code> and type in "source" if you can't remember the keyboard shortcut) and make a list of the classes being used on the page.</li>
-    <li>Open the Chrome Developer Tools and inspect various <code>.row</code> and <code>.col-n</code> elements. Notice how all the column elements are inside of rows. Also, what do all the col-n elements' numbers add up to inside of the rows?
-      <img src="assets/images/minimal.png" style="width:800px"/>
+    <h3>Exercise: Get comfortable with command line!</h3>
+    <p>Make sure you are inside your Desktop directory; if you're not, use the <b>cd</b> command to navigate to it.  Let's make a new folder with a file inside of it!  Type <code>mkdir</code> and a space into the Terminal, followed by a folder name, like 'cats' or some name of your choice.  It should look like this: <code>mkdir cats</code>Hit enter to make a new file on your Desktop, and then <code>ls</code> to see the contents of that folder.  Nothing there, right?  Let's make a new file to put inside.  Type <code>touch demo.txt</code> to make a new text file inside of your folder.  Now, type 'ls' and press enter.  There is the file you just made, inside your folder!<b>Do this at least 3 times</b> with a variety of folders. Try to use the short cuts above!</p>
+
+    <img src="assets/images/drag-folder.gif" alt="drag folder">
+
+    <h3>Exercise: Try some of these out!</h3>
+      <p>As you may have guessed, there's a lot more commands. You definitely won't be expected to know them all but here are some useful ones for beginners. <br>
       <br>
-      <img src="assets/images/minimal2.png"/>
-    </li>
-    <li>From the view source page, open the link to the <code>minimal.css</code> stylesheet and read over the css rules defined there.</li>
-  </ol>
-  <img src="assets/images/minimal_css.png" alt="dev tools">
-  <p>Above I've selected a div with the class <code>col-6</code> from the example site. Here's what we've learned about this element:</p>
-  <ul>
-    <li>It has no styles applied directly to it by an HTML style attribute</li>
-    <li>On line 37 of the linked stylesheet <code>minimal.css</code> there is a rule that applies only to the class <code>col-6</code> that sets its width.</li>
-    <li>On line 28 of <code>minimal.css</code> it picks up more styles from a rule that is applied to multiple column classes.</li>
-    <li>On line 7 of <code>minimal.css</code> it gets its <code>margin</code> and <code>padding</code> from a rule applied to all elements on the page.</li>
-    <li>It is a div, so the browser displays it as a <code>block</code> element.</li>
-  </ul>
-  <hr>
-  <h3>Exercise: Community Site Pinterest </h3>
-  <p>Let's make a new web page that has a bunch of inspirational text and images for our online community members in a single place. We can use <code>minimal.css</code> to create a lot of small divs in multiple configurations to make it visually interesting. </p>
-  <img src="http://3.bp.blogspot.com/-A6Yh4p6Wdog/UouD-vE9B0I/AAAAAAAAAJc/7k4hOwmP4pA/s1600/collectionview-2.png" alt="pin board">
-  <ol>
-    <li>Set up a new HTML document</li>
-    <li>Download <a href="http://minimalcss.com/minimal.css">minimal.css</a> and link it in the head</li>
-    <li>Create a <code>styles.css</code> and link it IMMEDIATELY AFTER your css framework. <strong>Why not before?</strong></li>
-    <li>Place the content of the page in a fixed-width, centered #container</li>
-    <li>Have a full width header and footer section</li>
-    <li>Create a crazy interspersed grid of captioned images and text OR try to copy the above image using divs, colors, and minimal.css.</li>
-  </ol>
-</section>
-<section>
-  <h3>Bootstrap!</h3>
-  <p>Bootstrap is a more fully-featured framework that gives us pre-written CSS and JavaScript code (we'll just focus on the CSS for now). The CSS alone consists of <a href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">8000+ lines of code!!!</a>. </p>
+      <b>Try them if you're curious! But remember to be careful with <code>rm -rf</code></b></p>
+      <pre><code class="nohighlight">
+          ls .
 
-  <p>This will be an exercise in <a href="javascript:void(0)" class="tooltip" data-tip="Super-core programming skill, especially as you move into professional roles where you may be stepping into a codebase already-in-proress with thousands of files and hundreds of thousands or even millions of lines of existing code.">ignoring complexity</a> and zeroing to finding only the information you need to take the next step forward. (<strong>Hint:</strong> Try using <code>[CMD + F]</code> to search Bootstrap's <a href="http://getbootstrap.com/css/">CSS documentation</a> page for each bolded term below.)</p>
-  <pre><code class="html">&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"&gt;</code></pre>
-  <p>You can make this page about anything, but if you're lacking inspiration <a href="https://www.google.com/search?q=adorable+animals&tbm=isch">may I suggest...</a></p>
-  <ol>
-    <li>Add the above link code to the head of a fresh HTML document.</li>
-    <li>Browse through <a href="http://getbootstrap.com/css/">the documentation</a> of the CSS portion of Boostrap.</li>
-    <li>Create a simple <strong>grid system</strong> for your page.</li>
-    <li>Create a section of <strong>lead body copy</strong></li>
-    <li>Use some <strong>marked text</strong></li>
-    <li>Use some <strong>text alignment classes</strong></li>
-    <li>Create a table with <strong>striped rows</strong></li>
-    <li>Use some <strong>button classes</strong></li>
-    <li>Try a few <strong>image shapes</strong></li>
-  </ol>
-</section>
+          cd /
+          cd ..
+          cd ../..
+          ls
+          ls [directory]
+
+          mkdir [directory] = make a new directory
+          touch [filename.extension] = make a new file 
+          mv [filepath] [new filepath] = move/rename file
+          cp [filepath] [new filepath] = copy file
+          rm [filepath] = remove file
+          rm -rf = remove a directory and all contents 
+      </code></pre>
+
+    <h3>Exercise: Deploy your project using Surge's CLI</h3>
+      <p>We'll be using the command line to <b>push</b> your html website up into the interwebs using Terminal. We'll need Node installed so we can use the <b>N</b>ode <b>P</b>ackage <b>M</b>anager to install Surge's command line interface.</p>
+      <ol>
+        <li>Using your Terminal, navigate (<code>cd</code>) into the inside of the folder you want to publish. Rename your html file <code>index.html</code></li>
+        <li>Check if Node is installed using your Terminal: <code>node --version</code> </li>
+        <li>You should see some numbers (e.g. <code>v5.50</code>) If it's not installed, please <a href="https://nodejs.org/download/">download</a> and install it.</li>
+        <li>Install Surge CLI using NPM: <code>npm install --global surge</code></li> The <code>--global</code> means that we want the Surge CLI to be installed for the whole computer, not just for the directory we are in.
+        <li>Enter <code>surge</code> and you'll be prompted to make an account.<br>
+          <img src="https://surge.sh/images/help/getting-started-with-surge.gif" style="width:500px;">
+        </li>
+        <li>Surge will deploy your <code>index.html</code> file for you and give you a random domain with which it is published to</li>
+      </ol>
+
+      <p>Here's a short video provided by Surge if you are stuck.</p>
+      <p><iframe width="560" height="315" src="https://www.youtube.com/embed/-EjdMvYPSVU" frameborder="0" allowfullscreen></iframe></p>
+
+    <warn><small>Note: This process is highly error prone, so don't hesitate to ask for help if you get an error. More documentation is available <a href="https://surge.sh/help/getting-started-with-surge">here</a>.</small></warn>
+
+
+    <h3>More Information:</h3>
+      <p>Want to know more? Check out <a href="http://cli.learncodethehardway.org/book/">Learn CLI the Hard Way</a></p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>CSS Frameworks</h2>
+    <p>Okay, so we've learned that doing layout with CSS by hand is confusing, inconsistent between different browsers, resolutions and devices and just generally a great, big pain in the button. Well...</p>
+    <img src="http://scyp.net/wp-content/uploads/2015/01/18271-good-news-everyone-i-was-just-kidding-professor-farnsworth-wallpaper-1280x1280-1-750x410.jpg" alt="good news">
+    <p><strong>Good news everyone! CSS Frameworks exist!</strong> A framework (or library) just means "a bunch of pre-written code", usually code that solves frequently-encountered problems common to many projects. <strong>A lazy programmer is a good programmer. Don't reinvent the wheel!</strong></p>
+    <p>Here is a simple web page which builds off of a super-simple CSS framework called <a href="http://minimalcss.com/">Minimal CSS</a>. <strong>Let's take a look!</strong></p>
+    <ol>
+      <li>Open the Minimal CSS link and take a look around the demo page.</li>
+      <li>View Source (<code>[CMD + SHIFT + ?]</code> and type in "source" if you can't remember the keyboard shortcut) and make a list of the classes being used on the page.</li>
+      <li>Open the Chrome Developer Tools and inspect various <code>.row</code> and <code>.col-n</code> elements. Notice how all the column elements are inside of rows. Also, what do all the col-n elements' numbers add up to inside of the rows?
+        <img src="assets/images/minimal.png" style="width:800px"/>
+        <br>
+        <img src="assets/images/minimal2.png"/>
+      </li>
+      <li>From the view source page, open the link to the <code>minimal.css</code> stylesheet and read over the css rules defined there.</li>
+    </ol>
+    <img src="assets/images/minimal_css.png" alt="dev tools">
+    <p>Above I've selected a div with the class <code>col-6</code> from the example site. Here's what we've learned about this element:</p>
+    <ul>
+      <li>It has no styles applied directly to it by an HTML style attribute</li>
+      <li>On line 37 of the linked stylesheet <code>minimal.css</code> there is a rule that applies only to the class <code>col-6</code> that sets its width.</li>
+      <li>On line 28 of <code>minimal.css</code> it picks up more styles from a rule that is applied to multiple column classes.</li>
+      <li>On line 7 of <code>minimal.css</code> it gets its <code>margin</code> and <code>padding</code> from a rule applied to all elements on the page.</li>
+      <li>It is a div, so the browser displays it as a <code>block</code> element.</li>
+    </ul>
+    <hr>
+    <h3>Exercise: Community Site Pinterest </h3>
+    <p>Let's make a new web page that has a bunch of inspirational text and images for our online community members in a single place. We can use <code>minimal.css</code> to create a lot of small divs in multiple configurations to make it visually interesting. </p>
+    <img src="http://3.bp.blogspot.com/-A6Yh4p6Wdog/UouD-vE9B0I/AAAAAAAAAJc/7k4hOwmP4pA/s1600/collectionview-2.png" alt="pin board">
+    <ol>
+      <li>Set up a new HTML document</li>
+      <li>Download <a href="http://minimalcss.com/minimal.css">minimal.css</a> and link it in the head</li>
+      <li>Create a <code>styles.css</code> and link it IMMEDIATELY AFTER your css framework. <strong>Why not before?</strong></li>
+      <li>Place the content of the page in a fixed-width, centered #container</li>
+      <li>Have a full width header and footer section</li>
+      <li>Create a crazy interspersed grid of captioned images and text OR try to copy the above image using divs, colors, and minimal.css.</li>
+    </ol>
+  </section>
+  <section>
+    <h3>Bootstrap!</h3>
+    <p>Bootstrap is a more fully-featured framework that gives us pre-written CSS and JavaScript code (we'll just focus on the CSS for now). The CSS alone consists of <a href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">8000+ lines of code!!!</a>. </p>
+
+    <p>This will be an exercise in <a href="javascript:void(0)" class="tooltip" data-tip="Super-core programming skill, especially as you move into professional roles where you may be stepping into a codebase already-in-proress with thousands of files and hundreds of thousands or even millions of lines of existing code.">ignoring complexity</a> and zeroing to finding only the information you need to take the next step forward. (<strong>Hint:</strong> Try using <code>[CMD + F]</code> to search Bootstrap's <a href="http://getbootstrap.com/css/">CSS documentation</a> page for each bolded term below.)</p>
+    <pre><code class="html">&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"&gt;</code></pre>
+    <p>You can make this page about anything, but if you're lacking inspiration <a href="https://www.google.com/search?q=adorable+animals&tbm=isch">may I suggest...</a></p>
+    <ol>
+      <li>Add the above link code to the head of a fresh HTML document.</li>
+      <li>Browse through <a href="http://getbootstrap.com/css/">the documentation</a> of the CSS portion of Boostrap.</li>
+      <li>Create a simple <strong>grid system</strong> for your page.</li>
+      <li>Create a section of <strong>lead body copy</strong></li>
+      <li>Use some <strong>marked text</strong></li>
+      <li>Use some <strong>text alignment classes</strong></li>
+      <li>Create a table with <strong>striped rows</strong></li>
+      <li>Use some <strong>button classes</strong></li>
+      <li>Try a few <strong>image shapes</strong></li>
+    </ol>
+  </section>
