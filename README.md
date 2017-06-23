@@ -1,3 +1,3 @@
 # CareerPrep
 
-Original version of CodeRamp curriculum
+MB version of CodeRamp curriculum
