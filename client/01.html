@@ -35,17 +35,13 @@
 
 <h2>Exercises</h2>
 
-<p>Make a folder on the desktop to hold all your code for this course.</p>
+<p>Make a folder on the desktop to hold all your code for this course; call it "Projects" or something that makes sense to you.</p>
 <ol>
-  <li><code>[CMD + TAB]</code> to switch to <code>Finder</code></li>
-  <li><code>[CMD + SHIFT + D]</code> to open your file system to the Desktop folder</li>
-  <li><code>[CMD + SHIFT + N]</code> to create a new folder</li>
-  <li><a href="https://atom.io/">Download Atom</a> and move it to your Applications folder.</li>
-  <li>Open the search bar <code>[CMD + SPACE]</code> and type <code>atom</code> to open it</li>
-  <li>Create a new window <code>[CMD + SHIFT + N]</code></li>
-  <li>Create a new file <code>[CMD + N]</code></li>
+  <li>Use <code>[CTRL + SHIFT + N]</code> to create a new folder inside the one you just created.</li>
+  <li>Open Sublime Text.</li>
+  <li>Create a new file <code>[CTRL + N]</code></li>
   <li>Write a short poem</li>
-  <li>Save <code>[CMD + S]</code> the file into your code folder with a <code>.txt</code> <a href="javascript:void(0)" data-tip="The dot-deliniated suffix of a file name indicating its encoding (file format), thus by what rules it should be evaluated." class="tooltip">file extension</a></li>
+  <li>Save <code>[CTRL + S]</code> the file into your code folder with a <code>.txt</code> <a href="javascript:void(0)" data-tip="The dot-deliniated suffix of a file name indicating its encoding (file format), thus by what rules it should be evaluated." class="tooltip">file extension</a></li>
 </ol>
 <p><strong>A note on file names:</strong> For practical reasons to do with how files are referenced in different contexts, always save files in all lower case letters with no spaces. We recommend <code>using_underscores.html</code></p>
 
@@ -79,12 +75,80 @@
   <li>Get help<code>[CMD + SHIFT + ?]</code> to find the "attach file" option to add a picture</li>
   <li>Get help<code>[CMD + SHIFT + ?]</code> to find the "add link" option to link selected text to a <a href="students/reference/file_path.html" class='popup'>file path</a> or <a href="//simple.wikipedia.org/wiki/Uniform_Resource_Locator" class='popup'>url</a>.</li>
   <li>Save the document<code>[CMD + S]</code> with a <code>.rtf</code> file extension</li>
-  <li>Try opening your <code>.rtf</code> document using Atom. What's up with that?</li>
+  <li>Try opening your <code>.rtf</code> document using Sublime Text. What's up with that?</li>
 </ol>
 <h3>Markdown</h3>
 <p>Formatted text is nice, but clicking buttons will never scale. We need to be able to <a href="javascript:void(0)" class='tooltip' data-tip="Done with code, rather than via direct user interaction. For example, consider resizing columns in Excel. You could manually click and drag every column, or you could write a script to cycle through each and set its width property.">programmatically</a> describe how we want our text processed.</p>
 <p>Markdown is a markup language. Markup languages mix-in special sequences of coded characters to specify the intended layout and style of their text.</p>
-<p>Copy this Markdown code into your Atom code editor and search for 'markdown preview' in the command palette <code>[CMD + SHIFT + P]</code> to have it parsed and rendered.</p>
+<p>Copy the following Markdown code into your Sublime code editor:</p>
+<pre><code class='markdown'># This is a header
+## This is an even smaller header
+### Even smaller...
+###### Quite small
+
+Here is some normal text. A paragraph, even!
+
+*This text is in italics.*
+
+**This text is in bold.**
+
+***This text is in both.***
+
+~~This text is rendered with strikethrough.~~
+
+Sometimes you want to embed some \*stylized text\*
+right into **your paragraph.** Pretty cool, right!
+
+* Item
+* Item
+* Another item
+
+or
+
++ Item
++ Item
++ One more item
+
+or
+
+- Item
+- Item
+- One last item
+
+
+1. Item one
+2. Item two
+3. Item three
+
+w/ sub-lists
+
+1. Item one
+2. Item two
+3. Item three
+    1. Sub-item
+    2. Sub-item
+4. Item four
+
+---
+
+[I'm a link to a web page!](http://www.google.com)
+
+![alt text](https://i.imgur.com/81qyN1y.jpg)
+
+![local photo](assets/profile.png)</pre></code>
+<p> Notice it just looks like normal text?  We need to install a package to be able to parse the markdown styles.  Packages are a collection of resource files used by Sublime Text: plugins, syntax highlighting definitions, menus, snippets and more. Sublime Text ships with several packages, and more are available.  Visit https://packagecontrol.io/ and follow the instructions under "Installation" to install Package Control, a simple way to browse and install packages within Sublime text palette.</p>
+
+<p>After you have installed Package Control, we need to install a package to parse and edit Markdown text.</p>
+
+<p>Press <code>[CTRL + shift + P]</code>  to open Command Palette.</p>
+<p>Start typing "install" - as you type, the Command Palette filters down commands to those containing the characters you type.  Select "Package Control: Install Package." After a moment, the Command Palette will be filled with package names.  Start typing the name of the package you want to install, or a keyword such as "markdown" to list all packages with the keyword in their names.  Use the arrow keys to select the package you want - which should be called "MarkdownEditing" - and press <code>[ enter ]</code>.  The package will be downloaded and installed.</p>
+<p>Now, we can edit our markdown, but we still need to be able to view it.</p>
+<p>Press <code>[CTRL + shift + P]</code>  to open Command Palette.  Then, type "install" and select "Package Control: Install Package."  Type "markdown," select "GitHubFlavoredMarkdownPreview," and press <code>[ enter ]</code>.  Close and reopen Sublime Text, which will activate your new package installations.</p>
+
+<p>Create a new file <code>[CTRL + N]</code> called "markdown.md," copy and paste the text below into it, and then press <code>[CTRL + S]</code> to save it.</p>
+
+<p>Press <code>[ CTRL + SHIFT + G ]</code> to view the markdown rendered in the browser</p>
+
 <pre><code class='markdown'># This is a header
 ## This is an even smaller header
 ### Even smaller...
@@ -144,7 +208,7 @@ w/ sub-lists
 <h2>Markdown Exercises</h2>
 
 <p>The <code>local photo</code> showed up fine for me... How come it's broken for you?</p>
-<p>Copy the interview with your partner into Atom and mark it up in the Markdown format. Use <code>[CTRL + SHIFT + L]</code> to set the <a href="javascript:void(0)" class='tooltip' data-tip="A system of rules by which to interpret text characters in a file in order to a meaningful set of instructions which can be acted upon. ">encoding language</a> for the <a href="//en.wikipedia.org/wiki/Syntax_highlighting" class='popup'>syntax highlighter</a>. At a minimum, use the following formatting:</p>
+<p>Copy the interview with your partner into Sublime and mark it up in the Markdown format. Use <code>[CTRL + SHIFT + L]</code> to set the <a href="javascript:void(0)" class='tooltip' data-tip="A system of rules by which to interpret text characters in a file in order to a meaningful set of instructions which can be acted upon. ">encoding language</a> for the <a href="//en.wikipedia.org/wiki/Syntax_highlighting" class='popup'>syntax highlighter</a>. At a minimum, use the following formatting:</p>
 
 <ol>
   <li>Headers of several different sizes</li>

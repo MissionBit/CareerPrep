@@ -70,11 +70,15 @@
         <pre><code class="nohighlight">
           $ cd [filepath]
         </code></pre>
-      <p>For example, if I have a folder called <code>Projects</code> in my Documents folder, the path would be <code>Documents/Projects</code> from my root directory. Thus, I would type:</p>
+        <p>Navigate to your Desktop</p>
         <pre><code class="nohighlight">
-          $ cd Documents/Projects
+          $ cd /mnt/c/Users/MissionBit/Desktop
         </code></pre>
-      <p>to get into my folder u4sing command line.</p>
+      <p>For example, if I have a folder called <code>Projects</code> inside a folder on my desktop called <code>Demo</code>, the path would be <code>Demo/Projects</code> from my Desktop directory. Thus, I would type:</p>
+        <pre><code class="nohighlight">
+          $ cd Demo/Projects
+        </code></pre>
+      <p>to get into my folder using command line.</p>
 
       <p>The piece of text after the command is an <a href="javascript:void(0)" class="tooltip" data-tip="Data provided as input to the invocation of a particular subroutine">argument</a> to the <code>ls</code> <a href="javascript:void(0)" class="tooltip" data-tip="a sequence of program instructions that perform a specific task">subroutine</a> <small>(AKA a function)</small>. In this case a file path indicating which directory to list the contents of.</p>
       <p>These are some of the most basic commands for getting around your file system.</p>
@@ -107,10 +111,10 @@
     <h3>Exercise: Get comfortable with command line!</h3>
     <p>Make sure you are inside your Desktop directory; if you're not, use the <b>cd</b> command to navigate to it.  Let's make a new folder with a file inside of it!  Type <code>mkdir</code> and a space into the Terminal, followed by a folder name, like 'cats' or some name of your choice.  It should look like this: <code>mkdir cats</code>Hit enter to make a new file on your Desktop, and then <code>ls</code> to see the contents of that folder.  Nothing there, right?  Let's make a new file to put inside.  Type <code>touch demo.txt</code> to make a new text file inside of your folder.  Now, type 'ls' and press enter.  There is the file you just made, inside your folder!<b>Do this at least 3 times</b> with a variety of folders. Try to use the short cuts above!</p>
 
-    <img src="assets/images/drag-folder.gif" alt="drag folder">
 
     <h3>Exercise: Try some of these out!</h3>
       <p>As you may have guessed, there's a lot more commands. You definitely won't be expected to know them all but here are some useful ones for beginners. <br>
+
       <br>
       <b>Try them if you're curious! But remember to be careful with <code>rm -rf</code></b></p>
       <pre><code class="nohighlight">
@@ -136,6 +140,7 @@
         <li>Using your Terminal, navigate (<code>cd</code>) into the inside of the folder you want to publish. Rename your html file <code>index.html</code></li>
         <li>Check if Node is installed using your Terminal: <code>node --version</code> </li>
         <li>You should see some numbers (e.g. <code>v5.50</code>) If it's not installed, please <a href="https://nodejs.org/download/">download</a> and install it.</li>
+        <li>Install NPM: <code>sudo apt install npm</code></li> The <code>sudo</code> command stands for "<b>S</b>uper <b>U</b>ser <b>Do</b>" that we want the Surge CLI to be installed for the whole computer, not just for the directory we are in.
         <li>Install Surge CLI using NPM: <code>npm install --global surge</code></li> The <code>--global</code> means that we want the Surge CLI to be installed for the whole computer, not just for the directory we are in.
         <li>Enter <code>surge</code> and you'll be prompted to make an account.<br>
           <img src="https://surge.sh/images/help/getting-started-with-surge.gif" style="width:500px;">
