@@ -3,7 +3,7 @@
 MissionBit's version of CodeRamp curriculum for Summer 2017 class at Microsoft
 
 
-* Server is Ruby; to run locally on a UNIX system:
+* Server is Ruby; to run locally:
 
 1. Navigate to file directory in Terminal
 2. Type ruby -run -e httpd . -p 8080
