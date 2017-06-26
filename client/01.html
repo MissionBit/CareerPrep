@@ -65,16 +65,16 @@
 <img src="assets/images/word.jpg" alt="word document"/>
 <p>Text is cool, but you know what's <strong>really cool?</strong> <em><a href="javascript:void(0);" class="tooltip" data-tip="Formatted text, styled text, or rich text- as opposed to plain text- has encoded styling information: colors, styles (boldface, italic), sizes, and special features (such as hyperlinks).">formatted text</a></em>. Let's translate our <code>.txt</code> text document introducing our partner into a <code>.rtf</code> Rich Text Format one.</p>
 <ol>
-  <li>Search <code>[CMD + SPACE]</code> for the <em>textEdit</em> application and create a formatted document.</li>
+  <li>Search for the text editing program <em>WordPad</em> and create a Rich Text Formatted document.</li>
   <li>Copy in the notes from your interview.</li>
   <li>Use the GUI-style toolbar to create bold, italic, and underlined text.</li>
   <li>Set the color of certain text and background sections.</li>
   <li>Change the font face, font size, and font style.</li>
   <li>Change the justification (left, center, right).</li>
   <li>Create bulleted and numbered lists.</li>
-  <li>Get help<code>[CMD + SHIFT + ?]</code> to find the "attach file" option to add a picture</li>
-  <li>Get help<code>[CMD + SHIFT + ?]</code> to find the "add link" option to link selected text to a <a href="students/reference/file_path.html" class='popup'>file path</a> or <a href="//simple.wikipedia.org/wiki/Uniform_Resource_Locator" class='popup'>url</a>.</li>
-  <li>Save the document<code>[CMD + S]</code> with a <code>.rtf</code> file extension</li>
+  <li>Get help, by pressing <code>[F1]</code>, to find the "attach file" option to add a picture</li>
+  <li>Get help<code>[F1]</code> to find the "add link" option to link selected text to a <a href="students/reference/file_path.html" class='popup'>file path</a> or <a href="//simple.wikipedia.org/wiki/Uniform_Resource_Locator" class='popup'>url</a>.</li>
+  <li>Save the document<code>[CTRL + S], which should have a </code> with a <code>.rtf</code> file extension.</li>
   <li>Try opening your <code>.rtf</code> document using Sublime Text. What's up with that?</li>
 </ol>
 <h3>Markdown</h3>
@@ -224,7 +224,7 @@ w/ sub-lists
   <li>Be creative! <a href="//learnxinyminutes.com/docs/markdown/" class='popup'>Explore...</a></li>
 </ol>
 
-<p>When you are done, save your work as a <a href="https://gist.github.com/">public gist</a> and share it in slack chat. Copy a few other people's markdown files into your Atom code editor and practice using "markdown preview" to show them in their rendered form.</p>
+<p>When you are done, save your work as a <a href="https://gist.github.com/">public gist</a> and share it in slack chat. Copy a few other people's markdown files into your Sublime code editor and practice using "markdown preview" to show them in their rendered form.</p>
 
 <p>Use the command palette to copy the markdown as HTML. Paste it into a new document and puzzle over it.</p>
 
@@ -372,14 +372,41 @@ w/ sub-lists
     <li>Link to some external websites</li>
     <li>Create a "navigation bar" to allow users to click between the landing page and the "about us" section</li>
     <li>We need easter eggs! Have at least a few SECRET COMMENTS that visitors can only see if they view your source code!</li>
+    <li>Save this file inside a folder called YOURNAME.pages.io, which you have created inside of the Projects folder you made earlier</li>
   </ol>
 
   <h3>Deploy!</h3>
-  <p>Okay! Great work so far. Now let's get our web pages live in the internet.</p>
+  <p>Okay! Great work so far. Now let's get our web pages live on the internet.  Remember the GitHub repository we made in the first lesson?  This is what we will use to check in your code and deploy it.</p>
   <ol>
-    <li>Sign up for free <a href="https://github.com/">Github</a> static hosting</a>.</li>
-    <li>Follow the instructions on <a href="https://pages.github.com">Github Pages</a>. Make sure to select the "Project Site" and "Start from scratch" options.</li>
-    <li>Follow the directions. If you need an example, use <a href="https://www.youtube.com/watch?v=HrmAopxeXzc">this video</a> walkthrough.</li>
+    <li>Go to your GitHub account, and click on "Repositories" and then click on "YOURNAME.github.io"</li>
+    <br>
+    <li>Press the Windows key, type <code>[ cmd ]</code>, and hit <code>[ enter ]</code></li>
+    <br>
+    <li>Type <code>[ cd Desktop ]</code> and hit <code>[ enter ]</code>.</li>
+    <br>
+    <li>Type <code>[ cd Projects ]</code> and hit <code>[ enter ]</code> to access the folder you made to hold your code for this class.</li>
+    <br>
+    <li>Type <code>[ cd Projects ]</code> and hit <code>[ enter ]</code> to access the folder you made to hold your code for this class.</li>
+    <br>
+    <li>Type <code>[ cd YOURNAME.github.io ]</code> and hit <code>[ enter ]</code> to access the folder you made to hold your HTML file for the "About Us" page.</li>
+    <br>
+    <li>Follow the instructions on your GitHub repository page to "create a new repository on the command line" so that you can set it up locally on your computer. They should look something like this:
+    <br>
+    <br>
+    <code>echo "# YOURNAME.github.io" >> README.md</code>
+    <br>
+    <code>git init</code>
+    <br>
+    <code>git add . </code>
+    <br>
+    <code>git commit -a -m "first commit"</code>
+    <br>
+    <code>git remote add origin https://YourGitHubUsername/YOURNAME.github.io</code>
+    <br>
+    <code>git push -u origin master</code>
+    </li>
+    <br>
+    <li>Now, you should be able to navigate to <b>YOURNAME.github.io</b> in your browser's address bar, and see your page live on the internet for the world to see!</li>
   </ol>
 
 <p><b>Done Already?</b> If you're feeling bold, check out this <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML reference document</a> which lists all the available HTML tags. We'll cover some of them later- like forms and iframes- but others are too obscure or specialized for us to spend time on, so read up if you're interested!</p>
