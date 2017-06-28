@@ -73,7 +73,7 @@
     &lt;p style="color:green;font-size:300%;text-align:center;font-family:'Times New Roman';"&gt;This is by far the most important part of the page!&lt;/p&gt;
   &lt;/body&gt;
   &lt;/html&gt;</code></pre>
-    <p>So let's begin to refactor the mess above. CSS rules can be applied to an HTML page by placing them inside a <strong>&lt;style&gt; element</strong> inside the &lt;head&gt; element of the page. <strong> Something to remember: we are going to put our CSS in the HTML file here, for purposes of instruction, but this isn't the best practice.  Professional developers should NEVER do this; always put the CSS in a separate CSS file.</strong>We'll get to that in a later section.</p>
+    <p>So let's begin to refactor the mess above. CSS rules can be applied to an HTML page by placing them inside a <strong>&lt;style&gt; element</strong> inside the &lt;head&gt; element of the page. <strong> *Something to remember: we are going to put our CSS in the HTML file here, for purposes of instruction, but this isn't the best practice.  Professional developers should NEVER do this; always put the CSS in a separate CSS file.</strong>  We'll get to that in a later section.</p>
     <p>We begin with a <strong>selector</strong> to indicate which elements the rules apply to. Then, inside of curly braces, we indicate how the elements should be styled. Declarations are split into two parts (a property and a value), are separated by a colon, and end with a semicolon</p>
     <pre><code class="html">&lt;html&gt;
     &lt;head&gt;
@@ -208,7 +208,7 @@
   &lt;iframe src="http://example.com" width="200" height="200" style="border:none"&gt;&lt;/iframe&gt;</code></pre>
   <p>Note that the site linked in the <code>src</code> attribute must consent to be displayed. So this may not work with all websites.</p>
   <ol>
-    <li>Embed a <a href="https://support.google.com/youtube/answer/171780?hl=en" class="popup">YouTube video</a> on your vacation report or another page</li>
+    <li>Embed a <a href="https://support.google.com/youtube/answer/171780?hl=en" class="popup">YouTube video</a> on your page</li>
     <li>Embed a <a href="https://support.google.com/maps/answer/3544418?hl=en" class="popup">Google Map</a> on one of your pages</li>
     <li>Try embedding a few of your other favorite web sites. If it doesn't show up, switch to the Console section of the Chrome Developer Tools <code>[CMD + OPT + I]</code> and look for an error message: "Refused to display"</li>
   </ol>
@@ -228,10 +228,9 @@
     <li><strong>loop</strong>- Specifies that the audio will start over again, every time it is finished</li>
   </ul>
 
-  <h3>Exercise: Media Page!</h3>
-  <p>Your community site needs a media page! It should contain pictures, audio, and video relevant to your community. Maybe educational content, and perhaps some fun stuff too. Include short explainations of each piece of content</p>
+  <h3>Exercise: More Styles!</h3>
+  <p>Your page is looking good. It should contain pictures, audio, and video. </p>
   <ol>
-    <li>Include YouTube videos of interest to your community</li>
     <li>Add some <code>.mp3</code> audio files</li>
     <li>In the &lt;style&gt; tag, apply a few css styles to each of the following:</li>
     <pre><code class="css">body {
